@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public GameObject player;
     public float speed = 1f;
 
+    public HealthBarBehavior healthBar;
+    public float hitPoints;
+    public float maxHitPoints = 10;
     private float distance;
 
     // Start is called before the first frame update
@@ -14,6 +17,19 @@ public class enemy : MonoBehaviour
     {
         //On creation finds the "Player" gameobject
         player =  GameObject.Find("Player");
+        hitPoints = maxHitPoints;
+        healthBar.SetHealth(hitPoints, maxHitPoints);
+
+    }
+
+    public void TakeHit(float damage)
+    {
+        hitPoints -= damage;
+        healthBar.SetHealth(hitPoints, maxHitPoints);
+        if (hitPoints <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -25,10 +41,10 @@ public class enemy : MonoBehaviour
     void Move()
     {
         //Using the player as reference, gets the distance and direction of the player
-        distance = Vector2.Distance(transform.position, player.GetComponent<player>().transform.position);
-        Vector2 direction = player.transform.position - player.GetComponent<player>().transform.position;
+        distance = Vector2.Distance(transform.position, player.GetComponent<Player>().transform.position);
+        Vector2 direction = player.transform.position - player.GetComponent<Player>().transform.position;
 
         //Moves enemy towards the player's position on Update
-        transform.position = Vector2.MoveTowards(this.transform.position, player.GetComponent<player>().transform.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(this.transform.position, player.GetComponent<Player>().transform.position, speed * Time.deltaTime);
     }
 }

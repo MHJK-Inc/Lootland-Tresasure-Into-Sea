@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class projectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
 
     public float Speed = 4.5f;
@@ -13,7 +13,7 @@ public class projectile : MonoBehaviour
     void Start()
     {
         // Finds player's direction they're facing (See player script)
-        direction = GameObject.Find("Player").GetComponent<player>().facing;
+        direction = GameObject.Find("Player").GetComponent<Player>().facing;
     }
 
     // Update is called once per frame
@@ -65,9 +65,13 @@ public class projectile : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2d(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision detected with: " + collision.name);
-        //Destroy(gameObject);
+        var enemies = collision.collider.GetComponent<Enemy>();
+        if (enemies)
+        {
+            enemies.TakeHit(1);
+        }
+        Destroy(gameObject);
     }
 }
