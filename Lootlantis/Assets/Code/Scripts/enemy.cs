@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private SpawnEnemy spawnEnemy;
+
     public GameObject player;
     public float speed = 1f;
-
     public HealthBarBehavior healthBar;
     public float hitPoints;
-    public float maxHitPoints = 10;
+    public float maxHitPoints = 5;
     private float distance;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour
     {
         //On creation finds the "Player" gameobject
         player =  GameObject.Find("Player");
+        spawnEnemy = FindObjectOfType<SpawnEnemy>();
         hitPoints = maxHitPoints;
         healthBar.SetHealth(hitPoints, maxHitPoints);
 
@@ -28,6 +30,7 @@ public class Enemy : MonoBehaviour
         healthBar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
         {
+            spawnEnemy.EnemyDestroyed();
             Destroy(gameObject);
         }
     }
