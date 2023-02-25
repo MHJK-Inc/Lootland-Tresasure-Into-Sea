@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923102dea57d2a3438453bc74d330476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowSpeed: 10
+  FollowSpeed: 2
   yOffset: 1
   target: {fileID: 1009157303}
 --- !u!1 &614658478 stripped
