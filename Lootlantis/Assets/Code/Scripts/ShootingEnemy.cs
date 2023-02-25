@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class ShootingEnemy : MonoBehaviour
 {
-    public GameObject player;
     public float speed = 1f;
     private float distance;
+    public GameObject player;
+
+    public GameObject projectile;
+    public GameObject projectileParent;
+    public float shootingRange;
+    public float fireRate = 2f;
+    private float nextFireTime;
 
     //Added By Kris
-    private SpawnEnemy spawnEnemy;
+    private SpawnShootingEnemy spawnShootingEnemy;
 
     public HealthBarBehavior healthBar;
 
@@ -19,13 +25,13 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.tag = "Enemy";
+        gameObject.tag = "Shooting Enemy";
 
         //On creation finds the "Player" gameobject
-        player =  GameObject.Find("Player");
+        player = GameObject.Find("Player");
 
         //Added by Kris
-        spawnEnemy = FindObjectOfType<SpawnEnemy>();
+        spawnShootingEnemy = FindObjectOfType<SpawnShootingEnemy>();
         hitPoints = maxHitPoints;
         healthBar.SetHealth(hitPoints, maxHitPoints);
     }
@@ -33,17 +39,25 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-    }
-
-    void Move()
-    {
         //Using the player as reference, gets the distance and direction of the player
         distance = Vector2.Distance(transform.position, player.GetComponent<Player>().transform.position);
         Vector2 direction = player.transform.position - player.GetComponent<Player>().transform.position;
 
         //Moves enemy towards the player's position on Update
         transform.position = Vector2.MoveTowards(this.transform.position, player.GetComponent<Player>().transform.position, speed * Time.deltaTime);
+
+        if (distance <= shootingRange && nextFireTime < Time.time)
+        {
+            Instantiate(projectile, projectileParent.transform.position, Quaternion.identity);
+            nextFireTime = Time.time + fireRate;
+        }
+
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, shootingRange);
     }
 
     public void TakeHit(float damage)
@@ -52,7 +66,7 @@ public class Enemy : MonoBehaviour
         healthBar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
         {
-            spawnEnemy.EnemyDestroyed();
+            spawnShootingEnemy.EnemyDestroyed();
             Destroy(gameObject);
         }
     }
@@ -63,6 +77,6 @@ public class Enemy : MonoBehaviour
         {
             collision.gameObject.GetComponent<Player>().TakeDamage(5);
         }
-        
+
     }
 }

@@ -66,10 +66,9 @@ public class SpearGunProjectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.tag == "Enemy")
+        if (collider.gameObject.CompareTag("Enemy"))
         {
             collider.gameObject.GetComponent<Enemy>().TakeHit(1);
-            Destroy(gameObject);
         }
     }
 }

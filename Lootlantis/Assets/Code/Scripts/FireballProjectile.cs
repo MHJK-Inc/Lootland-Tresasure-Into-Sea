@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FireballProjectile : MonoBehaviour
@@ -64,16 +65,20 @@ public class FireballProjectile : MonoBehaviour
 
     private GameObject FindClosestEnemy()
     {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Enemy");
-        if (gos.Length == 0)
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] shootingEnemies = GameObject.FindGameObjectsWithTag("Shooting Enemy");
+        List<GameObject> allEnemies = new List<GameObject>(gos);
+        allEnemies.AddRange(shootingEnemies);
+
+        if (allEnemies.Count == 0)
         {
-            enemy = GameObject.Find("DefaultEnemy");
+            return null;
         }
-        GameObject closest = null;
+
+        GameObject closest = allEnemies[0];
         float distance = Mathf.Infinity;
-        Vector3 position = GameObject.Find("Player").GetComponent<Player>().transform.position;
-        foreach (GameObject go in gos)
+        Vector3 position = transform.position;
+        foreach (GameObject go in allEnemies)
         {
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;
@@ -87,6 +92,7 @@ public class FireballProjectile : MonoBehaviour
         return closest;
     }
 
+
     void Move()
     {
         //Using the player as reference, gets the distance and direction of the player
@@ -98,11 +104,19 @@ public class FireballProjectile : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.tag == "Enemy")
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        Enemy enemy = collider.GetComponent<Enemy>();
+        ShootingEnemy shootingEnemy = collider.GetComponent<ShootingEnemy>();
+
+        if (enemy != null)
         {
-            collider.gameObject.GetComponent<Enemy>().TakeHit(1);
-            Destroy(gameObject);
+            enemy.TakeHit(1);
+        }
+
+        if (shootingEnemy != null)
+        {
+            shootingEnemy.TakeHit(1);
         }
     }
 
