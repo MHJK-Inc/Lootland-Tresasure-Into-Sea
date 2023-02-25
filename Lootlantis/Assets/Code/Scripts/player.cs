@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class Player : MonoBehaviour
 {
 
     public float moveSpeed;
@@ -12,10 +12,27 @@ public class player : MonoBehaviour
     // 0 up, 1 up right, 2 right, 3 down right
     // 4 down, 5 down left, 6 left, 7 up left
 
+    //Health Bar setting
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
+
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
     // Update is called once per frame
     void Update()
     {
         ProcessInputs();
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(20);
+        }
 
     }
 
@@ -24,6 +41,18 @@ public class player : MonoBehaviour
     {
         Move();
 
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth = currentHealth - damage; 
+
+        healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void ProcessInputs()
