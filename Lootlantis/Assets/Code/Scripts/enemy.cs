@@ -61,8 +61,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Player Hit");
-            collision.gameObject.GetComponent<Player>().TakeDamage(1);
+            collision.gameObject.GetComponent<Player>().TakeDamage(5);
         }
         
     }

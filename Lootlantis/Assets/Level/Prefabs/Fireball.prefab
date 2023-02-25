@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12abb97e237534744aba624ef53a2095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 7616095668452821014, guid: 6377f8ab9a83c3d419e299984d43412c, type: 3}
+  ProjectilePrefab: {fileID: 8218016838064618179, guid: 50213343280e6804f9d45f33a93ad37d, type: 3}
   fireRate: 50
   FollowSpeed: 10
   yOffset: 0
