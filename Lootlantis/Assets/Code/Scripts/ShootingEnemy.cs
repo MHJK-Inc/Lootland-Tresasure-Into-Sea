@@ -41,12 +41,16 @@ public class ShootingEnemy : MonoBehaviour
     {
         //Using the player as reference, gets the distance and direction of the player
         distance = Vector2.Distance(transform.position, player.GetComponent<Player>().transform.position);
-        Vector2 direction = player.transform.position - player.GetComponent<Player>().transform.position;
 
-        //Moves enemy towards the player's position on Update
-        transform.position = Vector2.MoveTowards(this.transform.position, player.GetComponent<Player>().transform.position, speed * Time.deltaTime);
+        if (distance > shootingRange)
+        {
+            Vector2 direction = player.transform.position - player.GetComponent<Player>().transform.position;
 
-        if (distance <= shootingRange && nextFireTime < Time.time)
+            //Moves enemy towards the player's position on Update
+            transform.position = Vector2.MoveTowards(this.transform.position, player.GetComponent<Player>().transform.position, speed * Time.deltaTime);
+
+        }
+        else if (distance <= shootingRange && nextFireTime < Time.time)
         {
             Instantiate(projectile, projectileParent.transform.position, Quaternion.identity);
             nextFireTime = Time.time + fireRate;

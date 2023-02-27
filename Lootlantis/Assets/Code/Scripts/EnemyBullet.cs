@@ -14,6 +14,15 @@ public class EnemyBullet : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
         Vector2 moveDir = (target.transform.position - transform.position).normalized * speed;
         bulletRB.velocity = new Vector2(moveDir.x, moveDir.y);
-        Destroy(this.gameObject, 2);
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            collider.gameObject.GetComponent<Player>().TakeDamage(1);
+            Destroy(gameObject);
+        }
     }
 }

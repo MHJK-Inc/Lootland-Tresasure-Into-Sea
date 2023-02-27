@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FireballProjectile : MonoBehaviour
 {
-    public GameObject enemy;
+    private GameObject enemy;
     private float distance;
 
     public float speed = 4.5f;
@@ -31,8 +31,10 @@ public class FireballProjectile : MonoBehaviour
             Move();
         } else
         {
-            enemy = GameObject.Find("DefaultEnemy");
-            Move();
+            if (enemy != null)
+            {
+                Move();
+            }
         }
 
         direction = (enemy.transform.position - transform.position).normalized;
@@ -111,13 +113,15 @@ public class FireballProjectile : MonoBehaviour
 
         if (enemy != null)
         {
-            enemy.TakeHit(1);
+            enemy.TakeHit(3);
         }
 
         if (shootingEnemy != null)
         {
-            shootingEnemy.TakeHit(1);
+            shootingEnemy.TakeHit(3);
         }
+
+        Destroy(gameObject);
     }
 
 

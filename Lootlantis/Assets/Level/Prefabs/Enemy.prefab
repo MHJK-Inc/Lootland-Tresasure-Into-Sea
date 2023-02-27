@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3450656189495427601}
   - component: {fileID: 3450656189495427602}
   - component: {fileID: 3450656189495427604}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   slider: {fileID: 3450656190603928013}
   low: {r: 1, g: 0, b: 0, a: 1}
   high: {r: 0, g: 0.7169812, b: 0.13987692, a: 1}
-  offSet: {x: 0, y: 0.5, z: 0}
+  offSet: {x: 0, y: 0.3, z: 0}
 --- !u!1 &3450656190435880305
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 3450656190435880304}
   - component: {fileID: 3450656190435880318}
   - component: {fileID: 3450656190435880319}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 3450656190511509581}
   - component: {fileID: 3450656190511509579}
   - component: {fileID: 3450656190511509580}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3450656190603928012}
   - component: {fileID: 3450656190603928013}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3450656190622418068}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 3450656190640184801}
   - component: {fileID: 3450656190640184813}
   - component: {fileID: -628236921665549609}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
