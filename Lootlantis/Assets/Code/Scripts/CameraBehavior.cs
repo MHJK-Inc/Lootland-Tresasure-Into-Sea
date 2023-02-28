@@ -9,6 +9,8 @@ public class CameraBehavior : MonoBehaviour
 
     public float yOffset = 1f;
 
+    public GameOver GameOverScreen;
+
     // Target that it follows
     public Transform target;
 
@@ -23,5 +25,10 @@ public class CameraBehavior : MonoBehaviour
         // Tracks location of target (Set to player game object) and follows it on update
         Vector3 newPos = new Vector3(target.position.x, target.position.y + yOffset, -10f);
         transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed*Time.deltaTime);
+        
+    }
+
+    public void GameOver(){
+        GameOverScreen.gameOver();
     }
 }

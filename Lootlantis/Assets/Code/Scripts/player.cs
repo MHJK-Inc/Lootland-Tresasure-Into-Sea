@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
+    //game Over screen
+    public GameOver gameManager;
+
 
     void Start()
     {
@@ -51,7 +54,11 @@ public class Player : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            gameManager.gameOver();
             Destroy(gameObject);
+            gameObject.SetActive(false);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
