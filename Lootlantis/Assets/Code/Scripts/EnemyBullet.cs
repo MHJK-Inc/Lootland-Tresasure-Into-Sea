@@ -6,14 +6,30 @@ public class EnemyBullet : MonoBehaviour
 {
     GameObject target;
     public float speed;
+    public float life;
     Rigidbody2D bulletRB;
     // Start is called before the first frame update
     void Start()
     {
+        life = 200;
         bulletRB = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player");
         Vector2 moveDir = (target.transform.position - transform.position).normalized * speed;
         bulletRB.velocity = new Vector2(moveDir.x, moveDir.y);
+        
+    }
+
+    void FixedUpdate()
+    {
+        //If life of bullet is 0 or less, remove gameObject
+        if(life > 0)
+        {
+            life--;
+        } else 
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 
@@ -21,7 +37,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            collider.gameObject.GetComponent<Player>().TakeDamage(1);
+            collider.gameObject.GetComponent<Player>().TakeDamage(5);
             Destroy(gameObject);
         }
     }

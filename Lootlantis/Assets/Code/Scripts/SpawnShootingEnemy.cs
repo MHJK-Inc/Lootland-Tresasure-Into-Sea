@@ -18,7 +18,7 @@ public class SpawnShootingEnemy : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(enemyCount);
+        
     }
 
     private IEnumerator SpawnEnemies()

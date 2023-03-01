@@ -1,25 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class FireballProjectile : MonoBehaviour
 {
-    private GameObject enemy;
+    public GameObject enemy;
     private float distance;
 
     public float speed = 4.5f;
 
     public float life = 100f;
 
-    public float rotationSpeed = 20;
+    public float rotationSpeed = 20f;
 
     private Quaternion lookRotation;
     private Vector3 direction;
 
+    private float level = 0f;
+
+    private float damage = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
+        life = 200f;
+        rotationSpeed = 30f;
+        level = GameObject.Find("Fireball").GetComponent<Fireball>().level;
+        DetermineStats();
         enemy = FindClosestEnemy();
     }
 
@@ -31,10 +38,8 @@ public class FireballProjectile : MonoBehaviour
             Move();
         } else
         {
-            if (enemy != null)
-            {
-                Move();
-            }
+            enemy = GameObject.Find("DefaultEnemy");
+            Move();
         }
 
         direction = (enemy.transform.position - transform.position).normalized;
@@ -67,20 +72,16 @@ public class FireballProjectile : MonoBehaviour
 
     private GameObject FindClosestEnemy()
     {
-        GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject[] shootingEnemies = GameObject.FindGameObjectsWithTag("Shooting Enemy");
-        List<GameObject> allEnemies = new List<GameObject>(gos);
-        allEnemies.AddRange(shootingEnemies);
-
-        if (allEnemies.Count == 0)
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Enemy");
+        if (gos.Length == 0)
         {
-            return null;
+            enemy = GameObject.Find("DefaultEnemy");
         }
-
-        GameObject closest = allEnemies[0];
+        GameObject closest = null;
         float distance = Mathf.Infinity;
-        Vector3 position = transform.position;
-        foreach (GameObject go in allEnemies)
+        Vector3 position = GameObject.Find("Player").GetComponent<Player>().transform.position;
+        foreach (GameObject go in gos)
         {
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;
@@ -94,7 +95,6 @@ public class FireballProjectile : MonoBehaviour
         return closest;
     }
 
-
     void Move()
     {
         //Using the player as reference, gets the distance and direction of the player
@@ -106,23 +106,56 @@ public class FireballProjectile : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        Enemy enemy = collider.GetComponent<Enemy>();
-        ShootingEnemy shootingEnemy = collider.GetComponent<ShootingEnemy>();
-
-        if (enemy != null)
+    private void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.gameObject.tag == "Enemy")
         {
-            enemy.TakeHit(3);
+            if(collider.gameObject.GetComponent<Enemy>() != null)
+            {
+                collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
+                Destroy(gameObject);
+            } else if (collider.gameObject.GetComponent<ShootingEnemy>() != null)
+            {
+                collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
+                Destroy(gameObject);
+            }
         }
-
-        if (shootingEnemy != null)
-        {
-            shootingEnemy.TakeHit(3);
-        }
-
-        Destroy(gameObject);
     }
 
+    void DetermineStats()
+    {
+        if (level == 1)
+        {
+            damage = 2f;
+            speed = 4.5f;
+        } else if (level == 2)
+        {
+            damage = 2f;
+            speed = 4.5f;
+        } else if (level == 3)
+        {
+            damage = 4f;
+            speed = 4.5f;
+        } else if (level == 4)
+        {
+            damage = 4f;
+            speed = 4.5f;
+        } else if (level == 5)
+        {
+            damage = 4f;
+            speed = 9f;
+        } else if (level == 6)
+        {
+            damage = 4f;
+            speed = 9f;
+        } else if (level == 7)
+        {
+            damage = 6f;
+            speed = 9f;
+        } else if (level == 8)
+        {
+            damage = 6f;
+            speed = 15f;
+        }
+    }
 
 }

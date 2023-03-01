@@ -25,7 +25,7 @@ public class ShootingEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.tag = "Shooting Enemy";
+        gameObject.tag = "Enemy";
 
         //On creation finds the "Player" gameobject
         player = GameObject.Find("Player");
@@ -39,6 +39,9 @@ public class ShootingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Move();
+        
         //Using the player as reference, gets the distance and direction of the player
         distance = Vector2.Distance(transform.position, player.GetComponent<Player>().transform.position);
 
@@ -56,6 +59,16 @@ public class ShootingEnemy : MonoBehaviour
             nextFireTime = Time.time + fireRate;
         }
 
+    }
+
+    void Move()
+    {
+        //Using the player as reference, gets the distance and direction of the player
+        distance = Vector2.Distance(transform.position, player.GetComponent<Player>().transform.position);
+        Vector2 direction = player.transform.position - player.GetComponent<Player>().transform.position;
+
+        //Moves enemy towards the player's position on Update
+        transform.position = Vector2.MoveTowards(this.transform.position, player.GetComponent<Player>().transform.position, speed * Time.deltaTime);
     }
 
     private void OnDrawGizmosSelected()
