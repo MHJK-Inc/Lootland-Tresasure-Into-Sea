@@ -8,6 +8,9 @@ public class HealthBar : MonoBehaviour
 
     public Slider slider;
 
+    public GameOver gameManager;
+    private bool isDead;
+
     public void SetHealth(int health){
         slider.value = health;
     }
@@ -25,6 +28,11 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (slider.value <= 0 && !isDead)
+        {
+            Debug.Log("DEAD");
+            isDead = true;
+            gameManager.gameOver();
+        }
     }
 }
