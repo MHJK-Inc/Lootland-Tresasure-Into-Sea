@@ -26,7 +26,10 @@ public class SerpentManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        UpdateMarkerList();
+        if (Time.timeScale != 0f)
+        {
+            UpdateMarkerList();
+        }
     }
 
     public void UpdateMarkerList()

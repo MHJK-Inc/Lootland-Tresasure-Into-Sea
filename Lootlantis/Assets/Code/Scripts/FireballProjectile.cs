@@ -33,22 +33,25 @@ public class FireballProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enemy)
+        if (Time.timeScale != 0f)
         {
-            Move();
-        } else
-        {
-            enemy = GameObject.Find("DefaultEnemy");
-            Move();
+            if(enemy)
+            {
+                Move();
+            } else
+            {
+                enemy = GameObject.Find("DefaultEnemy");
+                Move();
+            }
+
+            direction = (enemy.transform.position - transform.position).normalized;
+
+            float angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) - 90;
+
+            lookRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
         }
-
-        direction = (enemy.transform.position - transform.position).normalized;
-
-        float angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) - 90;
-
-        lookRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
 
         
 
@@ -59,13 +62,16 @@ public class FireballProjectile : MonoBehaviour
 
     void FixedUpdate()
     {
-        //If life of bullet is 0 or less, remove gameObject
-        if(life > 0)
+        if (Time.timeScale != 0f)
         {
-            life--;
-        } else 
-        {
-            Destroy(gameObject);
+            //If life of bullet is 0 or less, remove gameObject
+            if(life > 0)
+            {
+                life--;
+            } else 
+            {
+                Destroy(gameObject);
+            }
         }
 
     }

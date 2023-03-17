@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    
     public float moveSpeed;
     public Rigidbody2D rb; 
     private Vector2 moveDirection;
@@ -17,6 +17,16 @@ public class Player : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
+    public int inventory = 0;
+
+    //Game Over Screen
+    public GameOver gameManager;
+
+    //Interact Icon
+
+
+    public Interactable objective;
+
 
     void Start()
     {
@@ -27,19 +37,32 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessInputs();
-
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Time.timeScale != 0f)
         {
-            TakeDamage(20);
-        }
+            ProcessInputs();
 
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                TakeDamage(20);
+            }
+
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                if(objective != null)
+                {
+                    CheckInteraction();
+                }
+            }
+        }
     }
 
     // FixedUpdate is called one per frame, but fixed to a universal time, not based on frame rate I think
     void FixedUpdate()
     {
-        Move();
+        if (Time.timeScale != 0f)
+        {
+            Move();
+        }
 
     }
 
@@ -51,7 +74,11 @@ public class Player : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            gameManager.gameOver();
+            //Destroy(gameObject);
+            //gameObject.SetActive(false);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -101,6 +128,31 @@ public class Player : MonoBehaviour
     void Move()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+    }
+
+    private void CheckInteraction()
+    {
+        objective.Interact();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Objective"))
+        {
+            objective = collider.gameObject.GetComponent<Interactable>(); 
+            if (objective.isActive)
+            {
+                objective.OpenInteractIcon();
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Objective"))
+        {
+            objective.CloseInteractIcon();
+        }
     }
 
 }

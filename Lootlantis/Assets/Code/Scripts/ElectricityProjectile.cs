@@ -28,23 +28,29 @@ public class ElectricityProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        center = player.transform.position;
-        angle += RotateSpeed * Time.deltaTime;
-        
-        var offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * Radius;
-        transform.position = center + offset;
+        if (Time.timeScale != 0f)
+        {
+            center = player.transform.position;
+            angle += RotateSpeed * Time.deltaTime;
+            
+            var offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * Radius;
+            transform.position = center + offset;
+        }
 
     }
 
     void FixedUpdate()
     {
         //If life of bullet is 0 or less, remove gameObject
-        if(life > 0)
+        if (Time.timeScale != 0f)
         {
-            life--;
-        } else 
-        {
-            Destroy(gameObject);
+            if(life > 0)
+            {
+                life--;
+            } else 
+            {
+                Destroy(gameObject);
+            }
         }
 
     }

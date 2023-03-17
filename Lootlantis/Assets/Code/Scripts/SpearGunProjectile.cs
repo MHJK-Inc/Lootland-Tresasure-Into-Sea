@@ -23,53 +23,56 @@ public class SpearGunProjectile : MonoBehaviour
 
         // Finds player's direction they're facing (See player script)
         direction = GameObject.Find("Player").GetComponent<Player>().facing;
+
+        //Direction of Bullet (numbers refer to player script)
+        if (direction == 0)
+        {
+
+        } else if(direction == 1)
+        {
+            transform.Rotate(0f, 0f, 315f);
+        } else if(direction == 2)
+        {
+            transform.Rotate(0f, 0f, 270f);
+        } else if(direction == 3)
+        {
+            transform.Rotate(0f, 0f, 225f); 
+        } else if(direction == 4)
+        {
+            transform.Rotate(0f, 0f, 180f);
+        } else if(direction == 5)
+        {
+            transform.Rotate(0f, 0f, 135f);
+        } else if(direction == 6)
+        {
+            transform.Rotate(0f, 0f, 90f);
+        } else
+        {
+            transform.Rotate(0f, 0f, 45f);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        //Direction of Bullet (numbers refer to player script)
-        if(direction == 0)
+        if (Time.timeScale != 0f)
         {
-            transform.position += transform.up * Time.deltaTime * speed;
-        } else if(direction == 1)
-        {
-            transform.position += transform.up * Time.deltaTime * speed;
-            transform.position += transform.right * Time.deltaTime * speed;
-        } else if(direction == 2)
-        {
-            transform.position += transform.right * Time.deltaTime * speed;
-        } else if(direction == 3)
-        {
-            transform.position += transform.right * Time.deltaTime * speed;
-            transform.position += -transform.up * Time.deltaTime * speed;   
-        } else if(direction == 4)
-        {
-            transform.position += -transform.up * Time.deltaTime * speed;
-        } else if(direction == 5)
-        {
-            transform.position += -transform.right * Time.deltaTime * speed;
-            transform.position += -transform.up * Time.deltaTime * speed;
-        } else if(direction == 6)
-        {
-            transform.position += -transform.right * Time.deltaTime * speed;
-        } else
-        {
-            transform.position += -transform.right * Time.deltaTime * speed;
             transform.position += transform.up * Time.deltaTime * speed;
         }
     }
 
     void FixedUpdate()
     {
-        //If life of bullet is 0 or less, remove gameObject
-        if(life > 0)
+        if (Time.timeScale != 0f)
         {
-            life--;
-        } else 
-        {
-            Destroy(gameObject);
+            //If life of bullet is 0 or less, remove gameObject
+            if(life > 0)
+            {
+                life--;
+            } else 
+            {
+                Destroy(gameObject);
+            }
         }
 
     }
@@ -115,17 +118,17 @@ public class SpearGunProjectile : MonoBehaviour
         {
             damage = 8f;
             speed = 6f;
-            transform.localScale = new Vector3(2f, 2f, 0.4226816f);
+            transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
         } else if (level == 7)
         {
             damage = 8f;
             speed = 6f;
-            transform.localScale = new Vector3(2f, 2f, 0.4226816f);
+            transform.localScale = new Vector3(0.25f,0.25f, 0.4226816f);
         } else if (level == 8)
         {
             damage = 10f;
             speed = 7.5f;
-            transform.localScale = new Vector3(2f, 2f, 0.4226816f);
+            transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
         }
     }
 }

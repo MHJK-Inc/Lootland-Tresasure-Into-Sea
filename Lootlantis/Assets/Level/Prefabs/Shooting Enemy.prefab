@@ -367,7 +367,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3280294468371969794}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  player: {fileID: 0}
+  player: {fileID: 3921636301433035449, guid: eefcbbdae36b18d42861c6d20c8b693a, type: 3}
   projectile: {fileID: 1683781770470765520, guid: 4f8bc8708c78ee74da1ce5cf51527dff, type: 3}
   projectileParent: {fileID: 7497833796514178478}
   shootingRange: 5

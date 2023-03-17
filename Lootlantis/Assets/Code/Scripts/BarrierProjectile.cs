@@ -38,31 +38,36 @@ public class BarrierProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale != 0f)
+        {
+            center = player.transform.position;
+            transform.position = center;
+            
+            rotZ += -Time.deltaTime * speed;
 
-        center = player.transform.position;
-        transform.position = center;
-        
-        rotZ += -Time.deltaTime * speed;
-
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+            transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        }
     }
 
     void FixedUpdate()
     {
-        if (tick == 0) {
-            tick = 10;
-        } else {
-            tick--;
-        }
+        if (Time.timeScale != 0f)
+        {
+            if (tick == 0) {
+                tick = 10;
+            } else {
+                tick--;
+            }
 
 
-        //If life of bullet is 0 or less, remove gameObject
-        if(life > 0)
-        {
-            life--;
-        } else 
-        {
-            Destroy(gameObject);
+            //If life of bullet is 0 or less, remove gameObject
+            if(life > 0)
+            {
+                life--;
+            } else 
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

@@ -20,11 +20,14 @@ public class Serpent : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (bodyParts.Count > 0)
+        if (Time.timeScale != 0f)
         {
-            CreateBodyParts();
+            if (bodyParts.Count > 0)
+            {
+                CreateBodyParts();
+            }
+            SerpentMovement();
         }
-        SerpentMovement();
     }
 
     void SerpentMovement()

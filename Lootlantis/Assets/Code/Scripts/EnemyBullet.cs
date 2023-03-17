@@ -21,13 +21,16 @@ public class EnemyBullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        //If life of bullet is 0 or less, remove gameObject
-        if(life > 0)
+        if (Time.timeScale != 0f)
         {
-            life--;
-        } else 
-        {
-            Destroy(gameObject);
+            //If life of bullet is 0 or less, remove gameObject
+            if(life > 0)
+            {
+                life--;
+            } else 
+            {
+                Destroy(gameObject);
+            }
         }
 
     }

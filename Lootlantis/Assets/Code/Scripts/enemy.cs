@@ -12,8 +12,7 @@ public class Enemy : MonoBehaviour
     private SpawnEnemy spawnEnemy;
 
     public HealthBarBehavior healthBar;
-    public Rigidbody2D rb;
-    private Vector2 movement;
+
     public float hitPoints;
     public float maxHitPoints = 5;
 
@@ -34,35 +33,27 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Using the player as reference, gets the distance and direction of the player
-        Vector3 direction = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
-
-        if (direction.x < 0)
+        if (Time.timeScale != 0f)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
-            Debug.Log("Flipping sprite to face left");
+            if(player == null)
+            {
+                player = GameObject.Find("Player");
+            }
+            Move();
         }
-        else
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-            Debug.Log("Flipping sprite to face right");
-        }
-
-        direction.Normalize();
-        movement = direction;
     }
 
-    private void FixedUpdate()
+    void Move()
     {
-        moveEnemy(movement);
-    }
+        if (player != null)
+        {
+            //Using the player as reference, gets the distance and direction of the player
+            distance = Vector2.Distance(transform.position, player.GetComponent<Player>().transform.position);
+            Vector2 direction = player.transform.position - player.GetComponent<Player>().transform.position;
 
-
-    void moveEnemy(Vector2 direction)
-    {
-        rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
+            //Moves enemy towards the player's position on Update
+            transform.position = Vector2.MoveTowards(this.transform.position, player.GetComponent<Player>().transform.position, speed * Time.deltaTime);
+        }
     }
 
     public void TakeHit(float damage)
@@ -83,5 +74,10 @@ public class Enemy : MonoBehaviour
             collision.gameObject.GetComponent<Player>().TakeDamage(5);
         }
         
+    }
+
+    public void FindPlayer()
+    {
+
     }
 }
