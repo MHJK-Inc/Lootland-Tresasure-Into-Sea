@@ -8,6 +8,7 @@ public class HealthBar : MonoBehaviour
 
     public Slider slider;
 
+    public Transform Player;
     public GameOver gameManager;
     private bool isDead;
 
@@ -28,6 +29,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = Player.position + transform.up * 0.8f;
         if (Time.timeScale != 0f)
         {
             // if (slider.value <= 0 && !isDead)
