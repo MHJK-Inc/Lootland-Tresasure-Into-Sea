@@ -2552,16 +2552,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 0, y: 0, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 1, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -4270,7 +4260,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: b5bd379394a1464408d5254886ff791c, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 2dfb3ae347ebeb0488b8e70a66c41b88, type: 2}
-  - m_RefCount: 288
+  - m_RefCount: 287
     m_Data: {fileID: 11400000, guid: cef6adb33ba849e449c8f25e4f150574, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -4301,7 +4291,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 288
+  - m_RefCount: 287
     m_Data: {fileID: 450438451, guid: c86d3ddd202db8a4cac801a859de7b05, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -4316,7 +4306,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -166002738, guid: c86d3ddd202db8a4cac801a859de7b05, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 360
+  - m_RefCount: 359
     m_Data:
       e00: 1
       e01: 0
@@ -4335,7 +4325,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 360
+  - m_RefCount: 359
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -4786,6 +4776,18 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 82641432}
+    - target: {fileID: 5582768656203351462, guid: 7742058c6f30b514f82a57c65bc08091, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 239510393, guid: 52c04dd391fc34a998795d7f1dfa1147, type: 3}
+    - target: {fileID: 5780362458099843777, guid: 7742058c6f30b514f82a57c65bc08091, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780362458099843777, guid: 7742058c6f30b514f82a57c65bc08091, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7808182319477169647, guid: 7742058c6f30b514f82a57c65bc08091, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4795,12 +4797,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8942953056241969501, guid: 7742058c6f30b514f82a57c65bc08091, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942953056241969501, guid: 7742058c6f30b514f82a57c65bc08091, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942953056241969501, guid: 7742058c6f30b514f82a57c65bc08091, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6468358
+      value: -0.723
       objectReference: {fileID: 0}
     - target: {fileID: 8942953056241969501, guid: 7742058c6f30b514f82a57c65bc08091, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.94116575
+      value: 0.739
       objectReference: {fileID: 0}
     - target: {fileID: 8942953056241969501, guid: 7742058c6f30b514f82a57c65bc08091, type: 3}
       propertyPath: m_LocalPosition.z
