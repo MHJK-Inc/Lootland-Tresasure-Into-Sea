@@ -8,10 +8,19 @@ public class WaveControl : MonoBehaviour
     public float EnemiesLeft;
     public bool TimerOn;
     public TMPro.TextMeshProUGUI TimerTxt;
+    public TMPro.TextMeshProUGUI KillTxt;
+    public WaveClear waveClear;
     // Start is called before the first frame update
+
+    
+
+
     void Start()
     {
         TimerOn = true;
+        EnemiesLeft = 10;
+        
+
         //different wave settings in a method
         //method to randomize active objectives
         //set wave timer (1 min?)
@@ -26,20 +35,55 @@ public class WaveControl : MonoBehaviour
     {
         if (Time.timeScale != 0f)
         {
-            if(TimerOn)
+            Timer();
+            UpdateKill();
+        }
+    }
+
+    private void SetUp()
+    {
+        if (PlayerPrefs.GetInt("Wave") == 1)
+        {
+            TimeLeft = 60;
+            EnemiesLeft = 10;
+        } else if (PlayerPrefs.GetInt("Wave") == 2)
+        {
+            TimeLeft = 60;
+            EnemiesLeft = 10;
+        }else if (PlayerPrefs.GetInt("Wave") == 3)
+        {
+            TimeLeft = 60;
+            EnemiesLeft = 10;
+        }else if (PlayerPrefs.GetInt("Wave") == 4)
+        {
+            TimeLeft = 60;
+            EnemiesLeft = 10;
+        } else
+        {
+            TimeLeft = 60;
+            EnemiesLeft = 10;
+        }
+
+        
+    }
+
+
+
+    void Timer()
+    {
+        if(TimerOn)
             {
                 if (TimeLeft > 0)
                 {
                     TimeLeft -= Time.deltaTime;
-                    updateTimer(TimeLeft);
+                    UpdateTimer(TimeLeft);
                 } else {
-                    
+                    waveClear.Clear();
                 }
-            }
-        }
+            }   
     }
 
-    void updateTimer(float currentTime)
+    void UpdateTimer(float currentTime)
     {
         currentTime += 1;
 
@@ -47,5 +91,10 @@ public class WaveControl : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
         TimerTxt.text = string.Format("Survive For: {0:00} : {1:00}", minutes, seconds);
+    }
+
+    void UpdateKill()
+    {
+        KillTxt.text = string.Format("Enemies Remaining: " + EnemiesLeft);
     }
 }

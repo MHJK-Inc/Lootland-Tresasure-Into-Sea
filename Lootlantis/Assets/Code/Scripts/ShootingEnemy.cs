@@ -8,6 +8,7 @@ public class ShootingEnemy : MonoBehaviour
     private float distance;
     public GameObject player;
 
+    public GameObject coin;
     public GameObject projectile;
     public GameObject projectileParent;
     public float shootingRange;
@@ -86,6 +87,7 @@ public class ShootingEnemy : MonoBehaviour
         if (hitPoints <= 0)
         {
             spawnShootingEnemy.EnemyDestroyed();
+            DropItem();
             Destroy(gameObject);
         }
     }
@@ -97,5 +99,16 @@ public class ShootingEnemy : MonoBehaviour
             collision.gameObject.GetComponent<Player>().TakeDamage(5);
         }
 
+    }
+
+    public void DropItem()
+    {
+        //float dropChance = 0.5f; 
+        //if (Random.value <= dropChance)
+        //{
+        // Spawn the item at the enemy's position
+        GameObject item = Instantiate(coin, transform.position, Quaternion.identity);
+
+        //}
     }
 }

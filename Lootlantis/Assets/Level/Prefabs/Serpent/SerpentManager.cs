@@ -17,19 +17,23 @@ public class SerpentManager : MonoBehaviour
     }
 
     public List<Marker> markerList = new List<Marker>();
+
+
+    public HealthBarBehavior healthBar;
+    public float hitPoints;
+    public float maxHitPoints = 20;
+    private Serpent serpent;
     // Start is called before the first frame update
     void Start()
     {
-        
+        hitPoints = maxHitPoints;
+        serpent = FindObjectOfType<Serpent>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Time.timeScale != 0f)
-        {
-            UpdateMarkerList();
-        }
+        UpdateMarkerList();
     }
 
     public void UpdateMarkerList()
@@ -41,5 +45,25 @@ public class SerpentManager : MonoBehaviour
     {
         markerList.Clear();
         markerList.Add(new Marker(transform.position, transform.rotation));
+    }
+
+    public void TakeHit(float damage)
+    {
+        hitPoints -= damage;
+        healthBar.SetHealth(hitPoints, maxHitPoints);
+        if (hitPoints <= 0)
+        {
+            bool isDead = hitPoints <= 0;
+            serpent.DestroySerpent(isDead);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().TakeDamage(5);
+        }
+        
     }
 }
