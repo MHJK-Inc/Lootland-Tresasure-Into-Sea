@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
+    public float damageTimer = 0f;
+    public float damageDecreaseRate = 1f;
+
     public int inventory = 0;
 
     //Game Over Screen
@@ -37,13 +40,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Time.timeScale != 0f)
         {
             ProcessInputs();
 
+            damageTimer += Time.deltaTime;
+
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 TakeDamage(20);
+            }
+
+            if(damageTimer >= 1f){
+                TakeDamage(1);
+                damageTimer = 0f;
             }
 
             if(Input.GetKeyDown(KeyCode.E))
