@@ -8,6 +8,7 @@ TagManager:
   - Player Weapon
   - Player Projectile
   - Objective
+  - Collectable
   layers:
   - Default
   - TransparentFX

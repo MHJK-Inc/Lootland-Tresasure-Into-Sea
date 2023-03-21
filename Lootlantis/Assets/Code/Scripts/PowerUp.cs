@@ -129,7 +129,7 @@ public class PowerUp : MonoBehaviour
 
     public void BackMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     private void UpdateCurrency()

@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     // 0 up, 1 up right, 2 right, 3 down right
     // 4 down, 5 down left, 6 left, 7 up left
 
+    SpriteRenderer PlayerSpriteRenderer;
+
     //Health Bar setting
     public int maxHealth = 100;
     public int currentHealth;
@@ -35,6 +37,8 @@ public class Player : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        PlayerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -63,6 +67,11 @@ public class Player : MonoBehaviour
                 {
                     CheckInteraction();
                 }
+            }
+
+            if(damageTimer >= 1f){
+                TakeDamage(1);
+                damageTimer = 0f;
             }
         }
     }
@@ -139,6 +148,15 @@ public class Player : MonoBehaviour
     void Move()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        if(moveDirection.x < 0 ){
+            gameObject.transform.localRotation = Quaternion.Euler(0,0,90);
+        } else if(moveDirection.x > 0 ){
+            gameObject.transform.localRotation = Quaternion.Euler(0,0,-90);
+        } else if(moveDirection.y < 0 ){
+            gameObject.transform.localRotation = Quaternion.Euler(0,0,180);
+        } else if(moveDirection.y > 0 ){
+            gameObject.transform.localRotation = Quaternion.Euler(0,0,0);
+        }
     }
 
     private void CheckInteraction()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3428717689047063628}
   - component: {fileID: 3428717689047063631}
   - component: {fileID: -8082177497532196512}
-  - component: {fileID: -4543428651539989402}
+  - component: {fileID: -7207439512954891780}
   m_Layer: 0
   m_Name: Serpent Body
   m_TagString: Untagged
@@ -98,7 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea688c0a5241a446e9322d32845ddf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &-4543428651539989402
+  healthBar: {fileID: 0}
+  hitPoints: 0
+  maxHitPoints: 5
+--- !u!50 &-7207439512954891780
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

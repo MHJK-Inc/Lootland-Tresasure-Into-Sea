@@ -9,47 +9,58 @@ public class Serpent : MonoBehaviour
     [SerializeField] float turnSpeed = 18;
     [SerializeField] List<GameObject> bodyParts = new List<GameObject>();
     List<GameObject> serpentBody = new List<GameObject>();
-    public GameObject player; // Reference to the player object.
+    [SerializeField] private List<Transform> wayPoints = new List<Transform>();
+    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] float waypointRadius = 2f;
+
+    private int wayPointIndex = 0;
+    private Vector3 headPosition;
+    private SpawnSerpent spawnSerpent;
+    public GameObject coin;
 
     float countUp = 0;
 
     void Start()
     {
         CreateBodyParts();
+        headPosition = serpentBody[0].transform.position;      
+        for (int i = 0; i < 6; i++)
+        {
+            Vector2 randomPoint = Random.insideUnitCircle.normalized * waypointRadius;
+            Vector3 waypointPosition = headPosition + new Vector3(randomPoint.x, randomPoint.y, 0f);
+            GameObject waypointObject = new GameObject("Waypoint " + i);
+            waypointObject.transform.position = waypointPosition;
+            wayPoints.Add(waypointObject.transform);
+        }
+        spawnSerpent = FindObjectOfType<SpawnSerpent>();
+
     }
 
     void FixedUpdate()
     {
-        if (Time.timeScale != 0f)
+        if (bodyParts.Count > 0)
         {
-            if (bodyParts.Count > 0)
-            {
-                CreateBodyParts();
-            }
-            SerpentMovement();
+            CreateBodyParts();
         }
+        SerpentMovement();
     }
 
     void SerpentMovement()
     {
-        //Using the player as reference, gets the distance and direction of the player
-        Vector3 direction = player.transform.position - serpentBody[0].transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        serpentBody[0].GetComponent<Rigidbody2D>().rotation = angle;
+        if (wayPointIndex < wayPoints.Count)
+        {
+            Vector3 targetPosition = new Vector3(wayPoints[wayPointIndex].position.x, wayPoints[wayPointIndex].position.y, wayPoints[wayPointIndex].position.z);
+            Vector2 direction = Vector3.Normalize(targetPosition - headPosition);
+            headPosition += (Vector3)direction * moveSpeed * Time.deltaTime;
 
-        if (direction.x < 0)
-        {
-            serpentBody[0].GetComponent<SpriteRenderer>().flipX = true;
-            Debug.Log("Flipping sprite to face left");
-        }
-        else
-        {
-            serpentBody[0].GetComponent<SpriteRenderer>().flipX = false;
-            Debug.Log("Flipping sprite to face right");
+            if (Vector2.Distance(headPosition, targetPosition) < 0.1f)
+            {
+                wayPointIndex = (wayPointIndex + 1) % wayPoints.Count;
+            }
         }
 
-        direction.Normalize();
-        serpentBody[0].GetComponent<Rigidbody2D>().velocity = direction * speed * Time.deltaTime;
+        serpentBody[0].transform.position = headPosition;
+
 
         if (serpentBody.Count > 1)
         {
@@ -62,6 +73,9 @@ public class Serpent : MonoBehaviour
             }
         }
     }
+
+
+
 
     void CreateBodyParts()
     {
@@ -103,5 +117,31 @@ public class Serpent : MonoBehaviour
             temp.GetComponent<SerpentManager>().ClearMarkerList();
             countUp = 0;
         }
+    }
+
+    public void DestroySerpent(bool isDead)
+    {
+        Debug.Log(isDead);
+        if (isDead)
+        {
+            spawnSerpent.EnemyDestroyed();
+            Destroy(gameObject);
+            DropItem();
+            foreach (Transform wp in wayPoints)
+            {
+                Destroy(wp.gameObject);
+            }
+        }
+    }
+
+    public void DropItem()
+    {
+        //float dropChance = 0.5f; 
+        //if (Random.value <= dropChance)
+        //{
+        // Spawn the item at the enemy's position
+        GameObject item = Instantiate(coin, serpentBody[0].transform.position, Quaternion.identity);
+        
+        //}
     }
 }
