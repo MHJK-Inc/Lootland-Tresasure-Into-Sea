@@ -421,6 +421,7 @@ MonoBehaviour:
   speed: 1
   player: {fileID: 3921636301433035449, guid: eefcbbdae36b18d42861c6d20c8b693a, type: 3}
   coin: {fileID: 4269575320960598937, guid: 9dc202b6b62334e3e9db00f0d5d10194, type: 3}
+  bubble: {fileID: 4323576323336554537, guid: 293c0aa527f2d7040af14c496a21860b, type: 3}
   projectile: {fileID: 1683781770470765520, guid: 4f8bc8708c78ee74da1ce5cf51527dff, type: 3}
   projectileParent: {fileID: 7497833796514178478}
   shootingRange: 5

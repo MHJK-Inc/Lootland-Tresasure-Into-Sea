@@ -13,15 +13,17 @@ public class GameOver : MonoBehaviour
     }   
 
     public void restart(){
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        Time.timeScale = 1;
+        
     }
 
     public void mainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
 
-        Time.timeScale = 1;
+        
     }
 }

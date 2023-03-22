@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private SpawnEnemy spawnEnemy;
 
     public GameObject coin;
+    public GameObject bubble;
     public HealthBarBehavior healthBar;
 
     public Rigidbody2D rb;
@@ -88,6 +89,7 @@ public class Enemy : MonoBehaviour
         {
             spawnEnemy.EnemyDestroyed();
             DropItem();
+            GameObject.Find("Main Camera").GetComponent<WaveControl>().EnemiesLeft--;
             Destroy(gameObject);
         }
     }
@@ -103,12 +105,19 @@ public class Enemy : MonoBehaviour
 
     public void DropItem()
     {
-        //float dropChance = 0.5f; 
-        //if (Random.value <= dropChance)
-        //{
+        float dropChance = 0.5f; 
+        if (Random.value <= dropChance)
+        {
             // Spawn the item at the enemy's position
-            GameObject item = Instantiate(coin, transform.position, Quaternion.identity);
+            float whichDrop = 0.5f;
+            if(Random.value <= whichDrop)
+            {
+              GameObject item = Instantiate(bubble, transform.position, Quaternion.identity);  
+            } else
+            {
+                GameObject item = Instantiate(coin, transform.position, Quaternion.identity);
+            }
             
-        //}
+        }
     }
 }

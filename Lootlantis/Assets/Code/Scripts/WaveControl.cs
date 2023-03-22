@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WaveControl : MonoBehaviour
 {
@@ -12,13 +14,48 @@ public class WaveControl : MonoBehaviour
     public WaveClear waveClear;
     // Start is called before the first frame update
 
+    public GameObject obj1;
+    public GameObject obj2;
+    public GameObject obj3;
+    public GameObject obj4;
+    public GameObject obj5;
+    public GameObject obj6;
+    public GameObject obj7;
+    public GameObject obj8;
+    public GameObject obj9;
+    public GameObject obj10;
+    public GameObject obj11;
+    public GameObject obj12;
+    public GameObject obj13;
+    public GameObject obj14;
+    public GameObject obj15;
+    public GameObject obj16;
+
+    public GameObject player;
+
+    public GameObject levelUp;
+
+    public Slider slider;
+
+
     
 
 
     void Start()
     {
+        Time.timeScale = 1f;
+        SetUp();
         TimerOn = true;
-        EnemiesLeft = 10;
+        DecideObjectives();
+        int bonus = (PlayerPrefs.GetInt("Health")) * 20;
+        float speedBonus = (PlayerPrefs.GetInt("Movement")) * 0.25f;
+        player.GetComponent<Player>().maxHealth = player.GetComponent<Player>().maxHealth + bonus;
+        player.GetComponent<Player>().currentHealth = player.GetComponent<Player>().maxHealth;
+        player.GetComponent<Player>().moveSpeed = player.GetComponent<Player>().moveSpeed + speedBonus;
+        slider.maxValue = player.GetComponent<Player>().maxHealth;
+        slider.value = player.GetComponent<Player>().maxHealth;
+        SpawnWeapons();
+        
         
 
         //different wave settings in a method
@@ -48,20 +85,20 @@ public class WaveControl : MonoBehaviour
             EnemiesLeft = 10;
         } else if (PlayerPrefs.GetInt("Wave") == 2)
         {
-            TimeLeft = 60;
-            EnemiesLeft = 10;
+            TimeLeft = 120;
+            EnemiesLeft = 50;
         }else if (PlayerPrefs.GetInt("Wave") == 3)
         {
-            TimeLeft = 60;
-            EnemiesLeft = 10;
+            TimeLeft = 180;
+            EnemiesLeft = 100;
         }else if (PlayerPrefs.GetInt("Wave") == 4)
         {
-            TimeLeft = 60;
-            EnemiesLeft = 10;
+            TimeLeft = 240;
+            EnemiesLeft = 200;
         } else
         {
-            TimeLeft = 60;
-            EnemiesLeft = 10;
+            TimeLeft = 300;
+            EnemiesLeft = 500;
         }
 
         
@@ -95,6 +132,103 @@ public class WaveControl : MonoBehaviour
 
     void UpdateKill()
     {
-        KillTxt.text = string.Format("Enemies Remaining: " + EnemiesLeft);
+        if(EnemiesLeft > 0) {
+            KillTxt.text = string.Format("Enemies Remaining: " + EnemiesLeft);
+        } else
+        {
+            waveClear.Clear();
+        }
+    }
+
+    void SpawnWeapons()
+    {
+        int spearGun = PlayerPrefs.GetInt("SpearGun");
+        int fireBall = PlayerPrefs.GetInt("Fireball");
+        int barrier = PlayerPrefs.GetInt("Barrier");
+        if(spearGun > 0)
+        {
+            for(int i = 0; i < spearGun - 1; i++)
+            {
+                GameObject.Find("SpearGun").GetComponent<Weapon>().level++;
+            }
+
+        }
+
+        if(fireBall > 0)
+        {
+            levelUp.GetComponent<LevelUp>().AddWeapon("Fireball");
+            for(int i = 0; i < fireBall- 1; i++)
+            {
+                GameObject.Find("Fireball").GetComponent<Weapon>().level++;
+            }
+        }
+
+        if(barrier > 0)
+        {
+            levelUp.GetComponent<LevelUp>().AddWeapon("Barrier");
+            for(int i = 0; i < barrier - 1; i++)
+            {
+                GameObject.Find("Barrier").GetComponent<Weapon>().level++;
+            }
+        }
+
+        
+    }
+
+    void DecideObjectives()
+    {
+        int choice = 0;
+        List<GameObject> groupOne = new List<GameObject> {obj1, obj2, obj3, obj4};
+        List<GameObject> groupTwo = new List<GameObject> {obj5, obj6, obj7, obj8};
+        List<GameObject> groupThree = new List<GameObject> {obj9, obj10, obj11, obj12};
+        List<GameObject> groupFour = new List<GameObject> {obj13, obj14, obj15, obj16};
+        choice = Random.Range(0, 3);
+        groupOne[choice].SetActive(true);
+        groupTwo[choice].SetActive(false);
+        groupThree[choice].SetActive(false);
+        groupFour[choice].SetActive(false);
+
+        groupOne.RemoveAt(choice);
+        groupTwo.RemoveAt(choice);
+        groupThree.RemoveAt(choice);
+        groupFour.RemoveAt(choice);
+
+        choice = Random.Range(0, 2);
+
+        groupOne[choice].SetActive(false);
+        groupTwo[choice].SetActive(true);
+        groupThree[choice].SetActive(false);
+        groupFour[choice].SetActive(false);
+
+        groupOne.RemoveAt(choice);
+        groupTwo.RemoveAt(choice);
+        groupThree.RemoveAt(choice);
+        groupFour.RemoveAt(choice);
+
+        choice = Random.Range(0, 1);
+
+        groupOne[choice].SetActive(false);
+        groupTwo[choice].SetActive(false);
+        groupThree[choice].SetActive(true);
+        groupFour[choice].SetActive(false);
+
+        groupOne.RemoveAt(choice);
+        groupTwo.RemoveAt(choice);
+        groupThree.RemoveAt(choice);
+        groupFour.RemoveAt(choice);
+
+        choice = 0;
+
+        groupOne[choice].SetActive(false);
+        groupTwo[choice].SetActive(false);
+        groupThree[choice].SetActive(false);
+        groupFour[choice].SetActive(true);
+
+        groupOne.RemoveAt(choice);
+        groupTwo.RemoveAt(choice);
+        groupThree.RemoveAt(choice);
+        groupFour.RemoveAt(choice);
+        
+
     }
 }

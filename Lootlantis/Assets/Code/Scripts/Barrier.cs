@@ -29,7 +29,7 @@ public class Barrier : Weapon
         if(GameObject.Find("BarrierProjectile") == null) {
             if(fireRate > 0)
             {
-                fireRate--;
+                fireRate = fireRate - (1f + (PlayerPrefs.GetInt("AttackSpeed") * 0.1f));
             } else 
             {
                 Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);

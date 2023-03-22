@@ -134,8 +134,11 @@ public class LevelUp : MonoBehaviour
             weapon = GameObject.Find(str);
             if (weapon == null)
             {
+                
+                PlayerPrefs.SetInt(str, 1);
                 AddWeapon(str);
             } else {
+                PlayerPrefs.SetInt(str, (PlayerPrefs.GetInt(str) + 1));
                 weapon.GetComponent<Weapon>().level++;
             }
         } else if(var == 2) {
@@ -143,8 +146,10 @@ public class LevelUp : MonoBehaviour
             weapon = GameObject.Find(str);
             if (weapon == null)
             {
+                PlayerPrefs.SetInt(str, 1);
                 AddWeapon(str);
             } else {
+                PlayerPrefs.SetInt(str, (PlayerPrefs.GetInt(str) + 1));
                 weapon.GetComponent<Weapon>().level++;
             }
         }  else if(var == 3) {
@@ -152,8 +157,10 @@ public class LevelUp : MonoBehaviour
             weapon = GameObject.Find(str);
             if (weapon == null)
             {
+                PlayerPrefs.SetInt(str, 1);
                 AddWeapon(str);
             } else {
+                PlayerPrefs.SetInt(str, (PlayerPrefs.GetInt(str) + 1));
                 weapon.GetComponent<Weapon>().level++;
             }
         }

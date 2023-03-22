@@ -129,37 +129,38 @@ public class FireballProjectile : MonoBehaviour
 
     void DetermineStats()
     {
+        float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
         if (level == 1)
         {
-            damage = 2f;
+            damage = 2f * dmgMod;
             speed = 4.5f;
         } else if (level == 2)
         {
-            damage = 2f;
+            damage = 2f * dmgMod;
             speed = 4.5f;
         } else if (level == 3)
         {
-            damage = 4f;
+            damage = 4f * dmgMod;
             speed = 4.5f;
         } else if (level == 4)
         {
-            damage = 4f;
+            damage = 4f * dmgMod;
             speed = 4.5f;
         } else if (level == 5)
         {
-            damage = 4f;
+            damage = 4f * dmgMod;
             speed = 9f;
         } else if (level == 6)
         {
-            damage = 4f;
+            damage = 4f * dmgMod;
             speed = 9f;
         } else if (level == 7)
         {
-            damage = 6f;
+            damage = 6f * dmgMod;
             speed = 9f;
         } else if (level == 8)
         {
-            damage = 6f;
+            damage = 6f * dmgMod;
             speed = 15f;
         }
     }

@@ -103,50 +103,51 @@ public class BarrierProjectile : MonoBehaviour
 
     void DetermineStats()
     {
+        float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
         if (level == 1)
         {
-            damage = 1f;
+            damage = 1f * dmgMod;
             maxTick = 10f;
             maxLife = 250f;
         } else if (level == 2)
         {
-            damage = 1f;
+            damage = 1f * dmgMod;
             maxTick = 10f;
             maxLife = 300f;
             transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
         } else if (level == 3)
         {
-            damage = 1f;
+            damage = 1f * dmgMod;
             maxTick = 6f;
             maxLife = 300f;
             transform.localScale += new Vector3(0.25f, 0.25f, 0.4226816f);
         } else if (level == 4)
         {
-            damage = 1f;
+            damage = 1f * dmgMod;
             maxTick = 6f;
             maxLife = 350f;
             transform.localScale += new Vector3(0.3f, 0.3f, 0.4226816f);
         } else if (level == 5)
         {
-            damage = 2f;
+            damage = 2f * dmgMod;
             maxTick = 6f;
             maxLife = 350f;
             transform.localScale += new Vector3(0.3f, 0.3f, 0.4226816f);
         } else if (level == 6)
         {
-            damage = 2f;
+            damage = 2f * dmgMod;
             maxTick = 6f;
             maxLife = 400f;
             transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
         } else if (level == 7)
         {
-            damage = 2f;
+            damage = 2f * dmgMod;
             maxTick = 3f;
             maxLife = 400f;
             transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
         } else if (level == 8)
         {
-            damage = 3f;
+            damage = 3f * dmgMod;
             maxTick = 3f;
             maxLife = 400f;
             transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);

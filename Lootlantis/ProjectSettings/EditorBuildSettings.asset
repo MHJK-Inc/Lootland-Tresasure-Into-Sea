@@ -18,6 +18,18 @@ EditorBuildSettings:
     path: Assets/Scenes/WaveOne.unity
     guid: bada7246bffaba342a1f5c4821ad91a9
   - enabled: 1
+    path: Assets/Scenes/WaveTwo.unity
+    guid: 86a9028af997eb34c9d085a226249ba5
+  - enabled: 1
+    path: Assets/Scenes/WaveThree.unity
+    guid: 8f21f4dfa1167e84d8d057cf7e4a72a2
+  - enabled: 1
+    path: Assets/Scenes/WaveFour.unity
+    guid: b1e1d81d8935971438eb064ca5431483
+  - enabled: 1
+    path: Assets/Scenes/WaveFive.unity
+    guid: 0ae9a9b85bd41fb4984c7fe920f0c0b5
+  - enabled: 1
     path: Assets/Scenes/PowerUpScreen.unity
     guid: af1a8f78a3bc5434da010adb9642277d
   m_configObjects: {}

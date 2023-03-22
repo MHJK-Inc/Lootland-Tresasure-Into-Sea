@@ -9,6 +9,7 @@ public class ShootingEnemy : MonoBehaviour
     public GameObject player;
 
     public GameObject coin;
+    public GameObject bubble;
     public GameObject projectile;
     public GameObject projectileParent;
     public float shootingRange;
@@ -88,6 +89,7 @@ public class ShootingEnemy : MonoBehaviour
         {
             spawnShootingEnemy.EnemyDestroyed();
             DropItem();
+            GameObject.Find("Main Camera").GetComponent<WaveControl>().EnemiesLeft--;
             Destroy(gameObject);
         }
     }
@@ -103,12 +105,21 @@ public class ShootingEnemy : MonoBehaviour
 
     public void DropItem()
     {
-        //float dropChance = 0.5f; 
-        //if (Random.value <= dropChance)
-        //{
-        // Spawn the item at the enemy's position
-        GameObject item = Instantiate(coin, transform.position, Quaternion.identity);
-
-        //}
+        float dropChance = 0.5f; 
+        float value = Random.value;
+        if (Random.value <= dropChance)
+        {
+            // Spawn the item at the enemy's position
+            float whichDrop = 0.5f;
+            value = Random.value;
+            if(value <= whichDrop)
+            {
+              GameObject item = Instantiate(bubble, transform.position, Quaternion.identity);  
+            } else
+            {
+                GameObject item = Instantiate(coin, transform.position, Quaternion.identity);
+            }
+            
+        }
     }
 }

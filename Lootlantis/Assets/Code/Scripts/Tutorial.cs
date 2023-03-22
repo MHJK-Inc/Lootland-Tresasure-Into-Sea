@@ -25,6 +25,10 @@ public class Tutorial : MonoBehaviour
     {   
         if(Input.GetMouseButtonDown(0))
         {
+            PlayerPrefs.SetInt("Wave", 1);
+            PlayerPrefs.SetInt("SpearGun", 1);
+            PlayerPrefs.SetInt("Fireball", 0);
+            PlayerPrefs.SetInt("Barrier", 0);
             SceneManager.LoadScene(3);
         }
 

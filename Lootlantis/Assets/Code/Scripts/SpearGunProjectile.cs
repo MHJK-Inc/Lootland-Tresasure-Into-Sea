@@ -94,39 +94,40 @@ public class SpearGunProjectile : MonoBehaviour
 
     void DetermineStats()
     {
+        float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
         if (level == 1)
         {
-            damage = 3f;
+            damage = 3f * dmgMod;
             speed = 4.5f;
         } else if (level == 2)
         {
-            damage = 5f;
+            damage = 5f * dmgMod;
             speed = 4.5f;
         } else if (level == 3)
         {
-            damage = 5f;
+            damage = 5f * dmgMod;
             speed = 4.5f;
         } else if (level == 4)
         {
-            damage = 5f;
+            damage = 5f * dmgMod;
             speed = 6f;
         } else if (level == 5)
         {
-            damage = 8f;
+            damage = 8f * dmgMod;
             speed = 6f;
         } else if (level == 6)
         {
-            damage = 8f;
+            damage = 8f * dmgMod;
             speed = 6f;
             transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
         } else if (level == 7)
         {
-            damage = 8f;
+            damage = 8f * dmgMod;
             speed = 6f;
             transform.localScale = new Vector3(0.25f,0.25f, 0.4226816f);
         } else if (level == 8)
         {
-            damage = 10f;
+            damage = 10f * dmgMod;
             speed = 7.5f;
             transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
         }

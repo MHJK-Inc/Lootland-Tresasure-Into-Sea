@@ -30,7 +30,7 @@ public class Fireball : Weapon
         if(GameObject.Find("FireballProjectile") == null) {
             if(fireRate > 0)
             {
-                fireRate--;
+                fireRate = fireRate - (1f + (PlayerPrefs.GetInt("AttackSpeed") * 0.1f));
             } else 
             {
                 Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);

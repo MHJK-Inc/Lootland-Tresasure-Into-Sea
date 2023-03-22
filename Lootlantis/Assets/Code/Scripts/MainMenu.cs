@@ -23,6 +23,6 @@ public class MainMenu : MonoBehaviour
 
     public void PowerUp()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(8);
     }
 }
