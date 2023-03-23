@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
+
+    public AudioSource aud;
+    public AudioClip bubbleAud;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +24,8 @@ public class Bubble : MonoBehaviour
     {
         if (collide.gameObject.CompareTag("Player"))
         {
-            collide.gameObject.GetComponent<Player>().HealDamage(1);
+            aud.PlayOneShot(bubbleAud);
+            collide.gameObject.GetComponent<Player>().HealDamage(20);
             Destroy(gameObject);
         }
         

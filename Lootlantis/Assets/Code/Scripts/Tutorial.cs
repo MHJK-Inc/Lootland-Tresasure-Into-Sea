@@ -10,7 +10,7 @@ public class Tutorial : MonoBehaviour
     bool upDown;
     byte color;
     float timer;
-    float maxTimer = 2;
+    float maxTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +32,12 @@ public class Tutorial : MonoBehaviour
             SceneManager.LoadScene(3);
         }
 
-        flashingTitle();
-
         
+    }
+
+    void FixedUpdate()
+    {
+        flashingTitle();
     }
 
     private void flashingTitle() {
@@ -51,12 +54,20 @@ public class Tutorial : MonoBehaviour
                     upDown = false;
                 } else {
                     color++;
+                    color++;
+                    color++;
+                    color++;
+                    color++;
                 }
             } else {
                 if(color == 0)
                 {
                     upDown = true;
                 } else {
+                    color--;
+                    color--;
+                    color--;
+                    color--;
                     color--;
                 }
             }

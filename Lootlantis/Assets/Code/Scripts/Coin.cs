@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+
+    public AudioSource aud;
+    public AudioClip coinAud;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,8 @@ public class Coin : MonoBehaviour
     {
         if (collide.gameObject.CompareTag("Player"))
         {
-            int add = 1 + PlayerPrefs.GetInt("Currency");
+            aud.PlayOneShot(coinAud);
+            int add = 1 + PlayerPrefs.GetInt("Gold");
             PlayerPrefs.SetInt("Currency", (PlayerPrefs.GetInt("Currency") + add));
             Destroy(gameObject);
         }

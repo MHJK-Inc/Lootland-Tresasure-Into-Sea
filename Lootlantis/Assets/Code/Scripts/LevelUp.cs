@@ -29,7 +29,6 @@ public class LevelUp : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.L))
             {
-                Debug.Log("L was pressed");
                 Level();
             }
         }

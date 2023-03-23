@@ -37,6 +37,8 @@ public class WaveControl : MonoBehaviour
 
     public Slider slider;
 
+    public bool waveBeat;
+
 
     
 
@@ -46,6 +48,7 @@ public class WaveControl : MonoBehaviour
         Time.timeScale = 1f;
         SetUp();
         TimerOn = true;
+        waveBeat = false;
         DecideObjectives();
         int bonus = (PlayerPrefs.GetInt("Health")) * 20;
         float speedBonus = (PlayerPrefs.GetInt("Movement")) * 0.25f;
@@ -74,6 +77,9 @@ public class WaveControl : MonoBehaviour
         {
             Timer();
             UpdateKill();
+            if(waveBeat == true) {
+                Time.timeScale = 0f;
+            }
         }
     }
 
@@ -81,24 +87,24 @@ public class WaveControl : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Wave") == 1)
         {
-            TimeLeft = 60;
-            EnemiesLeft = 10;
+            TimeLeft = 120;
+            EnemiesLeft = 15;
         } else if (PlayerPrefs.GetInt("Wave") == 2)
         {
-            TimeLeft = 120;
-            EnemiesLeft = 50;
+            TimeLeft = 180;
+            EnemiesLeft = 30;
         }else if (PlayerPrefs.GetInt("Wave") == 3)
         {
-            TimeLeft = 180;
-            EnemiesLeft = 100;
+            TimeLeft = 240;
+            EnemiesLeft = 50;
         }else if (PlayerPrefs.GetInt("Wave") == 4)
         {
-            TimeLeft = 240;
-            EnemiesLeft = 200;
+            TimeLeft = 300;
+            EnemiesLeft = 100;
         } else
         {
-            TimeLeft = 300;
-            EnemiesLeft = 500;
+            TimeLeft = 360;
+            EnemiesLeft = 200;
         }
 
         
@@ -115,7 +121,11 @@ public class WaveControl : MonoBehaviour
                     TimeLeft -= Time.deltaTime;
                     UpdateTimer(TimeLeft);
                 } else {
-                    waveClear.Clear();
+                    if(waveBeat == false){
+                        waveBeat = true;
+                        levelUp.GetComponent<LevelUp>().Level();
+                        waveClear.Clear();
+                    }
                 }
             }   
     }
@@ -136,7 +146,11 @@ public class WaveControl : MonoBehaviour
             KillTxt.text = string.Format("Enemies Remaining: " + EnemiesLeft);
         } else
         {
-            waveClear.Clear();
+            if(waveBeat == false){
+                waveBeat = true;
+                levelUp.GetComponent<LevelUp>().Level();
+                waveClear.Clear();
+            }
         }
     }
 
@@ -149,7 +163,7 @@ public class WaveControl : MonoBehaviour
         {
             for(int i = 0; i < spearGun - 1; i++)
             {
-                GameObject.Find("SpearGun").GetComponent<Weapon>().level++;
+                GameObject.Find("SpearGun").GetComponent<SpearGun>().level = spearGun;
             }
 
         }
@@ -159,7 +173,7 @@ public class WaveControl : MonoBehaviour
             levelUp.GetComponent<LevelUp>().AddWeapon("Fireball");
             for(int i = 0; i < fireBall- 1; i++)
             {
-                GameObject.Find("Fireball").GetComponent<Weapon>().level++;
+                GameObject.Find("Fireball").GetComponent<Fireball>().level++;
             }
         }
 
@@ -168,7 +182,7 @@ public class WaveControl : MonoBehaviour
             levelUp.GetComponent<LevelUp>().AddWeapon("Barrier");
             for(int i = 0; i < barrier - 1; i++)
             {
-                GameObject.Find("Barrier").GetComponent<Weapon>().level++;
+                GameObject.Find("Barrier").GetComponent<Barrier>().level++;
             }
         }
 

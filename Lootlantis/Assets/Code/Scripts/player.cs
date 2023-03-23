@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
+    public GameObject bar;
+    public Quaternion rot;
 
     public float damageTimer = 0f;
     public float damageDecreaseRate = 1f;
@@ -32,18 +34,26 @@ public class Player : MonoBehaviour
 
     public Interactable objective;
 
+    public AudioSource aud;
+    public AudioClip damageAud;
+    public AudioClip healAud;
+
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
+        damageTimer = 100f;
+
         PlayerSpriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Time.timeScale != 0f)
         {
             ProcessInputs();
@@ -60,11 +70,6 @@ public class Player : MonoBehaviour
                     CheckInteraction();
                 }
             }
-
-            if(damageTimer >= 1f){
-                TakeDamage(1);
-                damageTimer = 0f;
-            }
         }
     }
 
@@ -74,6 +79,13 @@ public class Player : MonoBehaviour
         if (Time.timeScale != 0f)
         {
             Move();
+
+            if(damageTimer >= 1f){
+                damageTimer--;
+            } else {
+                TakeDamage(1);
+                damageTimer = 100f;
+            }
         }
 
     }
@@ -141,8 +153,10 @@ public class Player : MonoBehaviour
 
         if(moveX > 0) {
             gameObject.transform.localScale = new Vector3(1, 1, 1);
+            bar.transform.localScale = new Vector3(1, 1, 1);
         } else if (moveX < 0){
             gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            bar.transform.localScale = new Vector3(-1, 1, 1);
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
@@ -153,12 +167,16 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
         if(moveDirection.x < 0 ){
             gameObject.transform.localRotation = Quaternion.Euler(0,0,90);
+            bar.transform.localRotation = Quaternion.Euler(0,0,90);
         } else if(moveDirection.x > 0 ){
             gameObject.transform.localRotation = Quaternion.Euler(0,0,-90);
+            bar.transform.localRotation = Quaternion.Euler(0,0,90);
         } else if(moveDirection.y < 0 ){
             gameObject.transform.localRotation = Quaternion.Euler(0,0,180);
+            bar.transform.localRotation = Quaternion.Euler(0,0,-180);
         } else if(moveDirection.y > 0 ){
             gameObject.transform.localRotation = Quaternion.Euler(0,0,0);
+            bar.transform.localRotation = Quaternion.Euler(0,0,0);
         }
     }
 

@@ -16,6 +16,8 @@ public class WaveClear : MonoBehaviour
 
     }   
 
+    
+
     public void NewWave(){
         Time.timeScale = 1;
         if (PlayerPrefs.GetInt("Wave") == 1)

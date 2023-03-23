@@ -21,6 +21,10 @@ public class Enemy : MonoBehaviour
     public float hitPoints;
     public float maxHitPoints = 5;
 
+    public AudioSource aud;
+    public AudioClip audPlayerHit;
+    public AudioClip enemyHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +87,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeHit(float damage)
     {
+        aud.PlayOneShot(enemyHit);
         hitPoints -= damage;
         healthBar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
@@ -98,6 +103,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            aud.PlayOneShot(audPlayerHit);
             collision.gameObject.GetComponent<Player>().TakeDamage(5);
         }
         

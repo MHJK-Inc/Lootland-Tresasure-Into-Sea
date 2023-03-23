@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SpearGun : Weapon
 {
+
+    public AudioSource aud;
+    public AudioClip fireAud;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -33,6 +37,7 @@ public class SpearGun : Weapon
                 fireRate = fireRate - (1f + (PlayerPrefs.GetInt("AttackSpeed") * 0.1f));
             } else 
             {
+                aud.PlayOneShot(fireAud);
                 Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 if (level < 9 && level > 6) {
                     fireRate = 30f;

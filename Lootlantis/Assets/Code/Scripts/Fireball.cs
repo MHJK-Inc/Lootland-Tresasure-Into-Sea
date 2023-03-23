@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Fireball : Weapon
 {
+    public AudioSource aud;
+    public AudioClip fireAud;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -33,6 +35,7 @@ public class Fireball : Weapon
                 fireRate = fireRate - (1f + (PlayerPrefs.GetInt("AttackSpeed") * 0.1f));
             } else 
             {
+                aud.PlayOneShot(fireAud);
                 Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 if (level == 8) {
                     fireRate = 10f;

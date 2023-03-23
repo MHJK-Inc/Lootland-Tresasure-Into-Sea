@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/WaveFive.unity
     guid: 0ae9a9b85bd41fb4984c7fe920f0c0b5
   - enabled: 1
+    path: Assets/Scenes/DemoComplete.unity
+    guid: bc7fad82b53c4a64ea19937acd5835fd
+  - enabled: 1
     path: Assets/Scenes/PowerUpScreen.unity
     guid: af1a8f78a3bc5434da010adb9642277d
   m_configObjects: {}
