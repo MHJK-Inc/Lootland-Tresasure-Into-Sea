@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class SpawnShootingEnemy : MonoBehaviour
 {
+    private float spawnX = 5f;
+    private float spawnY = 5f;
+
     private int enemyCount = 0; // Keep track of enemy spawned
 
     [SerializeField] private GameObject enemyPrefab; // The prefab for the enemy
@@ -23,6 +26,7 @@ public class SpawnShootingEnemy : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
+        GameObject player = GameObject.Find("Player");
         while (true)
         {
             yield return new WaitForSeconds(spawnInterval); // Wait for the spawn interval
@@ -31,8 +35,12 @@ public class SpawnShootingEnemy : MonoBehaviour
             {
                 if (random) // Spawn at a random position
                 {
-                    float x = Random.Range(-8, 8);
-                    float y = Random.Range(-4, 4);
+                    // Get the player's position
+                    Vector2 playerPosition = player.transform.position;
+
+                    float x = Random.Range(playerPosition.x - spawnX, playerPosition.x + spawnX);
+                    float y = Random.Range(playerPosition.y - spawnY, playerPosition.y + spawnY);
+
                     Instantiate(enemyPrefab, new Vector2(x, y), Quaternion.identity);
                 }
                 else // Spawn at the specified position

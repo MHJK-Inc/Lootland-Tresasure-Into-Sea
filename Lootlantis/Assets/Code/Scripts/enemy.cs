@@ -15,6 +15,13 @@ public class Enemy : MonoBehaviour
     public GameObject bubble;
     public HealthBarBehavior healthBar;
 
+    public float distanceFromPlayer = 10f;
+    public float minDistance = 0.2f;
+    public float maxDistance = 0.5f;
+
+    private float minD;
+    private float maxD;
+
     public Rigidbody2D rb;
     private Vector2 movement;
 
@@ -28,15 +35,45 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         gameObject.tag = "Enemy";
 
         //On creation finds the "Player" gameobject
         player =  GameObject.Find("Player");
 
+        minD = distanceFromPlayer * minDistance;
+        maxD = distanceFromPlayer * maxDistance;
+
         //Added by Kris
         spawnEnemy = FindObjectOfType<SpawnEnemy>();
+        SetHealth();
         hitPoints = maxHitPoints;
         healthBar.SetHealth(hitPoints, maxHitPoints);
+    }
+
+    public void SetHealth()
+    {
+
+        if (PlayerPrefs.GetInt("Wave") == 1)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnEnemy.totalWeapons * .85f;
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 2)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnEnemy.totalWeapons * .85f;
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 3)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnEnemy.totalWeapons * .85f;
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 4)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnEnemy.totalWeapons * .85f;
+        }
+        else
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnEnemy.totalWeapons * .85f;
+        }
     }
 
     // Update is called once per frame
@@ -48,7 +85,21 @@ public class Enemy : MonoBehaviour
             {
                 player = GameObject.Find("Player");
             }
-            Move();
+            // Check the distance between the enemy and the player
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+
+            if (distance >= distanceFromPlayer)
+            {
+                Debug.Log("distance:" + distance);
+                Debug.Log("distanceFromPlayer:" + distanceFromPlayer);
+                // Move the enemy to a new location near the player
+                MoveCloserToPlayer();
+            }
+            else
+            {
+                // Continue with the normal movement
+                Move();
+            }
         }
     }
 
@@ -126,4 +177,19 @@ public class Enemy : MonoBehaviour
             
         }
     }
+
+    void MoveCloserToPlayer()
+    {
+        float distanceToMove = Random.Range(minD, maxD);
+        float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+
+        Vector3 newPosition = new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle), 0) * distanceToMove;
+        newPosition += player.transform.position;
+
+        // Ensure the new position is within the game boundaries (if necessary)
+        // newPosition = ClampPosition(newPosition);
+
+        transform.position = newPosition;
+    }
+
 }

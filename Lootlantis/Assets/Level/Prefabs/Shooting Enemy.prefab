@@ -427,6 +427,9 @@ MonoBehaviour:
   projectileParent: {fileID: 7497833796514178478}
   shootingRange: 5
   fireRate: 5
+  distanceFromPlayer: 10
+  minDistance: 0.2
+  maxDistance: 0.5
   healthBar: {fileID: 3268988569848668585}
   hitPoints: 0
   maxHitPoints: 10

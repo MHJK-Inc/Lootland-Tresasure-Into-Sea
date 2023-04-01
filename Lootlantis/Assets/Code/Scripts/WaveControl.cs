@@ -12,6 +12,8 @@ public class WaveControl : MonoBehaviour
     public TMPro.TextMeshProUGUI TimerTxt;
     public TMPro.TextMeshProUGUI KillTxt;
     public WaveClear waveClear;
+
+    
     // Start is called before the first frame update
 
     public GameObject obj1;
@@ -45,6 +47,7 @@ public class WaveControl : MonoBehaviour
 
     void Start()
     {
+
         Time.timeScale = 1f;
         SetUp();
         TimerOn = true;
@@ -89,15 +92,18 @@ public class WaveControl : MonoBehaviour
         {
             TimeLeft = 120;
             EnemiesLeft = 15;
-        } else if (PlayerPrefs.GetInt("Wave") == 2)
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 2)
         {
             TimeLeft = 180;
             EnemiesLeft = 30;
-        }else if (PlayerPrefs.GetInt("Wave") == 3)
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 3)
         {
             TimeLeft = 240;
             EnemiesLeft = 50;
-        }else if (PlayerPrefs.GetInt("Wave") == 4)
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 4)
         {
             TimeLeft = 300;
             EnemiesLeft = 100;

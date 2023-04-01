@@ -16,6 +16,14 @@ public class ShootingEnemy : MonoBehaviour
     public float fireRate = 2f;
     private float nextFireTime;
 
+
+    public float distanceFromPlayer = 10f;
+    public float minDistance = 0.2f;
+    public float maxDistance = 0.5f;
+
+    private float minD;
+    private float maxD;
+
     //Added By Kris
     private SpawnShootingEnemy spawnShootingEnemy;
 
@@ -36,6 +44,8 @@ public class ShootingEnemy : MonoBehaviour
         //On creation finds the "Player" gameobject
         player = GameObject.Find("Player");
 
+        minD = distanceFromPlayer * minDistance;
+        maxD = distanceFromPlayer * maxDistance;
         //Added by Kris
         spawnShootingEnemy = FindObjectOfType<SpawnShootingEnemy>();
         hitPoints = maxHitPoints;
@@ -47,8 +57,19 @@ public class ShootingEnemy : MonoBehaviour
     {
         if (Time.timeScale != 0f)
         {
-            Move();
-            
+            if (distance >= distanceFromPlayer)
+            {
+                Debug.Log("distance:" + distance);
+                Debug.Log("distanceFromPlayer:" + distanceFromPlayer);
+                // Move the enemy to a new location near the player
+                MoveCloserToPlayer();
+            }
+            else
+            {
+                // Continue with the normal movement
+                Move();
+            }
+
             //Using the player as reference, gets the distance and direction of the player
             distance = Vector2.Distance(transform.position, player.GetComponent<Player>().transform.position);
 
@@ -127,5 +148,19 @@ public class ShootingEnemy : MonoBehaviour
             }
             
         }
+    }
+
+    void MoveCloserToPlayer()
+    {
+        float distanceToMove = Random.Range(minD, maxD);
+        float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+
+        Vector3 newPosition = new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle), 0) * distanceToMove;
+        newPosition += player.transform.position;
+
+        // Ensure the new position is within the game boundaries (if necessary)
+        // newPosition = ClampPosition(newPosition);
+
+        transform.position = newPosition;
     }
 }
