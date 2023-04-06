@@ -31,13 +31,14 @@ public class Player : MonoBehaviour
 
     //Interact Icon
 
-
     public Interactable objective;
 
     public AudioSource aud;
     public AudioClip damageAud;
     public AudioClip healAud;
 
+    //Animator
+    Animator animator;
 
     void Start()
     {
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
 
         PlayerSpriteRenderer = GetComponent<SpriteRenderer>();
 
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -58,7 +60,7 @@ public class Player : MonoBehaviour
         {
             ProcessInputs();
 
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKeyDown(KeyCode.N))
             {
                 TakeDamage(20);
             }
@@ -165,18 +167,34 @@ public class Player : MonoBehaviour
     void Move()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-        if(moveDirection.x < 0 ){
-            gameObject.transform.localRotation = Quaternion.Euler(0,0,90);
-            bar.transform.localRotation = Quaternion.Euler(0,0,90);
-        } else if(moveDirection.x > 0 ){
-            gameObject.transform.localRotation = Quaternion.Euler(0,0,-90);
-            bar.transform.localRotation = Quaternion.Euler(0,0,90);
-        } else if(moveDirection.y < 0 ){
-            gameObject.transform.localRotation = Quaternion.Euler(0,0,180);
-            bar.transform.localRotation = Quaternion.Euler(0,0,-180);
-        } else if(moveDirection.y > 0 ){
-            gameObject.transform.localRotation = Quaternion.Euler(0,0,0);
-            bar.transform.localRotation = Quaternion.Euler(0,0,0);
+        if(moveDirection.x < 0 ){ //left
+            //gameObject.transform.localRotation = Quaternion.Euler(0,0,90);
+            //bar.transform.localRotation = Quaternion.Euler(0,0,90);
+            animator.SetBool("isMovingRight", true);
+            animator.SetBool("isMovingDown", false);
+            animator.SetBool("isMovingUp", false);
+            PlayerSpriteRenderer.flipX = true;
+        } else if(moveDirection.x > 0 ){ // right
+            //gameObject.transform.localRotation = Quaternion.Euler(0,0,-90);
+            //bar.transform.localRotation = Quaternion.Euler(0,0,90);
+            animator.SetBool("isMovingRight", true);
+            animator.SetBool("isMovingDown", false);
+            animator.SetBool("isMovingUp", false);
+            PlayerSpriteRenderer.flipX = true;
+        } else if(moveDirection.y < 0 ){ //down
+            //gameObject.transform.localRotation = Quaternion.Euler(0,0,180);
+            //bar.transform.localRotation = Quaternion.Euler(0,0,-180);
+            animator.SetBool("isMovingDown", true);
+            animator.SetBool("isMovingUp", false);
+            animator.SetBool("isMovingRight", false);
+            PlayerSpriteRenderer.flipX = false;
+        } else if(moveDirection.y > 0 ){ // up
+            //gameObject.transform.localRotation = Quaternion.Euler(0,0,0);
+            //bar.transform.localRotation = Quaternion.Euler(0,0,0);
+            animator.SetBool("isMovingUp", true);
+            animator.SetBool("isMovingRight", false);
+            animator.SetBool("isMovingDown", false);
+            PlayerSpriteRenderer.flipX = false;
         }
     }
 
