@@ -48,6 +48,7 @@ public class ShootingEnemy : MonoBehaviour
         maxD = distanceFromPlayer * maxDistance;
         //Added by Kris
         spawnShootingEnemy = FindObjectOfType<SpawnShootingEnemy>();
+        SetHealth();
         hitPoints = maxHitPoints;
         healthBar.SetHealth(hitPoints, maxHitPoints);
     }
@@ -88,6 +89,31 @@ public class ShootingEnemy : MonoBehaviour
             }
         }
 
+    }
+
+    public void SetHealth()
+    {
+
+        if (PlayerPrefs.GetInt("Wave") == 1)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnShootingEnemy.totalWeapons * .85f;
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 2)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnShootingEnemy.totalWeapons * .85f;
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 3)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnShootingEnemy.totalWeapons * .85f;
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 4)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnShootingEnemy.totalWeapons * .85f;
+        }
+        else
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnShootingEnemy.totalWeapons * .85f;
+        }
     }
 
     void Move()

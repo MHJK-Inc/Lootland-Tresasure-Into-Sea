@@ -304,9 +304,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3921636301433035449, guid: eefcbbdae36b18d42861c6d20c8b693a, type: 3}
   speed: 1
+  coin: {fileID: 4269575320960598937, guid: 9dc202b6b62334e3e9db00f0d5d10194, type: 3}
+  bubble: {fileID: 4323576323336554537, guid: 293c0aa527f2d7040af14c496a21860b, type: 3}
   healthBar: {fileID: 6123896753612751879}
+  distanceFromPlayer: 10
+  minDistance: 0.2
+  maxDistance: 0.5
+  rb: {fileID: 3450656190640184801}
   hitPoints: 0
   maxHitPoints: 20
+  aud: {fileID: 0}
+  audPlayerHit: {fileID: 0}
+  enemyHit: {fileID: 0}
 --- !u!1 &4656437564378360025
 GameObject:
   m_ObjectHideFlags: 0

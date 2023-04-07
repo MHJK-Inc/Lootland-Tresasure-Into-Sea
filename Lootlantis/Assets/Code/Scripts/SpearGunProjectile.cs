@@ -10,6 +10,7 @@ public class SpearGunProjectile : MonoBehaviour
     public float direction = 0f;
     public float level = 0f;
     public float damage = 0f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,12 @@ public class SpearGunProjectile : MonoBehaviour
 
         level = GameObject.Find("SpearGun").GetComponent<SpearGun>().level;
         DetermineStats();
+
+         // Get the position of the player
+        Vector3 playerPosition = GameObject.Find("Player").transform.position;
+
+        // Set the position of the projectile to the position of the player
+        transform.position = playerPosition;
 
         // Finds player's direction they're facing (See player script)
         direction = GameObject.Find("Player").GetComponent<Player>().facing;
