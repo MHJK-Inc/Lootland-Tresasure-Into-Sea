@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 4.5
   life: 100
   rotationSpeed: 20
+  explosion: {fileID: 2162900816719606744, guid: c213043f30e649a44a98a30d06e9f76a, type: 3}
 --- !u!61 &197332056449077091
 BoxCollider2D:
   m_ObjectHideFlags: 0
