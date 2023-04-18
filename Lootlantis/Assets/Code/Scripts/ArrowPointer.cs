@@ -28,5 +28,5 @@ public class ArrowPointer : MonoBehaviour
         Vector3 dir = (toPosition - fromPosition). normalized;
         float angle = UtilsClass.GetAngleFromVectorFloat(dir);
         pointerRectTransform.localEulerAngles = new Vector3(0,0, angle);
-    }
+    } 
 }
