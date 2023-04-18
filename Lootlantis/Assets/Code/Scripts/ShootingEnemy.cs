@@ -31,12 +31,12 @@ public class ShootingEnemy : MonoBehaviour
 
     public float hitPoints;
     public float maxHitPoints = 5;
+    public float laserTick;
+    public float laserPower;
 
     public AudioSource aud;
     public AudioClip audPlayerHit;
     public AudioClip enemyHit;
-    public float laserTick;
-    public float laserPower;
 
     // Start is called before the first frame update
     void Start()

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2537228156246855206}
-  - component: {fileID: -2736168246375579395}
-  - component: {fileID: 5513900060580612015}
+  - component: {fileID: 7849822253840546072}
+  - component: {fileID: -8957127967651682167}
   m_Layer: 0
   m_Name: Barrier
   m_TagString: Player Weapon
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &-2736168246375579395
+--- !u!82 &7849822253840546072
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -129,7 +129,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5513900060580612015
+--- !u!114 &-8957127967651682167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,10 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 6288931034819313757, guid: 7050f43508ac7424c8eeb6ae865148e2, type: 3}
-  fireRate: 10
+  fireRate: 0
   FollowSpeed: 0
   yOffset: 0
   level: 0
   target: {fileID: 0}
-  aud: {fileID: -2736168246375579395}
+  aud: {fileID: 7849822253840546072}
   fireAud: {fileID: 8300000, guid: 5057a2cb29564b64088aff02fb082434, type: 3}

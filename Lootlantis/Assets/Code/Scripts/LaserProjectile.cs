@@ -21,12 +21,17 @@ public class LaserProjectile : MonoBehaviour
 
     public float level = 0;
 
+    public float xOffset;
+    public float yOffset;
+
     public Sprite one;
     public Sprite two;
     public Sprite three;
     public Sprite four;
 
     private SpriteRenderer sr;
+
+    public PolygonCollider2D pc;
 
     
 
@@ -47,31 +52,8 @@ public class LaserProjectile : MonoBehaviour
         center = player.transform.position;
 
         direction = GameObject.Find("Player").GetComponent<Player>().facing;
-        if (direction == 0)
-        {
-
-        } else if(direction == 1)
-        {
-            transform.Rotate(0f, 0f, 315f);
-        } else if(direction == 2)
-        {
-            transform.Rotate(0f, 0f, 270f);
-        } else if(direction == 3)
-        {
-            transform.Rotate(0f, 0f, 225f); 
-        } else if(direction == 4)
-        {
-            transform.Rotate(0f, 0f, 180f);
-        } else if(direction == 5)
-        {
-            transform.Rotate(0f, 0f, 135f);
-        } else if(direction == 6)
-        {
-            transform.Rotate(0f, 0f, 90f);
-        } else
-        {
-            transform.Rotate(0f, 0f, 45f);
-        }
+        ChangePosition();
+        
     }
 
     // Update is called once per frame
@@ -79,9 +61,11 @@ public class LaserProjectile : MonoBehaviour
     {
         if (Time.timeScale != 0f)
         {
-            center = player.transform.position;
-            transform.position = center;
+            ChangePosition();
+            
         }
+
+            
     }
 
     void FixedUpdate()
@@ -93,12 +77,16 @@ public class LaserProjectile : MonoBehaviour
             {
                 if (life > maxLife - 10) {
                     sr.sprite = one;
+                    pc.TryUpdateShapeToAttachedSprite ();
                 } else if (life > 20) {
                     sr.sprite = two;
+                    pc.TryUpdateShapeToAttachedSprite ();
                 } else if (life > 10) {
                     sr.sprite = three;
+                    pc.TryUpdateShapeToAttachedSprite ();
                 } else {
                     sr.sprite = four;
+                    pc.TryUpdateShapeToAttachedSprite ();
                 }
                 life--;
             } else 
@@ -150,11 +138,11 @@ public class LaserProjectile : MonoBehaviour
                     } else if(collider.gameObject.GetComponent<Enemy>().laserPower < 5)
                     {
                         Debug.Log("Medium Damage");
-                        collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
+                        collider.gameObject.GetComponent<Enemy>().TakeHit(damage + 2);
                     } else
                     {
                         Debug.Log("Large Damage");
-                        collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
+                        collider.gameObject.GetComponent<Enemy>().TakeHit(damage + 5);
                     }
 
                     collider.gameObject.GetComponent<Enemy>().laserTick = 50;
@@ -244,5 +232,57 @@ public class LaserProjectile : MonoBehaviour
             maxLife = 400f;
             transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
         }
+    }
+
+    void ChangePosition() {
+        direction = GameObject.Find("Player").GetComponent<Player>().facing;
+        Vector3 eulerRotation = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(eulerRotation.x, eulerRotation.y, 0);
+        if (direction == 0)
+        {
+            xOffset = 0;
+            yOffset = 8;
+
+        } else if(direction == 1)
+        {
+            xOffset = 6;
+            yOffset = 6;
+            transform.Rotate(0f, 0f, 315f);
+        } else if(direction == 2)
+        {
+            xOffset = 8;
+            yOffset = 0;
+            transform.Rotate(0f, 0f, 270f);
+        } else if(direction == 3)
+        {
+            xOffset = 6;
+            yOffset = -6;
+            transform.Rotate(0f, 0f, 225f); 
+        } else if(direction == 4)
+        {
+            xOffset = 0;
+            yOffset = -8;
+            transform.Rotate(0f, 0f, 180f);
+        } else if(direction == 5)
+        {
+            xOffset = -6;
+            yOffset = -6;
+            transform.Rotate(0f, 0f, 135f);
+        } else if(direction == 6)
+        {
+            xOffset = -8;
+            yOffset = 0;
+            transform.Rotate(0f, 0f, 90f);
+        } else
+        {
+            xOffset = -6;
+            yOffset = 6;
+            transform.Rotate(0f, 0f, 45f);
+        }
+
+        center = player.transform.position;
+        center.x += xOffset;
+        center.y += yOffset;
+        transform.position = center;
     }
 }
