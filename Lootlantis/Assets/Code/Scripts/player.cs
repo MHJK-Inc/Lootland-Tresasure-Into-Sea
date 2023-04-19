@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
             gameObject.transform.localScale = new Vector3(3, 3, 1);
             bar.transform.localScale = new Vector3(1, 1, 1);
         } else if (moveX < 0){
-            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            gameObject.transform.localScale = new Vector3(-3, 3, 1);
             bar.transform.localScale = new Vector3(-1, 1, 1);
         }
 

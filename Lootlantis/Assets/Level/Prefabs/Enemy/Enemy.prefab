@@ -233,7 +233,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -756348343, guid: a74f0a5068ea8465392b26db030ef77b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -318,6 +318,8 @@ MonoBehaviour:
   aud: {fileID: 8945167245218469730}
   audPlayerHit: {fileID: 8300000, guid: 8eb76c0615318524e89d1c912d6f32a2, type: 3}
   enemyHit: {fileID: 8300000, guid: 24e9c8479814fa948b7b980218827b4e, type: 3}
+  laserTick: 0
+  laserPower: 0
 --- !u!95 &178941788630264518
 Animator:
   serializedVersion: 5
