@@ -13,6 +13,13 @@ public class Serpent : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] float waypointRadius = 2f;
 
+    public float distanceFromPlayer = 25f;
+    public float minDistance = 0.2f;
+    public float maxDistance = 0.5f;
+
+    private float minD;
+    private float maxD;
+
     private int wayPointIndex = 0;
     private Vector3 headPosition;
     private SpawnSerpent spawnSerpent;

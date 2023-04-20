@@ -17,7 +17,7 @@ public class ShootingEnemy : MonoBehaviour
     private float nextFireTime;
 
 
-    public float distanceFromPlayer = 10f;
+    public float distanceFromPlayer = 25f;
     public float minDistance = 0.2f;
     public float maxDistance = 0.5f;
 
