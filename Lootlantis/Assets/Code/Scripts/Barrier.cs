@@ -37,7 +37,7 @@ public class Barrier : Weapon
             {
                 aud.PlayOneShot(fireAud);
                 Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
-                if (level >= 2) {
+                if (level == 8) {
                     fireRate = 300f;
                 } else {
                     fireRate = 400f;

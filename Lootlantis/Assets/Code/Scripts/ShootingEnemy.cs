@@ -17,7 +17,7 @@ public class ShootingEnemy : MonoBehaviour
     private float nextFireTime;
 
 
-    public float distanceFromPlayer = 25f;
+    public float distanceFromPlayer = 10f;
     public float minDistance = 0.2f;
     public float maxDistance = 0.5f;
 
@@ -31,8 +31,6 @@ public class ShootingEnemy : MonoBehaviour
 
     public float hitPoints;
     public float maxHitPoints = 5;
-    public float laserTick;
-    public float laserPower;
 
     public AudioSource aud;
     public AudioClip audPlayerHit;

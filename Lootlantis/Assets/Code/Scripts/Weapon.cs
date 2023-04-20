@@ -33,7 +33,7 @@ public abstract class Weapon : MonoBehaviour
                 level--;
             }
 
-            if(Input.GetKeyDown(KeyCode.Period) && level < 3) {
+            if(Input.GetKeyDown(KeyCode.Period) && level < 8) {
                 level++;
             }
 

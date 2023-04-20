@@ -17,7 +17,6 @@ public class TreasureChest : Interactable
         {
             isActive = false;
             sr.sprite = open;
-            gameObject.transform.localScale = new Vector3(10, 10, 1);
             GameObject.Find("LevelUp").GetComponent<LevelUp>().Level();
             
         }
@@ -26,7 +25,6 @@ public class TreasureChest : Interactable
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        gameObject.transform.localScale = new Vector3(10, 10, 1);
         sr.sprite = closed;
         isActive = true;
         interactIcon.SetActive(false);

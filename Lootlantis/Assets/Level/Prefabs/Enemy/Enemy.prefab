@@ -234,8 +234,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 1871376056, guid: 46a83ad9066e64c9c92c446d4e90b7c9, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -756348343, guid: a74f0a5068ea8465392b26db030ef77b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -284,7 +284,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 8}
+    oldSize: {x: 2.2, y: 3.2}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   coin: {fileID: 4269575320960598937, guid: 9dc202b6b62334e3e9db00f0d5d10194, type: 3}
   bubble: {fileID: 4323576323336554537, guid: 293c0aa527f2d7040af14c496a21860b, type: 3}
   healthBar: {fileID: 6123896753612751879}
-  distanceFromPlayer: 25
+  distanceFromPlayer: 10
   minDistance: 0.2
   maxDistance: 0.5
   rb: {fileID: 3450656190640184801}
@@ -319,8 +319,6 @@ MonoBehaviour:
   aud: {fileID: 8945167245218469730}
   audPlayerHit: {fileID: 8300000, guid: 8eb76c0615318524e89d1c912d6f32a2, type: 3}
   enemyHit: {fileID: 8300000, guid: 24e9c8479814fa948b7b980218827b4e, type: 3}
-  laserTick: 0
-  laserPower: 0
 --- !u!95 &178941788630264518
 Animator:
   serializedVersion: 5

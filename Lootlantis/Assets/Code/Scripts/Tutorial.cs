@@ -29,10 +29,6 @@ public class Tutorial : MonoBehaviour
             PlayerPrefs.SetInt("SpearGun", 1);
             PlayerPrefs.SetInt("Fireball", 0);
             PlayerPrefs.SetInt("Barrier", 0);
-            PlayerPrefs.SetInt("EMP", 0);
-            PlayerPrefs.SetInt("HarpoonGun", 0);
-            PlayerPrefs.SetInt("Mine", 0);
-            PlayerPrefs.SetInt("Laser", 0);
             SceneManager.LoadScene(3);
         }
 
