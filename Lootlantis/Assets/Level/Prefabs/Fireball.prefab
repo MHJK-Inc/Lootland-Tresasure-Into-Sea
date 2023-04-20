@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 3763359055751978435, guid: 50213343280e6804f9d45f33a93ad37d, type: 3}
-  fireRate: 0
+  fireRate: 10
   FollowSpeed: 10
   yOffset: 0
   level: 1

@@ -20,6 +20,8 @@ public class FireballProjectile : MonoBehaviour
 
     private float damage = 0f;
 
+    public GameObject explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -117,12 +119,26 @@ public class FireballProjectile : MonoBehaviour
         {
             if(collider.gameObject.GetComponent<Enemy>() != null)
             {
-                collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
-                Destroy(gameObject);
+                if(PlayerPrefs.GetInt("Fireball") != 3)
+                {
+                    collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
+                    Destroy(gameObject);
+                } else
+                {
+                    Instantiate(explosion, gameObject.transform.position, transform.rotation);
+                    Destroy(gameObject);
+                }
             } else if (collider.gameObject.GetComponent<ShootingEnemy>() != null)
             {
-                collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
-                Destroy(gameObject);
+                if(PlayerPrefs.GetInt("Fireball") != 3)
+                {
+                    collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
+                    Destroy(gameObject);
+                } else
+                {
+                    Instantiate(explosion, gameObject.transform.position, transform.rotation);
+                    Destroy(gameObject);
+                }
             }
         }
     }
@@ -140,28 +156,8 @@ public class FireballProjectile : MonoBehaviour
             speed = 4.5f;
         } else if (level == 3)
         {
-            damage = 4f * dmgMod;
+            damage = 2f * dmgMod;
             speed = 4.5f;
-        } else if (level == 4)
-        {
-            damage = 4f * dmgMod;
-            speed = 4.5f;
-        } else if (level == 5)
-        {
-            damage = 4f * dmgMod;
-            speed = 9f;
-        } else if (level == 6)
-        {
-            damage = 4f * dmgMod;
-            speed = 9f;
-        } else if (level == 7)
-        {
-            damage = 6f * dmgMod;
-            speed = 9f;
-        } else if (level == 8)
-        {
-            damage = 6f * dmgMod;
-            speed = 15f;
         }
     }
 

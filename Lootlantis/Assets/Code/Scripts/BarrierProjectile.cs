@@ -83,7 +83,16 @@ public class BarrierProjectile : MonoBehaviour
                     collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
                 }
             }
+
+            if (collider.gameObject.tag == "Enemy Projectile")
+            {
+                Debug.Log("Destroy");
+                Destroy(collider.gameObject);
+            }
+
+            
         }
+        
     }
 
     private void OnTriggerStay2D(Collider2D collider) {
@@ -107,49 +116,19 @@ public class BarrierProjectile : MonoBehaviour
         if (level == 1)
         {
             damage = 1f * dmgMod;
-            maxTick = 10f;
-            maxLife = 250f;
+            maxTick = 0f;
+            maxLife = 300f;
         } else if (level == 2)
         {
             damage = 1f * dmgMod;
-            maxTick = 10f;
+            maxTick = 0f;
             maxLife = 300f;
-            transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
+            transform.localScale = new Vector3(0.3f, 0.3f, 0.4226816f);
         } else if (level == 3)
         {
             damage = 1f * dmgMod;
-            maxTick = 6f;
+            maxTick = 0f;
             maxLife = 300f;
-            transform.localScale += new Vector3(0.25f, 0.25f, 0.4226816f);
-        } else if (level == 4)
-        {
-            damage = 1f * dmgMod;
-            maxTick = 6f;
-            maxLife = 350f;
-            transform.localScale += new Vector3(0.3f, 0.3f, 0.4226816f);
-        } else if (level == 5)
-        {
-            damage = 2f * dmgMod;
-            maxTick = 6f;
-            maxLife = 350f;
-            transform.localScale += new Vector3(0.3f, 0.3f, 0.4226816f);
-        } else if (level == 6)
-        {
-            damage = 2f * dmgMod;
-            maxTick = 6f;
-            maxLife = 400f;
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
-        } else if (level == 7)
-        {
-            damage = 2f * dmgMod;
-            maxTick = 3f;
-            maxLife = 400f;
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
-        } else if (level == 8)
-        {
-            damage = 3f * dmgMod;
-            maxTick = 3f;
-            maxLife = 400f;
             transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
         }
     }

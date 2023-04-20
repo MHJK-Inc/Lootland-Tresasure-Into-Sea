@@ -22,41 +22,7 @@ public class SpearGunProjectile : MonoBehaviour
         level = GameObject.Find("SpearGun").GetComponent<SpearGun>().level;
         DetermineStats();
 
-         // Get the position of the player
-        Vector3 playerPosition = GameObject.Find("Player").transform.position;
-
-        // Set the position of the projectile to the position of the player
-        transform.position = playerPosition;
-
-        // Finds player's direction they're facing (See player script)
-        direction = GameObject.Find("Player").GetComponent<Player>().facing;
-
         //Direction of Bullet (numbers refer to player script)
-        if (direction == 0)
-        {
-
-        } else if(direction == 1)
-        {
-            transform.Rotate(0f, 0f, 315f);
-        } else if(direction == 2)
-        {
-            transform.Rotate(0f, 0f, 270f);
-        } else if(direction == 3)
-        {
-            transform.Rotate(0f, 0f, 225f); 
-        } else if(direction == 4)
-        {
-            transform.Rotate(0f, 0f, 180f);
-        } else if(direction == 5)
-        {
-            transform.Rotate(0f, 0f, 135f);
-        } else if(direction == 6)
-        {
-            transform.Rotate(0f, 0f, 90f);
-        } else
-        {
-            transform.Rotate(0f, 0f, 45f);
-        }
     }
 
     // Update is called once per frame
@@ -104,39 +70,16 @@ public class SpearGunProjectile : MonoBehaviour
         float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
         if (level == 1)
         {
-            damage = 3f * dmgMod;
+            damage = 2f * dmgMod;
             speed = 4.5f;
         } else if (level == 2)
         {
-            damage = 5f * dmgMod;
+            damage = 2f * dmgMod;
             speed = 4.5f;
         } else if (level == 3)
         {
-            damage = 5f * dmgMod;
+            damage = 4f * dmgMod;
             speed = 4.5f;
-        } else if (level == 4)
-        {
-            damage = 5f * dmgMod;
-            speed = 6f;
-        } else if (level == 5)
-        {
-            damage = 8f * dmgMod;
-            speed = 6f;
-        } else if (level == 6)
-        {
-            damage = 8f * dmgMod;
-            speed = 6f;
-            transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
-        } else if (level == 7)
-        {
-            damage = 8f * dmgMod;
-            speed = 6f;
-            transform.localScale = new Vector3(0.25f,0.25f, 0.4226816f);
-        } else if (level == 8)
-        {
-            damage = 10f * dmgMod;
-            speed = 7.5f;
-            transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
         }
     }
 }
