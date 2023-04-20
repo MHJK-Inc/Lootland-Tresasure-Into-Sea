@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public GameObject bubble;
     public HealthBarBehavior healthBar;
 
-    public float distanceFromPlayer = 25f;
+    public float distanceFromPlayer = 10f;
     public float minDistance = 0.2f;
     public float maxDistance = 0.5f;
 
@@ -31,8 +31,6 @@ public class Enemy : MonoBehaviour
     public AudioSource aud;
     public AudioClip audPlayerHit;
     public AudioClip enemyHit;
-    public float laserTick;
-    public float laserPower;
 
     // Start is called before the first frame update
     void Start()
@@ -114,14 +112,14 @@ public class Enemy : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             rb.rotation = angle;
 
-            //if (direction.x < 0)
-            //{
-            //    GetComponent<SpriteRenderer>().flipX = true;
-            //}
-            //else
-            //{
-            //    GetComponent<SpriteRenderer>().flipX = false;
-            //}
+            if (direction.x < 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
 
             direction.Normalize();
             movement = direction;

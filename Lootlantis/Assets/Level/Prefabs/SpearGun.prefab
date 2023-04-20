@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 936379243839826125, guid: e5df45fa22398ee4aa8f70c97fd09876, type: 3}
-  fireRate: 10
+  fireRate: 0
   FollowSpeed: 10
   yOffset: 0
   level: 1
-  target: {fileID: 0}
+  target: {fileID: 2999171800540542989}
   aud: {fileID: 3787301410629833049}
   fireAud: {fileID: 8300000, guid: 4e771620cc5de9941a3fba118d56b018, type: 3}
 --- !u!82 &3787301410629833049

@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: 2a35e03cd48248049b042da4f4911264
   - enabled: 1
-    path: Assets/Scenes/WaveOneV2.unity
-    guid: 62b559816e066437fa3575fc42f100d9
+    path: Assets/Scenes/WaveOne.unity
+    guid: bada7246bffaba342a1f5c4821ad91a9
   - enabled: 1
     path: Assets/Scenes/WaveTwo.unity
     guid: 86a9028af997eb34c9d085a226249ba5

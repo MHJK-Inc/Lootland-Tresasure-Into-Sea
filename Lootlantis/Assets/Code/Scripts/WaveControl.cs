@@ -12,6 +12,8 @@ public class WaveControl : MonoBehaviour
     public TMPro.TextMeshProUGUI TimerTxt;
     public TMPro.TextMeshProUGUI KillTxt;
     public WaveClear waveClear;
+
+    
     // Start is called before the first frame update
 
     public GameObject obj1;
@@ -45,6 +47,7 @@ public class WaveControl : MonoBehaviour
 
     void Start()
     {
+
         Time.timeScale = 1f;
         SetUp();
         TimerOn = true;
@@ -89,15 +92,18 @@ public class WaveControl : MonoBehaviour
         {
             TimeLeft = 120;
             EnemiesLeft = 15;
-        } else if (PlayerPrefs.GetInt("Wave") == 2)
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 2)
         {
             TimeLeft = 180;
             EnemiesLeft = 30;
-        }else if (PlayerPrefs.GetInt("Wave") == 3)
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 3)
         {
             TimeLeft = 240;
             EnemiesLeft = 50;
-        }else if (PlayerPrefs.GetInt("Wave") == 4)
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 4)
         {
             TimeLeft = 300;
             EnemiesLeft = 100;
@@ -158,11 +164,7 @@ public class WaveControl : MonoBehaviour
     {
         int spearGun = PlayerPrefs.GetInt("SpearGun");
         int fireBall = PlayerPrefs.GetInt("Fireball");
-        int emp = PlayerPrefs.GetInt("EMP");
         int barrier = PlayerPrefs.GetInt("Barrier");
-        int harpoonGun = PlayerPrefs.GetInt("HarpoonGun");
-        int mine = PlayerPrefs.GetInt("Mine");
-        int laser = PlayerPrefs.GetInt("Laser");
         if(spearGun > 0)
         {
             for(int i = 0; i < spearGun - 1; i++)
@@ -181,48 +183,12 @@ public class WaveControl : MonoBehaviour
             }
         }
 
-        if(emp > 0)
-        {
-            levelUp.GetComponent<LevelUp>().AddWeapon("EMP");
-            for(int i = 0; i < emp - 1; i++)
-            {
-                GameObject.Find("EMP").GetComponent<EMP>().level++;
-            }
-        }
-
         if(barrier > 0)
         {
             levelUp.GetComponent<LevelUp>().AddWeapon("Barrier");
             for(int i = 0; i < barrier - 1; i++)
             {
                 GameObject.Find("Barrier").GetComponent<Barrier>().level++;
-            }
-        }
-
-        if(harpoonGun > 0)
-        {
-            levelUp.GetComponent<LevelUp>().AddWeapon("HarpoonGun");
-            for(int i = 0; i < harpoonGun - 1; i++)
-            {
-                GameObject.Find("HarpoonGun").GetComponent<HarpoonGun>().level++;
-            }
-        }
-
-        if(mine > 0)
-        {
-            levelUp.GetComponent<LevelUp>().AddWeapon("Mine");
-            for(int i = 0; i < mine - 1; i++)
-            {
-                GameObject.Find("Mine").GetComponent<Mine>().level++;
-            }
-        }
-
-        if(laser > 0)
-        {
-            levelUp.GetComponent<LevelUp>().AddWeapon("Laser");
-            for(int i = 0; i < laser - 1; i++)
-            {
-                GameObject.Find("Laser").GetComponent<Laser>().level++;
             }
         }
 
