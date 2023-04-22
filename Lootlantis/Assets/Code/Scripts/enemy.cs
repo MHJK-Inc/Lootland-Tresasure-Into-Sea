@@ -92,8 +92,8 @@ public class Enemy : MonoBehaviour
 
             if (distance >= distanceFromPlayer)
             {
-                Debug.Log("distance:" + distance);
-                Debug.Log("distanceFromPlayer:" + distanceFromPlayer);
+                //Debug.Log("distance:" + distance);
+                //Debug.Log("distanceFromPlayer:" + distanceFromPlayer);
                 // Move the enemy to a new location near the player
                 MoveCloserToPlayer();
             }
@@ -114,14 +114,14 @@ public class Enemy : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             rb.rotation = angle;
 
-            //if (direction.x < 0)
-            //{
-            //    GetComponent<SpriteRenderer>().flipX = true;
-            //}
-            //else
-            //{
-            //    GetComponent<SpriteRenderer>().flipX = false;
-            //}
+            if (direction.x < 0)
+            {
+                GetComponent<SpriteRenderer>().flipY = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipY = false;
+            }
 
             direction.Normalize();
             movement = direction;

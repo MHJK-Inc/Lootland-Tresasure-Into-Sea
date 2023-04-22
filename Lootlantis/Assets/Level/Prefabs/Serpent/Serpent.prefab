@@ -54,4 +54,8 @@ MonoBehaviour:
   wayPoints: []
   moveSpeed: 2
   waypointRadius: 2
+  player: {fileID: 0}
+  distanceFromPlayer: 25
+  minDistance: 0.2
+  maxDistance: 0.5
   coin: {fileID: 4269575320960598937, guid: 9dc202b6b62334e3e9db00f0d5d10194, type: 3}

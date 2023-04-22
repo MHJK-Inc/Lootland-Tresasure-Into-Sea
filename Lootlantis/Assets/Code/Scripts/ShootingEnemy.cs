@@ -62,8 +62,8 @@ public class ShootingEnemy : MonoBehaviour
         {
             if (distance >= distanceFromPlayer)
             {
-                Debug.Log("distance:" + distance);
-                Debug.Log("distanceFromPlayer:" + distanceFromPlayer);
+                //Debug.Log("distance:" + distance);
+                //Debug.Log("distanceFromPlayer:" + distanceFromPlayer);
                 // Move the enemy to a new location near the player
                 MoveCloserToPlayer();
             }
