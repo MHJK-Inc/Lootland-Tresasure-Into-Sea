@@ -23,9 +23,15 @@ public class SerpentManager : MonoBehaviour
     public float hitPoints;
     public float maxHitPoints = 20;
     private Serpent serpent;
+    private SpawnSerpent spawnSerpent;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.tag = "Enemy";
+
+        spawnSerpent = FindObjectOfType<SpawnSerpent>();
+        SetHealth();
         hitPoints = maxHitPoints;
         serpent = FindObjectOfType<Serpent>();
     }
@@ -34,6 +40,31 @@ public class SerpentManager : MonoBehaviour
     void FixedUpdate()
     {
         UpdateMarkerList();
+    }
+
+    public void SetHealth()
+    {
+
+        if (PlayerPrefs.GetInt("Wave") == 1)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnSerpent.totalWeapons * .85f;
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 2)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnSerpent.totalWeapons * .85f;
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 3)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnSerpent.totalWeapons * .85f;
+        }
+        else if (PlayerPrefs.GetInt("Wave") == 4)
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnSerpent.totalWeapons * .85f;
+        }
+        else
+        {
+            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnSerpent.totalWeapons * .85f;
+        }
     }
 
     public void UpdateMarkerList()

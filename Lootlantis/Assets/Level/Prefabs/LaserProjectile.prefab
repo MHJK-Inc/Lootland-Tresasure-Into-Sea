@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6288931034819313757}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.951, y: 1.195, z: 0}
-  m_LocalScale: {x: 0.20757318, y: 0.20757318, z: 0.4580178}
+  m_LocalScale: {x: 1, y: 1, z: 0.4580178}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -390691928, guid: 7c5e76bfce39d014eb15cb844c85a149, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -107,10 +107,13 @@ MonoBehaviour:
   maxLife: 0
   damage: 0
   level: 0
+  xOffset: 0
+  yOffset: 0
   one: {fileID: -390691928, guid: 7c5e76bfce39d014eb15cb844c85a149, type: 3}
   two: {fileID: 810358954, guid: 7c5e76bfce39d014eb15cb844c85a149, type: 3}
   three: {fileID: 1057281967, guid: 7c5e76bfce39d014eb15cb844c85a149, type: 3}
   four: {fileID: -536968592, guid: 7c5e76bfce39d014eb15cb844c85a149, type: 3}
+  pc: {fileID: 2454051868417401106}
 --- !u!60 &2454051868417401106
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -121,7 +124,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

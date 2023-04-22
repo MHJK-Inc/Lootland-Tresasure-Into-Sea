@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public GameObject bubble;
     public HealthBarBehavior healthBar;
 
-    public float distanceFromPlayer = 10f;
+    public float distanceFromPlayer = 25f;
     public float minDistance = 0.2f;
     public float maxDistance = 0.5f;
 
@@ -92,8 +92,8 @@ public class Enemy : MonoBehaviour
 
             if (distance >= distanceFromPlayer)
             {
-                Debug.Log("distance:" + distance);
-                Debug.Log("distanceFromPlayer:" + distanceFromPlayer);
+                //Debug.Log("distance:" + distance);
+                //Debug.Log("distanceFromPlayer:" + distanceFromPlayer);
                 // Move the enemy to a new location near the player
                 MoveCloserToPlayer();
             }
@@ -116,11 +116,11 @@ public class Enemy : MonoBehaviour
 
             if (direction.x < 0)
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                GetComponent<SpriteRenderer>().flipY = true;
             }
             else
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                GetComponent<SpriteRenderer>().flipY = false;
             }
 
             direction.Normalize();

@@ -1491,7 +1491,7 @@ MonoBehaviour:
   buttonThree: {fileID: 1332583311540041892}
   spearGun: {fileID: 2999171800540542990, guid: fa60bfcc3238375429afc5275b37c87b, type: 3}
   fireball: {fileID: 8231618900086378310, guid: 2d89914f951b5054bb13f5cb6215ec6a, type: 3}
-  emp: {fileID: 5666604928132600010, guid: e6f899de5f4c84646b3f60cdcd86fd5f, type: 3}
+  emp: {fileID: 5666604928132600010, guid: 718163b833bc55c4c90bf924fd6f7d7c, type: 3}
   barrier: {fileID: 2537228156246855201, guid: 0093281d8e4fba64bbc9468cdac9f404, type: 3}
   harpoonGun: {fileID: 2999171800540542990, guid: 162580c2ec89cd24381c4d400abf3e14, type: 3}
   mine: {fileID: 2537228156246855201, guid: 2c951edb538ac894abe4ff224e581171, type: 3}
@@ -1505,14 +1505,14 @@ MonoBehaviour:
   choiceOneImg: {fileID: 1332583311637966076}
   choiceTwoImg: {fileID: 1332583311295913426}
   choiceThreeImg: {fileID: 1332583311155738633}
-  spearGunImg: {fileID: 21300000, guid: dace809b103dbea4389a443c67b3988f, type: 3}
-  fireballImg: {fileID: -1021721128, guid: dfd47a71126d1414b9893a5c8cfac1a5, type: 3}
-  empImg: {fileID: 21300000, guid: 060914c326f65374fbdeed839eb6b140, type: 3}
-  barrierImg: {fileID: 1170300611, guid: dfd47a71126d1414b9893a5c8cfac1a5, type: 3}
-  harpoonGunImg: {fileID: -172435333, guid: dfd47a71126d1414b9893a5c8cfac1a5, type: 3}
-  mineImg: {fileID: 21300000, guid: 23e26bd3017814a4da272ccd79b086b3, type: 3}
-  laserImg: {fileID: 21300000, guid: 749d377867d67a245ba1dc727ab99b1c, type: 3}
-  emptyImg: {fileID: 21300000, guid: a4bc15a8eda9c5d40b00929c373fa510, type: 3}
+  spearGunImg: {fileID: 1388280539, guid: 4b8e541330ac4a0499968bd657039230, type: 3}
+  fireballImg: {fileID: -961907857, guid: 4b8e541330ac4a0499968bd657039230, type: 3}
+  empImg: {fileID: -163925618, guid: 4b8e541330ac4a0499968bd657039230, type: 3}
+  barrierImg: {fileID: -1568196245, guid: 4b8e541330ac4a0499968bd657039230, type: 3}
+  harpoonGunImg: {fileID: 926704067, guid: 4b8e541330ac4a0499968bd657039230, type: 3}
+  mineImg: {fileID: 1965142672, guid: 4b8e541330ac4a0499968bd657039230, type: 3}
+  laserImg: {fileID: 546778705, guid: 4b8e541330ac4a0499968bd657039230, type: 3}
+  emptyImg: {fileID: 289348829, guid: 4b8e541330ac4a0499968bd657039230, type: 3}
 --- !u!1 &1332583312735637007
 GameObject:
   m_ObjectHideFlags: 0
