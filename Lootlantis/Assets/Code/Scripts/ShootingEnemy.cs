@@ -154,6 +154,7 @@ public class ShootingEnemy : MonoBehaviour
         {
             aud.PlayOneShot(audPlayerHit);
             collision.gameObject.GetComponent<Player>().TakeDamage(5);
+            StartCoroutine(FlashAfterDamage());
         }
 
     }
@@ -175,6 +176,18 @@ public class ShootingEnemy : MonoBehaviour
                 GameObject item = Instantiate(coin, transform.position, Quaternion.identity);
             }
             
+        }
+    }
+
+    public IEnumerator FlashAfterDamage()
+    {
+        float flashDelay = 0.0833f;
+        for (int i = 0; i < 5; i++)
+        {
+            player.GetComponent<SpriteRenderer>().enabled = false;
+            yield return new WaitForSeconds(flashDelay);
+            player.GetComponent<SpriteRenderer>().enabled = true;
+            yield return new WaitForSeconds(flashDelay);
         }
     }
 
