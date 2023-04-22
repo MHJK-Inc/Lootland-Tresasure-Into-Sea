@@ -32,6 +32,9 @@ public class Enemy : MonoBehaviour
     public AudioClip audPlayerHit;
     public AudioClip enemyHit;
 
+    public Player playerScript;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -156,8 +159,21 @@ public class Enemy : MonoBehaviour
         {
             aud.PlayOneShot(audPlayerHit);
             collision.gameObject.GetComponent<Player>().TakeDamage(5);
+            StartCoroutine(FlashAfterDamage());
+
         }
-        
+    }
+
+    public IEnumerator FlashAfterDamage()
+    {
+        float flashDelay = 0.0833f;
+        for (int i = 0; i < 5; i++)
+        {
+            player.GetComponent<SpriteRenderer>().enabled = false;
+            yield return new WaitForSeconds(flashDelay);
+            player.GetComponent<SpriteRenderer>().enabled = true;
+            yield return new WaitForSeconds(flashDelay);
+        }
     }
 
     public void DropItem()

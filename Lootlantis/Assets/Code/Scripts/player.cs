@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     //Animator
     Animator animator;
 
+    
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         
         if (Time.timeScale != 0f)
         {
@@ -71,6 +74,11 @@ public class Player : MonoBehaviour
                 {
                     CheckInteraction();
                 }
+            }
+            //test
+            if(Input.GetKeyDown(KeyCode.M))
+            {
+                StartCoroutine(FlashAfterDamage());
             }
         }
     }
@@ -89,7 +97,20 @@ public class Player : MonoBehaviour
                 damageTimer = 100f;
             }
         }
+        
 
+    }
+
+    public IEnumerator FlashAfterDamage()
+    {
+        float flashDelay = 0.0833f;
+        for (int i = 0; i < 5; i++)
+        {
+            PlayerSpriteRenderer.enabled = false;
+            yield return new WaitForSeconds(flashDelay);
+            PlayerSpriteRenderer.enabled = true;
+            yield return new WaitForSeconds(flashDelay);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -164,6 +185,7 @@ public class Player : MonoBehaviour
         moveDirection = new Vector2(moveX, moveY).normalized;
     }
 
+
     void Move()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
@@ -220,7 +242,13 @@ public class Player : MonoBehaviour
         if (collider.gameObject.CompareTag("Objective"))
         {
             objective.CloseInteractIcon();
+        } else if (collider.gameObject.CompareTag("EnemyProjectile"))
+        {
+            StartCoroutine(FlashAfterDamage());
+            
         }
+
+        
     }
 
 }
