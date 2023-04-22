@@ -27,6 +27,7 @@ public class Serpent : MonoBehaviour
     private Vector3 headPosition;
     private SpawnSerpent spawnSerpent;
     public GameObject coin;
+    public GameObject bubble;
 
     private float posX;
     private float posY;
@@ -238,9 +239,9 @@ public class Serpent : MonoBehaviour
     }
     public void DestroySerpent(bool isDead)
     {
-        Debug.Log(isDead);
         if (isDead)
         {
+            GameObject.Find("Main Camera").GetComponent<WaveControl>().EnemiesLeft--;
             spawnSerpent.EnemyDestroyed();
             Destroy(gameObject);
             DropItem();
@@ -252,12 +253,21 @@ public class Serpent : MonoBehaviour
     }
     public void DropItem()
     {
-        //float dropChance = 0.5f; 
-        //if (Random.value <= dropChance)
-        //{
-        // Spawn the item at the enemy's position
-        GameObject item = Instantiate(coin, serpentBody[0].transform.position, Quaternion.identity);
-
-        //}
+        float dropChance = 0.75f; 
+        float value = Random.value;
+        if (Random.value <= dropChance)
+        {
+            // Spawn the item at the enemy's position
+            float whichDrop = 0.75f;
+            value = Random.value;
+            if(value <= whichDrop)
+            {
+              GameObject item = Instantiate(bubble, transform.position, Quaternion.identity);  
+            } else
+            {
+                GameObject item = Instantiate(coin, transform.position, Quaternion.identity);
+            }
+            
+        }
     }
 }

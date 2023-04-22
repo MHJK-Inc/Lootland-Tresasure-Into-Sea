@@ -93,6 +93,9 @@ public class BarrierProjectile : MonoBehaviour
                 } else if (collider.gameObject.GetComponent<ShootingEnemy>() != null)
                 {
                     collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
+                }  else if (collider.gameObject.GetComponent<SerpentManager>() != null)
+                {
+                    collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
                 }
             }
 

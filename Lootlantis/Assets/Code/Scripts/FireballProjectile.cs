@@ -139,6 +139,17 @@ public class FireballProjectile : MonoBehaviour
                     Instantiate(explosion, gameObject.transform.position, transform.rotation);
                     Destroy(gameObject);
                 }
+            }  else if (collider.gameObject.GetComponent<SerpentManager>() != null)
+            {
+                if(PlayerPrefs.GetInt("Fireball") != 3)
+                {
+                    collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
+                    Destroy(gameObject);
+                } else
+                {
+                    Instantiate(explosion, gameObject.transform.position, transform.rotation);
+                    Destroy(gameObject);
+                }
             }
         }
     }
