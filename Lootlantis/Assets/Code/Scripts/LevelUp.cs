@@ -273,7 +273,7 @@ public class LevelUp : MonoBehaviour
             if (PlayerPrefs.GetInt("SpearGun") == 0) {
                 choiceOneDesc.text = "Fires a single shot in front of you with the Spacebar.";
             } else if(PlayerPrefs.GetInt("SpearGun") == 1) {
-                choiceOneDesc.text = "Level 2: Deals more damage.";
+                choiceOneDesc.text = "Level 2: Deals double damage.";
             } else {
                 choiceOneDesc.text = "Level 3: Fires a spread of 3 shots now.";
             }
@@ -284,7 +284,7 @@ public class LevelUp : MonoBehaviour
             if (PlayerPrefs.GetInt("Fireball") == 0) {
                 choiceOneDesc.text = "Fires homing attacks at the enemy.";
             } else if(PlayerPrefs.GetInt("Fireball") == 1) {
-                choiceOneDesc.text = "Level 2: Increases fire rate.";
+                choiceOneDesc.text = "Level 2: Doubles fire rate.";
             } else {
                 choiceOneDesc.text = "Level 3: Fireballs explode on impact, dealing extra damage to enemies in the area.";
             }
@@ -302,11 +302,11 @@ public class LevelUp : MonoBehaviour
         {
             choiceOneImg.sprite = barrierImg;
             if (PlayerPrefs.GetInt("Barrier") == 0) {
-                choiceOneDesc.text = "Circles around player and damages any enemies it hits. Stops projectiles.";
+                choiceOneDesc.text = "Circles around player and damages any enemies it hits. Stops normal enemy projectiles.";
             } else if(PlayerPrefs.GetInt("Barrier") == 1) {
-                choiceOneDesc.text = "Level 2: Shortens cooldown on barrier.";
+                choiceOneDesc.text = "Level 2: Increase barrier size.";
             } else {
-                choiceOneDesc.text = "Level 3: Projectiles can knock enemies away.";
+                choiceOneDesc.text = "Level 3: Get two circles of protection instead of one.";
             }
         } else if (cOne.Equals("HarpoonGun"))
         {
@@ -336,7 +336,7 @@ public class LevelUp : MonoBehaviour
             } else if(PlayerPrefs.GetInt("Laser") == 1) {
                 choiceOneDesc.text = "Level 2: Increases fire rate.";
             } else {
-                choiceOneDesc.text = "Level 3: Increases damage.";
+                choiceOneDesc.text = "Level 3: Increases damage and duration of laser.";
             }
         } else
         {
@@ -350,7 +350,7 @@ public class LevelUp : MonoBehaviour
             if (PlayerPrefs.GetInt("SpearGun") == 0) {
                 choiceTwoDesc.text = "Fires a single shot in front of you with the Spacebar.";
             } else if(PlayerPrefs.GetInt("SpearGun") == 1) {
-                choiceTwoDesc.text = "Level 2: Deals more damage.";
+                choiceTwoDesc.text = "Level 2: Deals double damage.";
             } else {
                 choiceTwoDesc.text = "Level 3: Fires a spread of 3 shots now.";
             }
@@ -361,7 +361,7 @@ public class LevelUp : MonoBehaviour
             if (PlayerPrefs.GetInt("Fireball") == 0) {
                 choiceTwoDesc.text = "Fires homing attacks at the enemy.";
             } else if(PlayerPrefs.GetInt("Fireball") == 1) {
-                choiceTwoDesc.text = "Level 2: Increases fire rate.";
+                choiceTwoDesc.text = "Level 2: Doubles fire rate.";
             } else {
                 choiceTwoDesc.text = "Level 3: Fireballs explode on impact, dealing extra damage to enemies in the area.";
             }
@@ -379,11 +379,11 @@ public class LevelUp : MonoBehaviour
         {
             choiceTwoImg.sprite = barrierImg;
             if (PlayerPrefs.GetInt("Barrier") == 0) {
-                choiceTwoDesc.text = "Circles around player and damages any enemies it hits. Stops projectiles.";
+                choiceTwoDesc.text = "Circles around player and damages any enemies it hits. Stops normal enemy projectiles.";
             } else if(PlayerPrefs.GetInt("Barrier") == 1) {
-                choiceTwoDesc.text = "Level 2: Shortens cooldown on barrier.";
+                choiceTwoDesc.text = "Level 2: Increase barrier size.";
             } else {
-                choiceTwoDesc.text = "Level 3: Projectiles can knock enemies away.";
+                choiceTwoDesc.text = "Level 3: Get two circles of protection instead of one.";
             }
         } else if (cTwo.Equals("HarpoonGun"))
         {
@@ -413,7 +413,7 @@ public class LevelUp : MonoBehaviour
             } else if(PlayerPrefs.GetInt("Laser") == 1) {
                 choiceTwoDesc.text = "Level 2: Increases fire rate.";
             } else {
-                choiceTwoDesc.text = "Level 3: Increases damage.";
+                choiceTwoDesc.text = "Level 3: Increases damage and duration of laser.";
             }
         } else
         {
@@ -427,7 +427,7 @@ public class LevelUp : MonoBehaviour
             if (PlayerPrefs.GetInt("SpearGun") == 0) {
                 choiceThreeDesc.text = "Fires a single shot in front of you with the Spacebar.";
             } else if(PlayerPrefs.GetInt("SpearGun") == 1) {
-                choiceThreeDesc.text = "Level 2: Deals more damage.";
+                choiceThreeDesc.text = "Level 2: Deals double damage.";
             } else {
                 choiceThreeDesc.text = "Level 3: Fires a spread of 3 shots now.";
             }
@@ -438,7 +438,7 @@ public class LevelUp : MonoBehaviour
             if (PlayerPrefs.GetInt("Fireball") == 0) {
                 choiceThreeDesc.text = "Fires homing attacks at the enemy.";
             } else if(PlayerPrefs.GetInt("Fireball") == 1) {
-                choiceThreeDesc.text = "Level 2: Increases fire rate.";
+                choiceThreeDesc.text = "Level 2: Doubles fire rate.";
             } else {
                 choiceThreeDesc.text = "Level 3: Fireballs explode on impact, dealing extra damage to enemies in the area.";
             }
@@ -456,11 +456,11 @@ public class LevelUp : MonoBehaviour
         {
             choiceThreeImg.sprite = barrierImg;
             if (PlayerPrefs.GetInt("Barrier") == 0) {
-                choiceThreeDesc.text = "Circles around player and damages any enemies it hits. Stops projectiles.";
+                choiceThreeDesc.text = "Circles around player and damages any enemies it hits. Stops normal enemy projectiles.";
             } else if(PlayerPrefs.GetInt("Barrier") == 1) {
-                choiceThreeDesc.text = "Level 2: Shortens cooldown on barrier.";
+                choiceThreeDesc.text = "Level 2: Increase barrier size.";
             } else {
-                choiceThreeDesc.text = "Level 3: Projectiles can knock enemies away.";
+                choiceThreeDesc.text = "Level 3: Get two circles of protection instead of one.";
             }
         } else if (cThree.Equals("HarpoonGun"))
         {
@@ -490,7 +490,7 @@ public class LevelUp : MonoBehaviour
             } else if(PlayerPrefs.GetInt("Laser") == 1) {
                 choiceThreeDesc.text = "Level 2: Increases fire rate.";
             } else {
-                choiceThreeDesc.text = "Level 3: Increases damage.";
+                choiceThreeDesc.text = "Level 3: Increases damage and duration of laser.";
             }
         } else
         {

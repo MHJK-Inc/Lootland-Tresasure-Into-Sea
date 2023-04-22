@@ -58,6 +58,11 @@ public class HarpoonGun : Weapon
 
     IEnumerator ResetCooldown()
     {
+        if(level == 3) {
+            yield return new WaitForSeconds(1.5f);
+        } else {
+            yield return new WaitForSeconds(3f);
+        }
         yield return new WaitForSeconds(cooldownTime);
         canFire = true;
     }

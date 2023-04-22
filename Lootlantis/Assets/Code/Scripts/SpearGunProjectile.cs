@@ -70,16 +70,17 @@ public class SpearGunProjectile : MonoBehaviour
         float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
         if (level == 1)
         {
-            damage = 2f * dmgMod;
-            speed = 4.5f;
+            damage = 4f * dmgMod;
+            speed = 15f;
         } else if (level == 2)
         {
-            damage = 2f * dmgMod;
-            speed = 4.5f;
+            damage = 8f * dmgMod;
+            speed = 15f;
         } else if (level == 3)
         {
-            damage = 4f * dmgMod;
-            speed = 4.5f;
+            damage = 8f * dmgMod;
+            speed = 15f;
         }
+
     }
 }

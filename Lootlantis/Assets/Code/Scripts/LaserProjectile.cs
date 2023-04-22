@@ -47,6 +47,7 @@ public class LaserProjectile : MonoBehaviour
 
         level = GameObject.Find("Laser").GetComponent<Laser>().level;
         DetermineStats();
+        life = maxLife;
 
         player = GameObject.Find("Player");
         center = player.transform.position;
@@ -101,14 +102,14 @@ public class LaserProjectile : MonoBehaviour
         {
             if(collider.gameObject.GetComponent<Enemy>() != null)
             {
-                collider.gameObject.GetComponent<Enemy>().laserTick = 50;
+                collider.gameObject.GetComponent<Enemy>().laserTick = 10;
                 collider.gameObject.GetComponent<Enemy>().laserPower = 0;
                 Debug.Log("Initial Damage");
                 collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
                 
             } else if (collider.gameObject.GetComponent<ShootingEnemy>() != null)
             {
-                collider.gameObject.GetComponent<ShootingEnemy>().laserTick = 50;
+                collider.gameObject.GetComponent<ShootingEnemy>().laserTick = 10;
                 collider.gameObject.GetComponent<ShootingEnemy>().laserPower = 0;
                 Debug.Log("Initial Damage");
                 collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
@@ -138,11 +139,11 @@ public class LaserProjectile : MonoBehaviour
                     } else if(collider.gameObject.GetComponent<Enemy>().laserPower < 5)
                     {
                         Debug.Log("Medium Damage");
-                        collider.gameObject.GetComponent<Enemy>().TakeHit(damage + 2);
+                        collider.gameObject.GetComponent<Enemy>().TakeHit(damage * 1.5f);
                     } else
                     {
                         Debug.Log("Large Damage");
-                        collider.gameObject.GetComponent<Enemy>().TakeHit(damage + 5);
+                        collider.gameObject.GetComponent<Enemy>().TakeHit(damage * 2f);
                     }
 
                     collider.gameObject.GetComponent<Enemy>().laserTick = 50;
@@ -168,11 +169,11 @@ public class LaserProjectile : MonoBehaviour
                     } else if(collider.gameObject.GetComponent<ShootingEnemy>().laserPower < 5)
                     {
                         Debug.Log("Medium Damage");
-                        collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
+                        collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage * 1.5f);
                     } else
                     {
                         Debug.Log("Large Damage");
-                        collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
+                        collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage * 2f);
                     }
 
                     collider.gameObject.GetComponent<ShootingEnemy>().laserTick = 50;
@@ -186,51 +187,21 @@ public class LaserProjectile : MonoBehaviour
         float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
         if (level == 1)
         {
-            damage = 1f * dmgMod;
-            maxTick = 10f;
-            maxLife = 250f;
+            damage = 2f * dmgMod;
+            //maxTick = 5f;
+            maxLife = 300f;
         } else if (level == 2)
         {
-            damage = 1f * dmgMod;
-            maxTick = 10f;
+            damage = 2f * dmgMod;
+            //maxTick = 5f;
             maxLife = 300f;
-            transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
+            //transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
         } else if (level == 3)
         {
-            damage = 1f * dmgMod;
-            maxTick = 6f;
-            maxLife = 300f;
-            transform.localScale += new Vector3(0.25f, 0.25f, 0.4226816f);
-        } else if (level == 4)
-        {
-            damage = 1f * dmgMod;
-            maxTick = 6f;
-            maxLife = 350f;
-            transform.localScale += new Vector3(0.3f, 0.3f, 0.4226816f);
-        } else if (level == 5)
-        {
-            damage = 2f * dmgMod;
-            maxTick = 6f;
-            maxLife = 350f;
-            transform.localScale += new Vector3(0.3f, 0.3f, 0.4226816f);
-        } else if (level == 6)
-        {
-            damage = 2f * dmgMod;
-            maxTick = 6f;
+            damage = 4f * dmgMod;
+            //maxTick = 6f;
             maxLife = 400f;
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
-        } else if (level == 7)
-        {
-            damage = 2f * dmgMod;
-            maxTick = 3f;
-            maxLife = 400f;
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
-        } else if (level == 8)
-        {
-            damage = 3f * dmgMod;
-            maxTick = 3f;
-            maxLife = 400f;
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
+            //transform.localScale += new Vector3(0.25f, 0.25f, 0.4226816f);
         }
     }
 

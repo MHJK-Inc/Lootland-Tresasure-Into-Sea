@@ -26,20 +26,19 @@ public class SpearGun : Weapon
     {
         if (Time.timeScale != 0f)
         {
-            if(Input.GetKeyDown(KeyCode.Comma) && level > 1)
-            {
-                level--;
-            }
+            // if(Input.GetKeyDown(KeyCode.Comma) && level > 1)
+            // {
+            //     level--;
+            // }
 
-            if(Input.GetKeyDown(KeyCode.Period) && level < 3) {
-                level++;
-            }
+            // if(Input.GetKeyDown(KeyCode.Period) && level < 3) {
+            //     level++;
+            // }
 
             // Tracks location of target (Set to player game object) and follows it on update
             Vector3 newPos = new Vector3(target.position.x, target.position.y + yOffset, 0f);
             transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed*Time.deltaTime);
             if (Input.GetKeyDown("space") && canFire){
-                Debug.Log("Fire Pressed");
                 Fire();
                 canFire = false;
                 StartCoroutine(ResetCooldown());
@@ -71,7 +70,7 @@ public class SpearGun : Weapon
             GameObject first = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
             GameObject second;
             GameObject third;
-            if (PlayerPrefs.GetInt("SpearGun") >= 2)
+            if (PlayerPrefs.GetInt("SpearGun") == 3)
             {
                 second = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 third = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
@@ -87,7 +86,7 @@ public class SpearGun : Weapon
             GameObject first = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
             GameObject second;
             GameObject third;
-            if (PlayerPrefs.GetInt("SpearGun") >= 2)
+            if (PlayerPrefs.GetInt("SpearGun") == 3)
             {
                 second = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 third = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
@@ -102,7 +101,7 @@ public class SpearGun : Weapon
             GameObject first = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
             GameObject second;
             GameObject third;
-            if (PlayerPrefs.GetInt("SpearGun") >= 2)
+            if (PlayerPrefs.GetInt("SpearGun") == 3)
             {
                 second = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 third = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
@@ -117,7 +116,7 @@ public class SpearGun : Weapon
             GameObject first = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
             GameObject second;
             GameObject third;
-            if (PlayerPrefs.GetInt("SpearGun") >= 2)
+            if (PlayerPrefs.GetInt("SpearGun") == 3)
             {
                 second = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 third = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
@@ -132,7 +131,7 @@ public class SpearGun : Weapon
             GameObject first = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
             GameObject second;
             GameObject third;
-            if (PlayerPrefs.GetInt("SpearGun") >= 2)
+            if (PlayerPrefs.GetInt("SpearGun") == 3)
             {
                 second = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 third = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
@@ -147,7 +146,7 @@ public class SpearGun : Weapon
             GameObject first = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
             GameObject second;
             GameObject third;
-            if (PlayerPrefs.GetInt("SpearGun") >= 2)
+            if (PlayerPrefs.GetInt("SpearGun") == 3)
             {
                 second = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 third = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
@@ -162,7 +161,7 @@ public class SpearGun : Weapon
             GameObject first = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
             GameObject second;
             GameObject third;
-            if (PlayerPrefs.GetInt("SpearGun") >= 2)
+            if (PlayerPrefs.GetInt("SpearGun") == 3)
             {
                 second = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 third = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
@@ -172,12 +171,12 @@ public class SpearGun : Weapon
             }
             first.transform.rotation = Quaternion.Euler(Vector3.forward * -270);
             
-        } else
+        } else if(direction == 7)
         {
             GameObject first = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
             GameObject second;
             GameObject third;
-            if (PlayerPrefs.GetInt("SpearGun") >= 2)
+            if (PlayerPrefs.GetInt("SpearGun") == 3)
             {
                 second = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 third = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);

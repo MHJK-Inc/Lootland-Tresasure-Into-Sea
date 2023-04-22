@@ -25,6 +25,8 @@ public class BarrierProjectile : MonoBehaviour
 
     private float rotZ;
 
+    public bool secondProj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,9 @@ public class BarrierProjectile : MonoBehaviour
 
         player = GameObject.Find("Player");
         center = player.transform.position;
+        rotZ = 0;
+        secondProj = false;
+        tick = 0;
     }
 
     // Update is called once per frame
@@ -40,12 +45,19 @@ public class BarrierProjectile : MonoBehaviour
     {
         if (Time.timeScale != 0f)
         {
+            
             center = player.transform.position;
             transform.position = center;
             
             rotZ += -Time.deltaTime * speed;
-
             transform.rotation = Quaternion.Euler(0, 0, rotZ);
+            if(secondProj){
+                transform.rotation = Quaternion.Euler(0, 0, -transform.rotation.z);
+                //Debug.Log("SecondProj");
+            } else {
+                //Debug.Log("Not SecondProj");
+            } 
+            //Debug.Log("rot: ");
         }
     }
 
@@ -54,7 +66,7 @@ public class BarrierProjectile : MonoBehaviour
         if (Time.timeScale != 0f)
         {
             if (tick == 0) {
-                tick = 10;
+                tick = 0;
             } else {
                 tick--;
             }
@@ -84,52 +96,57 @@ public class BarrierProjectile : MonoBehaviour
                 }
             }
 
-            if (collider.gameObject.tag == "Enemy Projectile")
+            //tick = maxTick;
+
+            
+        }
+
+        if (collider.gameObject.tag == "Enemy Projectile")
             {
                 Debug.Log("Destroy");
                 Destroy(collider.gameObject);
             }
-
-            
-        }
         
     }
 
-    private void OnTriggerStay2D(Collider2D collider) {
-        if(tick == 0) {
-            if (collider.gameObject.tag == "Enemy")
-            {
-                if(collider.gameObject.GetComponent<Enemy>() != null)
-                {
-                    collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
-                } else if (collider.gameObject.GetComponent<ShootingEnemy>() != null)
-                {
-                    collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
-                }
-            }
-        }
-    }
+    // private void OnTriggerStay2D(Collider2D collider) {
+    //     if(tick == 0) {
+    //         if (collider.gameObject.tag == "Enemy")
+    //         {
+    //             if(collider.gameObject.GetComponent<Enemy>() != null)
+    //             {
+    //                 collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
+    //             } else if (collider.gameObject.GetComponent<ShootingEnemy>() != null)
+    //             {
+    //                 collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
+    //             }
+    //             tick = maxTick;
+    //         }
+    //     } else {
+    //         tick--;
+    //     }
+    // }
 
     void DetermineStats()
     {
         float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
         if (level == 1)
         {
-            damage = 1f * dmgMod;
-            maxTick = 0f;
+            damage = 2f * dmgMod;
+            maxTick = 2f;
             maxLife = 300f;
         } else if (level == 2)
         {
-            damage = 1f * dmgMod;
-            maxTick = 0f;
+            damage = 2f * dmgMod;
+            maxTick = 2f;
             maxLife = 300f;
-            transform.localScale = new Vector3(0.3f, 0.3f, 0.4226816f);
+            //transform.localScale = new Vector3(1.5f, 1.5f, 0.4226816f);
         } else if (level == 3)
         {
-            damage = 1f * dmgMod;
-            maxTick = 0f;
+            damage = 2f * dmgMod;
+            maxTick = 2f;
             maxLife = 300f;
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
+            //transform.localScale += new Vector3(2f, 2f, 0.4226816f);
         }
     }
 }

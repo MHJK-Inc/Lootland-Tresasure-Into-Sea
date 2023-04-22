@@ -10,7 +10,7 @@ public class MineProjectile : MonoBehaviour
     public GameObject projectileMini;
     private float distance;
 
-    public float speed = 200f;
+    public float speed = 10f;
 
     public float life = 250f;
 
@@ -99,7 +99,7 @@ public class MineProjectile : MonoBehaviour
 
     void Explode()
     {
-        if (PlayerPrefs.GetInt("Mine") != 3) {
+        if (level != 3) {
             GameObject up = Instantiate(projectileMini, gameObject.transform.position, transform.rotation);
             GameObject down = Instantiate(projectileMini, gameObject.transform.position, transform.rotation);
             GameObject left = Instantiate(projectileMini, gameObject.transform.position, transform.rotation);

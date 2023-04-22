@@ -8,7 +8,7 @@ public class MineProjectileMini : MonoBehaviour
     public GameObject player;
     private float distance;
 
-    public float speed = 200f;
+    public float speed = 10f;
 
     public float life = 250f;
 
@@ -33,6 +33,7 @@ public class MineProjectileMini : MonoBehaviour
 
         player = GameObject.Find("Player");
         center = player.transform.position;
+        tick = 0f;
     }
 
     // Update is called once per frame
@@ -48,12 +49,6 @@ public class MineProjectileMini : MonoBehaviour
     {
         if (Time.timeScale != 0f)
         {
-            if (tick == 0) {
-                tick = 10;
-            } else {
-                tick--;
-            }
-
 
             //If life of bullet is 0 or less, remove gameObject
             if(life > 0)
