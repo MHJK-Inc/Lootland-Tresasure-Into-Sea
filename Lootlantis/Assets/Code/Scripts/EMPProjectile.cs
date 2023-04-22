@@ -114,13 +114,13 @@ public class EMPProjectile : MonoBehaviour
             damage = 1f * dmgMod;
             maxTick = 10f;
             maxLife = 300f;
-            transform.localScale = new Vector3(0.3f, 0.3f, 0.4226816f);
+            transform.localScale = new Vector3(0.75f, 0.75f, 0.4226816f);
         } else if (level >= 3)
         {
             damage = 1f * dmgMod;
             maxTick = 10f;
             maxLife = 300f;
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.4226816f);
+            transform.localScale = new Vector3(1f, 1f, 0.4226816f);
         }
     }
 }

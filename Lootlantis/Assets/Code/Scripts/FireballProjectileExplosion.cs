@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireballProjectileExplosion : MonoBehaviour
 {
 
-    private float damage = 3f;
+    private float damage = 4f;
     private float life = 10f;
 
     // Start is called before the first frame update

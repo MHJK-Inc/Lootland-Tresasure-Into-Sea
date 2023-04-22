@@ -92,6 +92,18 @@ public class Player : MonoBehaviour
 
     }
 
+    public IEnumerator FlashAfterDamage()
+    {
+        float flashDelay = 0.0833f;
+        for (int i = 0; i < 5; i++)
+        {
+            PlayerSpriteRenderer.enabled = false;
+            yield return new WaitForSeconds(flashDelay);
+            PlayerSpriteRenderer.enabled = true;
+            yield return new WaitForSeconds(flashDelay);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         currentHealth = currentHealth - damage; 
@@ -221,6 +233,10 @@ public class Player : MonoBehaviour
         if (collider.gameObject.CompareTag("Objective"))
         {
             objective.CloseInteractIcon();
+        }  else if (collider.gameObject.CompareTag("Enemy Projectile"))
+        {
+            StartCoroutine(FlashAfterDamage());
+
         }
     }
 

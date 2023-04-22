@@ -29,7 +29,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Player.position + transform.up * 0.8f;
+        transform.position = Player.position + transform.up * 2.3f;
         if (Time.timeScale != 0f)
         {
             // if (slider.value <= 0 && !isDead)
