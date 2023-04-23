@@ -113,6 +113,12 @@ public class LaserProjectile : MonoBehaviour
                 collider.gameObject.GetComponent<ShootingEnemy>().laserPower = 0;
                 Debug.Log("Initial Damage");
                 collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
+            } else if (collider.gameObject.GetComponent<SerpentManager>() != null)
+            {
+                collider.gameObject.GetComponent<SerpentManager>().laserTick = 10;
+                collider.gameObject.GetComponent<SerpentManager>().laserPower = 0;
+                Debug.Log("Initial Damage");
+                collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
             }
         }
     }
@@ -177,6 +183,34 @@ public class LaserProjectile : MonoBehaviour
                     }
 
                     collider.gameObject.GetComponent<ShootingEnemy>().laserTick = 50;
+                }
+            }  else if (collider.gameObject.GetComponent<SerpentManager>() != null)
+            {
+                if (collider.gameObject.GetComponent<SerpentManager>().laserTick > 0)
+                {
+                    collider.gameObject.GetComponent<SerpentManager>().laserTick--;
+                } else
+                {
+                    if (collider.gameObject.GetComponent<SerpentManager>().laserPower < 5)
+                    {
+                        collider.gameObject.GetComponent<SerpentManager>().laserPower++;
+                    }
+
+                    if(collider.gameObject.GetComponent<SerpentManager>().laserPower < 3)
+                    {
+                        Debug.Log("Small Damage");
+                        collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
+                    } else if(collider.gameObject.GetComponent<SerpentManager>().laserPower < 5)
+                    {
+                        Debug.Log("Medium Damage");
+                        collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage * 1.5f);
+                    } else
+                    {
+                        Debug.Log("Large Damage");
+                        collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage * 2f);
+                    }
+
+                    collider.gameObject.GetComponent<SerpentManager>().laserTick = 50;
                 }
             }
         }

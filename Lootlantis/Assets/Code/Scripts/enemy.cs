@@ -176,11 +176,11 @@ public class Enemy : MonoBehaviour
     }
     public void DropItem()
     {
-        float dropChance = 0.5f; 
+        float dropChance = 0.75f; 
         if (Random.value <= dropChance)
         {
             // Spawn the item at the enemy's position
-            float whichDrop = 0.5f;
+            float whichDrop = 0.75f;
             if(Random.value <= whichDrop)
             {
               GameObject item = Instantiate(bubble, transform.position, Quaternion.identity);  

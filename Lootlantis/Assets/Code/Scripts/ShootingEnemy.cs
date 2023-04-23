@@ -161,12 +161,12 @@ public class ShootingEnemy : MonoBehaviour
 
     public void DropItem()
     {
-        float dropChance = 0.5f; 
+        float dropChance = 0.75f; 
         float value = Random.value;
         if (Random.value <= dropChance)
         {
             // Spawn the item at the enemy's position
-            float whichDrop = 0.5f;
+            float whichDrop = 0.75f;
             value = Random.value;
             if(value <= whichDrop)
             {

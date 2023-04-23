@@ -22,8 +22,14 @@ public class SerpentManager : MonoBehaviour
     public HealthBarBehavior healthBar;
     public float hitPoints;
     public float maxHitPoints = 20;
+    public float laserTick;
+    public float laserPower;
+
     private Serpent serpent;
     private SpawnSerpent spawnSerpent;
+    public AudioSource aud;
+    public AudioClip audPlayerHit;
+    public AudioClip enemyHit;
 
     // Start is called before the first frame update
     void Start()
@@ -80,11 +86,12 @@ public class SerpentManager : MonoBehaviour
 
     public void TakeHit(float damage)
     {
+        aud.PlayOneShot(enemyHit);
         hitPoints -= damage;
         healthBar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
         {
-            bool isDead = hitPoints <= 0;
+            bool isDead = true;
             serpent.DestroySerpent(isDead);
         }
     }

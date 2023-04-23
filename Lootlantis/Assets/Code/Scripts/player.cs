@@ -125,9 +125,11 @@ public class Player : MonoBehaviour
         if ((currentHealth + heal) > maxHealth)
         {
             currentHealth = maxHealth;
+            healthBar.SetHealth(currentHealth);
         } else
         {
             currentHealth = currentHealth + heal;
+            healthBar.SetHealth(currentHealth);
         }
     }
 

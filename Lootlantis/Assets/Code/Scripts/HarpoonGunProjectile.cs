@@ -75,6 +75,16 @@ public class HarpoonGunProjectile : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
+            }  else if (collider.gameObject.GetComponent<SerpentManager>() != null)
+            {
+                collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
+                if(pierce > 0)
+                {
+                    pierce--;
+                } else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
