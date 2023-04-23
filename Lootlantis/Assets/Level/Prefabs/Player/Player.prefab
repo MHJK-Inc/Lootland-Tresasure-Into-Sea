@@ -410,6 +410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniMapIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 6276147523486038443, guid: a739041160ccc4eb8814c8e124f3b40e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7231504097946407921, guid: a739041160ccc4eb8814c8e124f3b40e, type: 3}
       propertyPath: m_RootOrder
       value: 1
