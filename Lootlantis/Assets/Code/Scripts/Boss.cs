@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    public GameObject player;
     public float moveSpeed = 5f;
     public float biteAttackRange = 6f;
     public float poisonAttackRange = 19f;
@@ -12,20 +13,25 @@ public class Boss : MonoBehaviour
     public float returnDelay = 2f;
     public GameObject projectile;
     public GameObject mortarProjectile;
+    public float hitPoints;
+    public float maxHitPoints = 5;
+    public HealthBarBehavior healthBar;
     private float attackTimer;
     private float returnTimer;
     private bool attacking;
     private bool returning;
     private Vector2 originalPosition;
     private Vector2 lastKnownPlayerPosition;
-    private Transform player;
+  
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player object
+        hitPoints = maxHitPoints;
+        healthBar.SetHealth(hitPoints, maxHitPoints);
+        player = GameObject.Find("Player"); // Find the player object
         originalPosition = transform.position; // Save the boss's original position
-        lastKnownPlayerPosition = player.position; // Initialize the last known player position to the player's current position
+        lastKnownPlayerPosition = player.transform.position; // Initialize the last known player position to the player's current position
     }
 
     // Update is called once per frame
@@ -37,7 +43,7 @@ public class Boss : MonoBehaviour
             if (IsPlayerInBiteRange())
             {
                 // Save the player's current position as the last known player position
-                lastKnownPlayerPosition = player.position;
+                lastKnownPlayerPosition = player.transform.position;
 
                 // Set the attack timer and start the attack behavior
                 attackTimer = Time.time + attackDelay;
@@ -48,7 +54,7 @@ public class Boss : MonoBehaviour
             if (IsPlayerInShootingRange())
             {
                 // Save the player's current position as the last known player position
-                lastKnownPlayerPosition = player.position;
+                lastKnownPlayerPosition = player.transform.position;
 
                 // Set the attack timer and start the attack behavior
                 attackTimer = Time.time + attackDelay;
@@ -116,14 +122,14 @@ public class Boss : MonoBehaviour
         Instantiate(mortarProjectile, mortarSpawnPosition, Quaternion.identity);
 
         // Wait for a short duration before firing the next projectile
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1f);
 
         // Repeat for a total of 3 projectiles
         for (int i = 0; i < 2; i++)
         {
             mortarSpawnPosition = new Vector2(lastKnownPlayerPosition.x - (i * 3f), lastKnownPlayerPosition.y + 5f);
             Instantiate(mortarProjectile, mortarSpawnPosition, Quaternion.identity);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
 
         // Set the return timer and start returning to the original position

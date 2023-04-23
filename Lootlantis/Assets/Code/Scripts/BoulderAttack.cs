@@ -8,14 +8,17 @@ public class BoulderAttack : MonoBehaviour
     public float speed;
     public float life;
     Rigidbody2D bulletRB;
+    Animator animator;
+
+
     // Start is called before the first frame update
     void Start()
     {
         life = 200;
         bulletRB = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player");
-        Vector2 moveDir = (target.transform.position - transform.position).normalized * speed;
-        bulletRB.velocity = new Vector2(moveDir.x, moveDir.y);
+        bulletRB.velocity = Vector2.down * speed;
+        animator = GetComponent<Animator>();
 
     }
 
@@ -30,10 +33,19 @@ public class BoulderAttack : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                BoulderDestroy();
             }
         }
 
+    }
+
+    public void BoulderDestroy() {
+        animator.SetTrigger("BoulderDestroy");
+    }
+
+    public void RemoveBoulder()
+    {
+        Destroy(gameObject);
     }
 
 
@@ -42,7 +54,7 @@ public class BoulderAttack : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             collider.gameObject.GetComponent<Player>().TakeDamage(5);
-            Destroy(gameObject);
+            BoulderDestroy();
         }
     }
 }
