@@ -85,6 +85,16 @@ public class HarpoonGunProjectile : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
+            } else if (collider.gameObject.GetComponent<Boss>() != null)
+            {
+                collider.gameObject.GetComponent<Boss>().TakeHit(damage);
+                if(pierce > 0)
+                {
+                    pierce--;
+                } else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
@@ -95,17 +105,17 @@ public class HarpoonGunProjectile : MonoBehaviour
         if (level == 1)
         {
             damage = 8f * dmgMod;
-            speed = 10f;
+            speed = 12f;
             pierce = 3f;
         } else if (level == 2)
         {
             damage = 8f * dmgMod;
-            speed = 10f;
+            speed = 12f;
             pierce = 5f;
         } else if (level >= 3)
         {
             damage = 10f * dmgMod;
-            speed = 12f;
+            speed = 15f;
             pierce = 7f;
         }
     }

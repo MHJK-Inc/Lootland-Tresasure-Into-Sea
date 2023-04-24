@@ -148,13 +148,13 @@ public class ShootingEnemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             aud.PlayOneShot(audPlayerHit);
             collision.gameObject.GetComponent<Player>().TakeDamage(5);
-            StartCoroutine(FlashAfterDamage());
+            //StartCoroutine(FlashAfterDamage());
         }
 
     }

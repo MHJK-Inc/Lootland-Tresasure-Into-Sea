@@ -9,6 +9,8 @@ TagManager:
   - Player Projectile
   - Objective
   - Collectable
+  - Enemy Projectile
+  - Boss Projectile
   layers:
   - Default
   - TransparentFX

@@ -80,6 +80,11 @@ public class MineProjectile : MonoBehaviour
                 collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
                 Explode();
                 Destroy(gameObject);
+            }  else if (collider.gameObject.GetComponent<Boss>() != null)
+            {
+                collider.gameObject.GetComponent<Boss>().TakeHit(damage);
+                Explode();
+                Destroy(gameObject);
             }
         }
     }

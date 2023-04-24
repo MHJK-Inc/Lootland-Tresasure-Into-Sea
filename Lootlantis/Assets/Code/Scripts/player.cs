@@ -26,8 +26,11 @@ public class Player : MonoBehaviour
 
     public int inventory = 0;
 
+    public bool paused;
+
     //Game Over Screen
     public GameOver gameManager;
+    public Paused gamePause;
 
     //Interact Icon
 
@@ -36,6 +39,8 @@ public class Player : MonoBehaviour
     public AudioSource aud;
     public AudioClip damageAud;
     public AudioClip healAud;
+
+    public bool invincible = false;
 
     //Animator
     Animator animator;
@@ -72,6 +77,25 @@ public class Player : MonoBehaviour
                     CheckInteraction();
                 }
             }
+
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                if(!paused)
+                {
+                    paused = true;
+                    gamePause.pause();
+                }
+            }
+        }
+
+        else {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                if(paused)
+                {
+                    gamePause.unpause();
+                }
+            }
         }
     }
 
@@ -85,7 +109,18 @@ public class Player : MonoBehaviour
             if(damageTimer >= 1f){
                 damageTimer--;
             } else {
-                TakeDamage(1);
+                currentHealth = currentHealth - 2; 
+
+                healthBar.SetHealth(currentHealth);
+
+                if (currentHealth <= 0)
+                {
+                    gameManager.gameOver();
+                    //Destroy(gameObject);
+                    //gameObject.SetActive(false);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
                 damageTimer = 100f;
             }
         }
@@ -94,6 +129,7 @@ public class Player : MonoBehaviour
 
     public IEnumerator FlashAfterDamage()
     {
+        invincible = true;
         float flashDelay = 0.0833f;
         for (int i = 0; i < 5; i++)
         {
@@ -102,21 +138,24 @@ public class Player : MonoBehaviour
             PlayerSpriteRenderer.enabled = true;
             yield return new WaitForSeconds(flashDelay);
         }
+        invincible = false;
     }
 
     public void TakeDamage(int damage)
     {
-        currentHealth = currentHealth - damage; 
+        if(!invincible) {
+            currentHealth = currentHealth - damage; 
 
-        healthBar.SetHealth(currentHealth);
+            healthBar.SetHealth(currentHealth);
 
-        if (currentHealth <= 0)
-        {
-            gameManager.gameOver();
-            //Destroy(gameObject);
-            //gameObject.SetActive(false);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            if (currentHealth <= 0)
+            {
+                gameManager.gameOver();
+                //Destroy(gameObject);
+                //gameObject.SetActive(false);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
     }
 
@@ -235,7 +274,15 @@ public class Player : MonoBehaviour
         if (collider.gameObject.CompareTag("Objective"))
         {
             objective.CloseInteractIcon();
-        }  else if (collider.gameObject.CompareTag("Enemy Projectile"))
+        } else if (collider.gameObject.CompareTag("Enemy Projectile"))
+        {
+            StartCoroutine(FlashAfterDamage());
+
+        } else if (collider.gameObject.CompareTag("Enemy"))
+        {
+            StartCoroutine(FlashAfterDamage());
+
+        } else if (collider.gameObject.CompareTag("Boss Projectile"))
         {
             StartCoroutine(FlashAfterDamage());
 

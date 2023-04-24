@@ -54,7 +54,7 @@ public class EMPProjectile : MonoBehaviour
         if (Time.timeScale != 0f)
         {
             if (tick == 0) {
-                tick = 10;
+                tick = maxTick;
             } else {
                 tick--;
             }
@@ -81,6 +81,12 @@ public class EMPProjectile : MonoBehaviour
                 } else if (collider.gameObject.GetComponent<ShootingEnemy>() != null)
                 {
                     collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
+                } else if (collider.gameObject.GetComponent<SerpentManager>() != null)
+                {
+                    collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
+                } else if (collider.gameObject.GetComponent<Boss>() != null)
+                {
+                    collider.gameObject.GetComponent<Boss>().TakeHit(damage);
                 }
             }
         }
@@ -99,6 +105,9 @@ public class EMPProjectile : MonoBehaviour
                 } else if (collider.gameObject.GetComponent<SerpentManager>() != null)
                 {
                     collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
+                }  else if (collider.gameObject.GetComponent<Boss>() != null)
+                {
+                    collider.gameObject.GetComponent<Boss>().TakeHit(damage);
                 }
             }
         }
@@ -110,18 +119,18 @@ public class EMPProjectile : MonoBehaviour
         if (level == 1)
         {
             damage = 1f * dmgMod;
-            maxTick = 10f;
+            maxTick = 20f;
             maxLife = 300f;
         } else if (level == 2)
         {
             damage = 1f * dmgMod;
-            maxTick = 10f;
+            maxTick = 20f;
             maxLife = 300f;
             transform.localScale = new Vector3(0.75f, 0.75f, 0.4226816f);
         } else if (level >= 3)
         {
             damage = 1f * dmgMod;
-            maxTick = 10f;
+            maxTick = 20f;
             maxLife = 300f;
             transform.localScale = new Vector3(1f, 1f, 0.4226816f);
         }

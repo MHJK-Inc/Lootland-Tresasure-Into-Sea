@@ -50,8 +50,8 @@ public class WaveControl : MonoBehaviour
         TimerOn = true;
         waveBeat = false;
         DecideObjectives();
-        int bonus = (PlayerPrefs.GetInt("Health")) * 20;
-        float speedBonus = (PlayerPrefs.GetInt("Movement")) * 0.25f;
+        int bonus = (PlayerPrefs.GetInt("Health")) * 30;
+        float speedBonus = (PlayerPrefs.GetInt("Movement")) * 0.6f;
         player.GetComponent<Player>().maxHealth = player.GetComponent<Player>().maxHealth + bonus;
         player.GetComponent<Player>().currentHealth = player.GetComponent<Player>().maxHealth;
         player.GetComponent<Player>().moveSpeed = player.GetComponent<Player>().moveSpeed + speedBonus;

@@ -74,6 +74,9 @@ public class MineProjectileMini : MonoBehaviour
                 } else if (collider.gameObject.GetComponent<SerpentManager>() != null)
                 {
                     collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
+                } else if (collider.gameObject.GetComponent<Boss>() != null)
+                {
+                    collider.gameObject.GetComponent<Boss>().TakeHit(damage);
                 }
             }
         }

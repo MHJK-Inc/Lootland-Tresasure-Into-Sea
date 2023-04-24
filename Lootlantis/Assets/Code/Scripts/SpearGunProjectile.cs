@@ -65,6 +65,10 @@ public class SpearGunProjectile : MonoBehaviour
             {
                 collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
                 Destroy(gameObject);
+            }  else if (collider.gameObject.GetComponent<Boss>() != null)
+            {
+                collider.gameObject.GetComponent<Boss>().TakeHit(damage);
+                Destroy(gameObject);
             }
         }
     }

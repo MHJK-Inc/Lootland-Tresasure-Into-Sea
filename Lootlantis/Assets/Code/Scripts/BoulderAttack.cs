@@ -9,6 +9,9 @@ public class BoulderAttack : MonoBehaviour
     public float life;
     Rigidbody2D bulletRB;
     Animator animator;
+    public AudioSource aud;
+    public AudioClip audPlayerHit;
+    public AudioClip boulderBreak;
 
 
     // Start is called before the first frame update
@@ -40,6 +43,7 @@ public class BoulderAttack : MonoBehaviour
     }
 
     public void BoulderDestroy() {
+        aud.PlayOneShot(boulderBreak);
         animator.SetTrigger("BoulderDestroy");
     }
 
@@ -53,7 +57,9 @@ public class BoulderAttack : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
+            aud.PlayOneShot(audPlayerHit);
             collider.gameObject.GetComponent<Player>().TakeDamage(5);
+            aud.PlayOneShot(boulderBreak);
             BoulderDestroy();
         }
     }

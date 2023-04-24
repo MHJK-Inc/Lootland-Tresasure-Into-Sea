@@ -22,6 +22,13 @@ public class Boss : MonoBehaviour
     private bool returning;
     private Vector2 originalPosition;
     private Vector2 lastKnownPlayerPosition;
+
+    //Added by Michael
+    public AudioSource aud;
+    public AudioClip audPlayerHit;
+    public AudioClip enemyHit;
+    public float laserTick;
+    public float laserPower;
   
 
     // Start is called before the first frame update
@@ -173,5 +180,32 @@ public class Boss : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, biteAttackRange);
         Gizmos.DrawWireSphere(transform.position, poisonAttackRange);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            aud.PlayOneShot(audPlayerHit);
+            collision.gameObject.GetComponent<Player>().TakeDamage(5);
+            //StartCoroutine(FlashAfterDamage());
+
+        }
+    }
+
+    public void TakeHit(float damage)
+    {
+        aud.PlayOneShot(enemyHit);
+        hitPoints -= damage;
+        healthBar.SetHealth(hitPoints, maxHitPoints);
+        if (hitPoints <= 0)
+        {
+            //Not sure what things need to be done after beating boss. I guess it'll just display a clear screen or move to the game clear screen?
+
+            // spawnEnemy.EnemyDestroyed();
+            // DropItem();
+            // GameObject.Find("Main Camera").GetComponent<WaveControl>().EnemiesLeft--;
+            // Destroy(gameObject);
+        }
     }
 }

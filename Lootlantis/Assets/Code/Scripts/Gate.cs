@@ -28,8 +28,27 @@ public class Gate : Interactable
             isActive = false;
             sr.sprite = open;
             showGate = true;
-            waveControl.GetComponent<WaveControl>().TimeLeft -= 60;
-            waveControl.GetComponent<WaveControl>().EnemiesLeft -= 20;
+            if(PlayerPrefs.GetInt("Wave") == 1)
+            {
+                waveControl.GetComponent<WaveControl>().TimeLeft -= 30;
+                waveControl.GetComponent<WaveControl>().EnemiesLeft -= 4;
+            } else if(PlayerPrefs.GetInt("Wave") == 2)
+            {
+                waveControl.GetComponent<WaveControl>().TimeLeft -=  45;
+                waveControl.GetComponent<WaveControl>().EnemiesLeft -= 8;
+            } else if(PlayerPrefs.GetInt("Wave") == 3)
+            {
+                waveControl.GetComponent<WaveControl>().TimeLeft -=  60;
+                waveControl.GetComponent<WaveControl>().EnemiesLeft -= 13;
+            } else if(PlayerPrefs.GetInt("Wave") == 4)
+            {
+                waveControl.GetComponent<WaveControl>().TimeLeft -=  75;
+                waveControl.GetComponent<WaveControl>().EnemiesLeft -= 25;
+            } else if(PlayerPrefs.GetInt("Wave") == 5)
+            {
+                waveControl.GetComponent<WaveControl>().TimeLeft -=  90;
+                waveControl.GetComponent<WaveControl>().EnemiesLeft -= 50;
+            }
         }
     }
 

@@ -6,7 +6,7 @@ public class SpawnShootingEnemy : MonoBehaviour
     private float spawnX = 5f;
     private float spawnY = 5f;
 
-    private int enemyCount = 0; // Keep track of enemy spawned
+    public int enemyCount = 0; // Keep track of enemy spawned
 
     [SerializeField] private GameObject enemyPrefab; // The prefab for the enemy
     [SerializeField] private Vector2 spawnPosition; // The position where the enemies will spawn

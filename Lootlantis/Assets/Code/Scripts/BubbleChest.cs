@@ -30,7 +30,8 @@ public class BubbleChest : Interactable
         {
             isActive = false;
             sr.sprite = open;
-            healthBar.GetComponent<HealthBar>().SetMaxHealth((int) healthBar.GetComponent<Slider>().maxValue + 50);
+            player.GetComponent<Player>().maxHealth += 20;
+            healthBar.GetComponent<Slider>().maxValue += 20;
             showMoney = true;
         }
     }

@@ -58,6 +58,11 @@ public class FireballProjectileExplosion : MonoBehaviour
             {
                 collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
             }
+
+            if (collider.gameObject.GetComponent<Boss>() != null)
+            {
+                collider.gameObject.GetComponent<Boss>().TakeHit(damage);
+            }
         }
     }
 

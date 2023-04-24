@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8785030412911139591}
   m_Layer: 0
   m_Name: Boulder
-  m_TagString: Untagged
+  m_TagString: Boss Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,6 +139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   life: 5
+  aud: {fileID: 0}
+  audPlayerHit: {fileID: 0}
+  boulderBreak: {fileID: 0}
 --- !u!95 &-8785030412911139591
 Animator:
   serializedVersion: 5

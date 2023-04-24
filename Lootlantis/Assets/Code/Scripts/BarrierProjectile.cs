@@ -13,7 +13,7 @@ public class BarrierProjectile : MonoBehaviour
     public float life = 250f;
 
     public float tick = 0f;
-    public float maxTick = 0f;
+    public float maxTick = 10f;
     public float maxLife = 0f;
     public float damage = 0f;
 
@@ -37,7 +37,7 @@ public class BarrierProjectile : MonoBehaviour
         center = player.transform.position;
         rotZ = 0;
         secondProj = false;
-        tick = 0;
+        tick = maxTick;
     }
 
     // Update is called once per frame
@@ -66,7 +66,7 @@ public class BarrierProjectile : MonoBehaviour
         if (Time.timeScale != 0f)
         {
             if (tick == 0) {
-                tick = 0;
+                tick = maxTick;
             } else {
                 tick--;
             }
@@ -84,6 +84,34 @@ public class BarrierProjectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.gameObject.tag == "Enemy")
+        {
+            if(collider.gameObject.GetComponent<Enemy>() != null)
+            {
+                collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
+            } else if (collider.gameObject.GetComponent<ShootingEnemy>() != null)
+            {
+                collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
+            }  else if (collider.gameObject.GetComponent<SerpentManager>() != null)
+            {
+                collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
+            } else if (collider.gameObject.GetComponent<Boss>() != null)
+            {
+                collider.gameObject.GetComponent<Boss>().TakeHit(damage);
+            }
+        }
+
+            //tick = maxTick;
+
+        if (collider.gameObject.tag == "Enemy Projectile")
+        {
+            Debug.Log("Destroy");
+            Destroy(collider.gameObject);
+        }
+        
+    }
+
+    private void OnTriggerStay2D(Collider2D collider) {
         if(tick == 0) {
             if (collider.gameObject.tag == "Enemy")
             {
@@ -96,39 +124,14 @@ public class BarrierProjectile : MonoBehaviour
                 }  else if (collider.gameObject.GetComponent<SerpentManager>() != null)
                 {
                     collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
+                }  else if (collider.gameObject.GetComponent<Boss>() != null)
+                {
+                    collider.gameObject.GetComponent<Boss>().TakeHit(damage);
                 }
             }
-
-            //tick = maxTick;
-
-            
         }
-
-        if (collider.gameObject.tag == "Enemy Projectile")
-            {
-                Debug.Log("Destroy");
-                Destroy(collider.gameObject);
-            }
         
     }
-
-    // private void OnTriggerStay2D(Collider2D collider) {
-    //     if(tick == 0) {
-    //         if (collider.gameObject.tag == "Enemy")
-    //         {
-    //             if(collider.gameObject.GetComponent<Enemy>() != null)
-    //             {
-    //                 collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
-    //             } else if (collider.gameObject.GetComponent<ShootingEnemy>() != null)
-    //             {
-    //                 collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
-    //             }
-    //             tick = maxTick;
-    //         }
-    //     } else {
-    //         tick--;
-    //     }
-    // }
 
     void DetermineStats()
     {
@@ -136,18 +139,18 @@ public class BarrierProjectile : MonoBehaviour
         if (level == 1)
         {
             damage = 2f * dmgMod;
-            maxTick = 2f;
+            maxTick = 30f;
             maxLife = 300f;
         } else if (level == 2)
         {
             damage = 2f * dmgMod;
-            maxTick = 2f;
+            maxTick = 30f;
             maxLife = 300f;
             //transform.localScale = new Vector3(1.5f, 1.5f, 0.4226816f);
         } else if (level == 3)
         {
             damage = 2f * dmgMod;
-            maxTick = 2f;
+            maxTick = 30f;
             maxLife = 300f;
             //transform.localScale += new Vector3(2f, 2f, 0.4226816f);
         }
