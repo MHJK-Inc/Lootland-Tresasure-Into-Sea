@@ -25,7 +25,7 @@ public class Bubble : MonoBehaviour
         if (collide.gameObject.CompareTag("Player"))
         {
             aud.PlayOneShot(bubbleAud);
-            collide.gameObject.GetComponent<Player>().HealDamage(20);
+            collide.gameObject.GetComponent<Player>().HealDamage(10);
             Destroy(gameObject);
         }
         

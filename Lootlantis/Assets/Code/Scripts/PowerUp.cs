@@ -39,6 +39,8 @@ public class PowerUp : MonoBehaviour
     public float strengthCost;
 
     public float currency;
+    public AudioSource aud;
+    public AudioClip buttonPress;
 
     // Start is called before the first frame update
     void Start()
@@ -99,36 +101,42 @@ public class PowerUp : MonoBehaviour
 
     public void Movement()
     {
+        aud.PlayOneShot(buttonPress);
         PlayerPrefs.SetInt("Movement", (int) (movement + 1));
         PlayerPrefs.SetInt("Currency", (int) (currency - movementCost));
     }
 
     public void AttackSpeed()
     {
+        aud.PlayOneShot(buttonPress);
         PlayerPrefs.SetInt("AttackSpeed", (int) (attackSpeed + 1));
         PlayerPrefs.SetInt("Currency", (int) (currency - attackSpeedCost));
     }
 
     public void Health()
     {
+        aud.PlayOneShot(buttonPress);
         PlayerPrefs.SetInt("Health", (int) (health + 1));
         PlayerPrefs.SetInt("Currency", (int) (currency - healthCost));
     }
 
     public void Gold()
     {
+        aud.PlayOneShot(buttonPress);
         PlayerPrefs.SetInt("Gold", (int) (gold + 1));
         PlayerPrefs.SetInt("Currency", (int) (currency - goldCost));
     }
 
     public void Strength()
     {
+        aud.PlayOneShot(buttonPress);
         PlayerPrefs.SetInt("Strength", (int) (strength + 1));
         PlayerPrefs.SetInt("Currency", (int) (currency - strengthCost));
     }
 
     public void BackMenu()
     {
+        aud.PlayOneShot(buttonPress);
         SceneManager.LoadScene(1);
     }
 
@@ -136,20 +144,20 @@ public class PowerUp : MonoBehaviour
     {
         if(currency < 1000)
         {
-            currencyTxt.text = "Currency\n" + currency;
+            currencyTxt.text = "Currency: " + currency;
         } else if (currency < 1000000)
         {
             int thousands = (int) (currency / 1000);
             int less = (int) (currency % 1000);
             if(less < 10)
             {
-                currencyTxt.text = "Currency\n" + thousands + ",00" + less;
+                currencyTxt.text = "Currency: " + thousands + ",00" + less;
             } else if (less < 100)
             {
-                currencyTxt.text = "Currency\n" + thousands + ",0" + less;
+                currencyTxt.text = "Currency: " + thousands + ",0" + less;
             } else
             {
-                currencyTxt.text = "Currency\n" + thousands + "," + less;
+                currencyTxt.text = "Currency: " + thousands + "," + less;
             }
         } else if (currency < 1000000000)
         {
@@ -157,7 +165,7 @@ public class PowerUp : MonoBehaviour
             int remainder = (int) (currency - (millions * 1000000));
             int thousands = (int) (remainder / 1000);
             remainder = (int) (remainder - (thousands * 1000));
-            string str = "Currency\n" + millions;
+            string str = "Currency: " + millions;
             if(thousands < 10)
             {
                 str = str + ",00" + thousands; 
@@ -182,7 +190,7 @@ public class PowerUp : MonoBehaviour
             currencyTxt.text = str;
         } else
         {
-            currencyTxt.text = "Currency\n" + "999,999,999+";
+            currencyTxt.text = "Currency: " + "999,999,999+";
         }
     }
 

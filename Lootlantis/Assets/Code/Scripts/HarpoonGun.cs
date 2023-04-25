@@ -48,7 +48,7 @@ public class HarpoonGun : Weapon
             Vector3 newPos = new Vector3(target.position.x, target.position.y + yOffset, 0f);
             transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed*Time.deltaTime);
             if (Input.GetKeyDown("space") && canFire){
-                Debug.Log("Fire Pressed");
+                //Debug.Log("Fire Pressed");
                 Fire();
                 canFire = false;
                 StartCoroutine(ResetCooldown());

@@ -37,6 +37,8 @@ public class LevelUp : MonoBehaviour
     public Sprite mineImg;
     public Sprite laserImg;
     public Sprite emptyImg;
+    public AudioSource but;
+    public AudioClip buttonClick;
 
     
 
@@ -167,6 +169,7 @@ public class LevelUp : MonoBehaviour
 
     public void SpawnUpgrade(int var)
     {
+        but.PlayOneShot(buttonClick);
         GameObject weapon = null;
         if(var == 1) {
             string str = choiceOneText.text;
@@ -259,7 +262,7 @@ public class LevelUp : MonoBehaviour
             Instantiate(laser, gameObject.transform.position, transform.rotation);
             weapon = GameObject.Find("Laser(Clone)");
             if (weapon) {
-                Debug.Log("Laser Created");
+                //Debug.Log("Laser Created");
                 weapon.name = "Laser";
             }
         }

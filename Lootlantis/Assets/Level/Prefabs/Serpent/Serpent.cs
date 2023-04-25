@@ -105,7 +105,7 @@ public class Serpent : MonoBehaviour
                 wayPointIndex = (wayPointIndex + 1) % wayPoints.Count;
             }
             serpentBody[0].transform.position = headPosition;
-            Debug.Log(wayPointIndex);
+            //Debug.Log(wayPointIndex);
             switch (wayPointIndex)
             {
                 case 0:
@@ -243,12 +243,12 @@ public class Serpent : MonoBehaviour
         {
             GameObject.Find("Main Camera").GetComponent<WaveControl>().EnemiesLeft--;
             spawnSerpent.EnemyDestroyed();
-            Destroy(gameObject);
             DropItem();
             foreach (Transform wp in wayPoints)
             {
                 Destroy(wp.gameObject);
             }
+            Destroy(gameObject);
         }
     }
     public void DropItem()

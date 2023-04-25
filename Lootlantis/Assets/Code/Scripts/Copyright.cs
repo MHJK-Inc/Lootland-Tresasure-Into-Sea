@@ -7,6 +7,10 @@ public class Copyright : MonoBehaviour
 {
 
     public TMPro.TextMeshProUGUI text;
+
+    public AudioSource aud;
+    public AudioClip buttonPress;
+
     bool upDown;
     byte color;
     float timer;
@@ -25,6 +29,7 @@ public class Copyright : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            aud.PlayOneShot(buttonPress);
             SceneManager.LoadScene(1);
         }
     }

@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
 
     public bool invincible = false;
 
+    public AudioSource but;
+    public AudioClip buttonClick;
+
     //Animator
     Animator animator;
 
@@ -82,6 +85,7 @@ public class Player : MonoBehaviour
             {
                 if(!paused)
                 {
+                    but.PlayOneShot(buttonClick);
                     paused = true;
                     gamePause.pause();
                 }

@@ -7,18 +7,32 @@ using UnityEngine.UI;
 public class WaveClear : MonoBehaviour
 {
 
+    public TMPro.TextMeshProUGUI nextWaveTxt;
+
     public Text text;
 
+    public AudioSource but;
+    public AudioClip buttonClick;
+
     public void Clear() {
-        Time.timeScale = 0;
-        text.text = "Wave Clear\nCurrent Gold: " + PlayerPrefs.GetInt("Currency") + "\n\nYou will keep all earned gold\nif you go to main menu";
-        gameObject.SetActive(true);
+        if(PlayerPrefs.GetInt("Wave") < 6)
+        {
+            Time.timeScale = 0;
+            text.text = "Wave Clear\nCurrent Gold: " + PlayerPrefs.GetInt("Currency") + "\n\nYou will keep all earned gold\nif you go to main menu";
+            gameObject.SetActive(true);
+        } else {
+            Time.timeScale = 0;
+            text.text = "Game Clear\nCurrent Gold: " + PlayerPrefs.GetInt("Currency") + "\n\nYou survived!";
+            gameObject.SetActive(true);
+            nextWaveTxt.text = "Continue";
+        }
 
     }   
 
     
 
     public void NewWave(){
+        but.PlayOneShot(buttonClick);
         Time.timeScale = 1;
         if (PlayerPrefs.GetInt("Wave") == 1)
         {
@@ -47,6 +61,7 @@ public class WaveClear : MonoBehaviour
 
     public void MainMenu()
     {
+        but.PlayOneShot(buttonClick);
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }

@@ -105,7 +105,7 @@ public class BarrierProjectile : MonoBehaviour
 
         if (collider.gameObject.tag == "Enemy Projectile")
         {
-            Debug.Log("Destroy");
+            //Debug.Log("Destroy");
             Destroy(collider.gameObject);
         }
         

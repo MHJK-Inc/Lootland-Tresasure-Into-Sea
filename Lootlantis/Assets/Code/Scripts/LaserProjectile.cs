@@ -104,27 +104,27 @@ public class LaserProjectile : MonoBehaviour
             {
                 collider.gameObject.GetComponent<Enemy>().laserTick = 10;
                 collider.gameObject.GetComponent<Enemy>().laserPower = 0;
-                Debug.Log("Initial Damage");
+                //Debug.Log("Initial Damage");
                 collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
                 
             } else if (collider.gameObject.GetComponent<ShootingEnemy>() != null)
             {
                 collider.gameObject.GetComponent<ShootingEnemy>().laserTick = 10;
                 collider.gameObject.GetComponent<ShootingEnemy>().laserPower = 0;
-                Debug.Log("Initial Damage");
+                //Debug.Log("Initial Damage");
                 collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
             } else if (collider.gameObject.GetComponent<SerpentManager>() != null)
             {
                 collider.gameObject.GetComponent<SerpentManager>().laserTick = 10;
                 collider.gameObject.GetComponent<SerpentManager>().laserPower = 0;
-                Debug.Log("Initial Damage");
+                //Debug.Log("Initial Damage");
                 collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
             }
              else if (collider.gameObject.GetComponent<Boss>() != null)
             {
                 collider.gameObject.GetComponent<Boss>().laserTick = 10;
                 collider.gameObject.GetComponent<Boss>().laserPower = 0;
-                Debug.Log("Initial Damage");
+                //Debug.Log("Initial Damage");
                 collider.gameObject.GetComponent<Boss>().TakeHit(damage);
             }
         }
@@ -147,15 +147,15 @@ public class LaserProjectile : MonoBehaviour
 
                     if(collider.gameObject.GetComponent<Enemy>().laserPower < 3)
                     {
-                        Debug.Log("Small Damage");
+                        //Debug.Log("Small Damage");
                         collider.gameObject.GetComponent<Enemy>().TakeHit(damage);
                     } else if(collider.gameObject.GetComponent<Enemy>().laserPower < 5)
                     {
-                        Debug.Log("Medium Damage");
+                        //Debug.Log("Medium Damage");
                         collider.gameObject.GetComponent<Enemy>().TakeHit(damage * 1.5f);
                     } else
                     {
-                        Debug.Log("Large Damage");
+                        //Debug.Log("Large Damage");
                         collider.gameObject.GetComponent<Enemy>().TakeHit(damage * 2f);
                     }
 
@@ -177,15 +177,15 @@ public class LaserProjectile : MonoBehaviour
 
                     if(collider.gameObject.GetComponent<ShootingEnemy>().laserPower < 3)
                     {
-                        Debug.Log("Small Damage");
+                        //Debug.Log("Small Damage");
                         collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage);
                     } else if(collider.gameObject.GetComponent<ShootingEnemy>().laserPower < 5)
                     {
-                        Debug.Log("Medium Damage");
+                        //Debug.Log("Medium Damage");
                         collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage * 1.5f);
                     } else
                     {
-                        Debug.Log("Large Damage");
+                        //Debug.Log("Large Damage");
                         collider.gameObject.GetComponent<ShootingEnemy>().TakeHit(damage * 2f);
                     }
 
@@ -205,15 +205,15 @@ public class LaserProjectile : MonoBehaviour
 
                     if(collider.gameObject.GetComponent<SerpentManager>().laserPower < 3)
                     {
-                        Debug.Log("Small Damage");
+                        //Debug.Log("Small Damage");
                         collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage);
                     } else if(collider.gameObject.GetComponent<SerpentManager>().laserPower < 5)
                     {
-                        Debug.Log("Medium Damage");
+                        //Debug.Log("Medium Damage");
                         collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage * 1.5f);
                     } else
                     {
-                        Debug.Log("Large Damage");
+                        //Debug.Log("Large Damage");
                         collider.gameObject.GetComponent<SerpentManager>().TakeHit(damage * 2f);
                     }
 
@@ -233,15 +233,15 @@ public class LaserProjectile : MonoBehaviour
 
                     if(collider.gameObject.GetComponent<Boss>().laserPower < 3)
                     {
-                        Debug.Log("Small Damage");
+                        //Debug.Log("Small Damage");
                         collider.gameObject.GetComponent<Boss>().TakeHit(damage);
                     } else if(collider.gameObject.GetComponent<Boss>().laserPower < 5)
                     {
-                        Debug.Log("Medium Damage");
+                        //Debug.Log("Medium Damage");
                         collider.gameObject.GetComponent<Boss>().TakeHit(damage * 1.5f);
                     } else
                     {
-                        Debug.Log("Large Damage");
+                        //Debug.Log("Large Damage");
                         collider.gameObject.GetComponent<Boss>().TakeHit(damage * 2f);
                     }
 

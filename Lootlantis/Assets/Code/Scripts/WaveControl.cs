@@ -101,10 +101,13 @@ public class WaveControl : MonoBehaviour
         {
             TimeLeft = 300;
             EnemiesLeft = 100;
-        } else
+        } else if (PlayerPrefs.GetInt("Wave") == 5)
         {
             TimeLeft = 360;
             EnemiesLeft = 200;
+        } else {
+            TimeLeft = 1000;
+            EnemiesLeft = 1;
         }
 
         
@@ -115,6 +118,8 @@ public class WaveControl : MonoBehaviour
     void Timer()
     {
         if(TimerOn)
+        {
+            if(PlayerPrefs.GetInt("Wave") < 6)
             {
                 if (TimeLeft > 0)
                 {
@@ -127,29 +132,48 @@ public class WaveControl : MonoBehaviour
                         waveClear.Clear();
                     }
                 }
-            }   
+            }  
+        } 
     }
 
     void UpdateTimer(float currentTime)
     {
-        currentTime += 1;
+        if(PlayerPrefs.GetInt("Wave") < 6)
+        {
+            currentTime += 1;
 
-        float minutes = Mathf.FloorToInt(currentTime / 60);
-        float seconds = Mathf.FloorToInt(currentTime % 60);
+            float minutes = Mathf.FloorToInt(currentTime / 60);
+            float seconds = Mathf.FloorToInt(currentTime % 60);
 
-        TimerTxt.text = string.Format("Survive For: {0:00} : {1:00}", minutes, seconds);
+            TimerTxt.text = string.Format("Survive For: {0:00} : {1:00}", minutes, seconds);
+        } else {
+            TimerTxt.text = string.Format("Survive!");
+        }
     }
 
     void UpdateKill()
     {
-        if(EnemiesLeft > 0) {
-            KillTxt.text = string.Format("Enemies Remaining: " + EnemiesLeft);
-        } else
+        if(PlayerPrefs.GetInt("Wave") < 6)
         {
-            if(waveBeat == false){
-                waveBeat = true;
-                levelUp.GetComponent<LevelUp>().Level();
-                waveClear.Clear();
+            if(EnemiesLeft > 0) {
+                KillTxt.text = string.Format("Enemies Remaining: " + EnemiesLeft);
+            } else
+            {
+                if(waveBeat == false){
+                    waveBeat = true;
+                    levelUp.GetComponent<LevelUp>().Level();
+                    waveClear.Clear();
+                }
+            }
+        } else {
+            if(EnemiesLeft > 0) {
+                KillTxt.text = string.Format("Enemies Remaining: " + EnemiesLeft);
+            } else
+            {
+                if(waveBeat == false){
+                    waveBeat = true;
+                    waveClear.Clear();
+                }
             }
         }
     }
@@ -231,58 +255,60 @@ public class WaveControl : MonoBehaviour
 
     void DecideObjectives()
     {
-        int choice = 0;
-        List<GameObject> groupOne = new List<GameObject> {obj1, obj2, obj3, obj4};
-        List<GameObject> groupTwo = new List<GameObject> {obj5, obj6, obj7, obj8};
-        List<GameObject> groupThree = new List<GameObject> {obj9, obj10, obj11, obj12};
-        List<GameObject> groupFour = new List<GameObject> {obj13, obj14, obj15, obj16};
-        choice = Random.Range(0, 3);
-        groupOne[choice].SetActive(true);
-        groupTwo[choice].SetActive(false);
-        groupThree[choice].SetActive(false);
-        groupFour[choice].SetActive(false);
+        if(PlayerPrefs.GetInt("Wave") < 6)
+        {
+            int choice = 0;
+            List<GameObject> groupOne = new List<GameObject> {obj1, obj2, obj3, obj4};
+            List<GameObject> groupTwo = new List<GameObject> {obj5, obj6, obj7, obj8};
+            List<GameObject> groupThree = new List<GameObject> {obj9, obj10, obj11, obj12};
+            List<GameObject> groupFour = new List<GameObject> {obj13, obj14, obj15, obj16};
+            choice = Random.Range(0, 3);
+            groupOne[choice].SetActive(true);
+            groupTwo[choice].SetActive(false);
+            groupThree[choice].SetActive(false);
+            groupFour[choice].SetActive(false);
 
-        groupOne.RemoveAt(choice);
-        groupTwo.RemoveAt(choice);
-        groupThree.RemoveAt(choice);
-        groupFour.RemoveAt(choice);
+            groupOne.RemoveAt(choice);
+            groupTwo.RemoveAt(choice);
+            groupThree.RemoveAt(choice);
+            groupFour.RemoveAt(choice);
 
-        choice = Random.Range(0, 2);
+            choice = Random.Range(0, 2);
 
-        groupOne[choice].SetActive(false);
-        groupTwo[choice].SetActive(true);
-        groupThree[choice].SetActive(false);
-        groupFour[choice].SetActive(false);
+            groupOne[choice].SetActive(false);
+            groupTwo[choice].SetActive(true);
+            groupThree[choice].SetActive(false);
+            groupFour[choice].SetActive(false);
 
-        groupOne.RemoveAt(choice);
-        groupTwo.RemoveAt(choice);
-        groupThree.RemoveAt(choice);
-        groupFour.RemoveAt(choice);
+            groupOne.RemoveAt(choice);
+            groupTwo.RemoveAt(choice);
+            groupThree.RemoveAt(choice);
+            groupFour.RemoveAt(choice);
 
-        choice = Random.Range(0, 1);
+            choice = Random.Range(0, 1);
 
-        groupOne[choice].SetActive(false);
-        groupTwo[choice].SetActive(false);
-        groupThree[choice].SetActive(true);
-        groupFour[choice].SetActive(false);
+            groupOne[choice].SetActive(false);
+            groupTwo[choice].SetActive(false);
+            groupThree[choice].SetActive(true);
+            groupFour[choice].SetActive(false);
 
-        groupOne.RemoveAt(choice);
-        groupTwo.RemoveAt(choice);
-        groupThree.RemoveAt(choice);
-        groupFour.RemoveAt(choice);
+            groupOne.RemoveAt(choice);
+            groupTwo.RemoveAt(choice);
+            groupThree.RemoveAt(choice);
+            groupFour.RemoveAt(choice);
 
-        choice = 0;
+            choice = 0;
 
-        groupOne[choice].SetActive(false);
-        groupTwo[choice].SetActive(false);
-        groupThree[choice].SetActive(false);
-        groupFour[choice].SetActive(true);
+            groupOne[choice].SetActive(false);
+            groupTwo[choice].SetActive(false);
+            groupThree[choice].SetActive(false);
+            groupFour[choice].SetActive(true);
 
-        groupOne.RemoveAt(choice);
-        groupTwo.RemoveAt(choice);
-        groupThree.RemoveAt(choice);
-        groupFour.RemoveAt(choice);
-        
+            groupOne.RemoveAt(choice);
+            groupTwo.RemoveAt(choice);
+            groupThree.RemoveAt(choice);
+            groupFour.RemoveAt(choice);
+        }
 
     }
 }
