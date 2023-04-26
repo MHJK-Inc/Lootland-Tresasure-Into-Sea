@@ -13045,6 +13045,14 @@ PrefabInstance:
       propertyPath: serpentEnemyControl
       value: 
       objectReference: {fileID: 713103557}
+    - target: {fileID: 8367885833395994118, guid: 3a2d98b8200b25243b0e030ff9665d0a, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2750449705015244088}
+    - target: {fileID: 8367885833395994118, guid: 3a2d98b8200b25243b0e030ff9665d0a, type: 3}
+      propertyPath: GameOverScreen
+      value: 
+      objectReference: {fileID: 1927784484}
     - target: {fileID: 8367885833395994119, guid: 3a2d98b8200b25243b0e030ff9665d0a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -13088,6 +13096,18 @@ PrefabInstance:
     - target: {fileID: 8367885833395994119, guid: 3a2d98b8200b25243b0e030ff9665d0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8367885833395994360, guid: 3a2d98b8200b25243b0e030ff9665d0a, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.22745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 8367885833395994360, guid: 3a2d98b8200b25243b0e030ff9665d0a, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.22745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 8367885833395994360, guid: 3a2d98b8200b25243b0e030ff9665d0a, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.22745098
       objectReference: {fileID: 0}
     - target: {fileID: 8367885833395994363, guid: 3a2d98b8200b25243b0e030ff9665d0a, type: 3}
       propertyPath: m_Name
@@ -13313,6 +13333,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2575907925639005095, guid: f277574ac5f5add47849a9996aeefc9c, type: 3}
+      propertyPath: but
+      value: 
+      objectReference: {fileID: 538154717}
+    - target: {fileID: 2575907925639005095, guid: f277574ac5f5add47849a9996aeefc9c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 4976846406468551173}
     - target: {fileID: 8047505847298004251, guid: f277574ac5f5add47849a9996aeefc9c, type: 3}
       propertyPath: m_Name
       value: Pause Menu
@@ -13374,6 +13402,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1332583312686519415, guid: 9b8897ada82b2204ca0922bea0b396a8, type: 3}
+      propertyPath: but
+      value: 
+      objectReference: {fileID: 538154717}
     - target: {fileID: 1332583312686519415, guid: 9b8897ada82b2204ca0922bea0b396a8, type: 3}
       propertyPath: emp1
       value: 
@@ -13545,6 +13577,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6045981745030993493, guid: 038bc9cd600cab64587f3ad3bd2f5e55, type: 3}
+      propertyPath: but
+      value: 
+      objectReference: {fileID: 538154717}
     - target: {fileID: 6045981745706591092, guid: 038bc9cd600cab64587f3ad3bd2f5e55, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -19065,6 +19101,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2673944280321607594, guid: 13530f68ebf958044bf623e26742f7d2, type: 3}
+      propertyPath: but
+      value: 
+      objectReference: {fileID: 538154717}
     - target: {fileID: 3703842969447753962, guid: 13530f68ebf958044bf623e26742f7d2, type: 3}
       propertyPath: m_FontData.m_Font
       value: 

@@ -76,10 +76,10 @@ public class LevelUp : MonoBehaviour
     {
         if (Time.timeScale != 0f)
         {
-            if(Input.GetKeyDown(KeyCode.L))
-            {
-                Level();
-            }
+            // if(Input.GetKeyDown(KeyCode.L))
+            // {
+            //     Level();
+            // }
         }
     }
 

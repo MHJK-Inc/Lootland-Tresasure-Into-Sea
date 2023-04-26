@@ -295,7 +295,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -423,13 +423,11 @@ MonoBehaviour:
 
 
 
+
     Reflect - Gawr Gura - COVER
     Corp.
 
-    Kanalumi - Ninomae Ina''nis, Camellia  - COVER Corp.
-
-    Button Sound
-    - SamuelFrancisJohnson from Pixabay'
+    Kanalumi - Ninomae Ina''nis, Camellia  - COVER Corp.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e06068afc347d4845b55ae061c4d185c, type: 2}
   m_sharedMaterial: {fileID: 1221757416413001840, guid: e06068afc347d4845b55ae061c4d185c, type: 2}
@@ -780,7 +778,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 38dcdc005ac9f1c4382d6fd93e39b323, type: 3}
+  m_audioClip: {fileID: 8300000, guid: edaa321f169856c45a2274c8ea7ed54a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1
