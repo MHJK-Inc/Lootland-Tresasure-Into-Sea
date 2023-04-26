@@ -21,7 +21,7 @@ public class SerpentManager : MonoBehaviour
 
     public HealthBarBehavior healthBar;
     public float hitPoints;
-    public float maxHitPoints = 20;
+    public float maxHitPoints = 10;
     public float laserTick;
     public float laserPower;
 
@@ -53,23 +53,23 @@ public class SerpentManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("Wave") == 1)
         {
-            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnSerpent.totalWeapons * .85f;
+            //maxHitPoints = maxHitPoints * (1 + ((PlayerPrefs.GetInt("Wave") - 1) * 0.2) + ((spawnSerpent.totalWeapons - 1) * 0.2f));
         }
         else if (PlayerPrefs.GetInt("Wave") == 2)
         {
-            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnSerpent.totalWeapons * .85f;
+            //maxHitPoints = maxHitPoints * (1 + ((PlayerPrefs.GetInt("Wave") - 1) * 0.2) + ((spawnSerpent.totalWeapons - 1) * 0.2f));
         }
         else if (PlayerPrefs.GetInt("Wave") == 3)
         {
-            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnSerpent.totalWeapons * .85f;
+            //maxHitPoints = maxHitPoints * (1 + ((PlayerPrefs.GetInt("Wave") - 1) * 0.2) + ((spawnSerpent.totalWeapons - 1) * 0.2f));
         }
         else if (PlayerPrefs.GetInt("Wave") == 4)
         {
-            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnSerpent.totalWeapons * .85f;
+            maxHitPoints = maxHitPoints * (1f + ((PlayerPrefs.GetInt("Wave") - 4f) * 0.2f) + ((spawnSerpent.totalWeapons - 1f) * 0.2f));
         }
         else
         {
-            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnSerpent.totalWeapons * .85f;
+            maxHitPoints = maxHitPoints * (1f + ((PlayerPrefs.GetInt("Wave") - 4f) * 0.4f) + ((spawnSerpent.totalWeapons - 1f) * 0.2f));
         }
     }
 

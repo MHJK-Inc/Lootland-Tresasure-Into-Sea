@@ -39,6 +39,14 @@ public class WaveControl : MonoBehaviour
 
     public bool waveBeat;
 
+    public float quarterTime;
+    public float halfTime;
+    public float threeFourthTime;
+
+    public GameObject enemyControl;
+    public GameObject shootEnemyControl;
+    public GameObject serpentEnemyControl;
+
 
     
 
@@ -80,34 +88,229 @@ public class WaveControl : MonoBehaviour
             if(waveBeat == true) {
                 Time.timeScale = 0f;
             }
+            
         }
+    }
+
+    private void spawnControl()
+    {
+        SpawnEnemy en = enemyControl.GetComponent<SpawnEnemy>();
+        SpawnShootingEnemy sen = shootEnemyControl.GetComponent<SpawnShootingEnemy>();
+        SpawnSerpent serpen = serpentEnemyControl.GetComponent<SpawnSerpent>();
+        int wave = PlayerPrefs.GetInt("Wave");
+        if (wave == 1) {
+            if (TimeLeft > quarterTime) {
+                en.maxEnemyCount = 3;
+                en.spawnInterval = 3;
+
+            } else if (TimeLeft > halfTime) {
+                en.maxEnemyCount = 5;
+                en.spawnInterval = 3;
+
+            } else if (TimeLeft > threeFourthTime) {
+                en.maxEnemyCount = 7;
+                en.spawnInterval = 3;
+
+            } else {
+                en.maxEnemyCount = 10;
+                en.spawnInterval = 3;
+
+            }
+        } else if (wave == 2) {
+            if (TimeLeft > quarterTime) {
+                en.maxEnemyCount = 5;
+                en.spawnInterval = 3;
+                sen.maxEnemyCount = 1;
+                sen.spawnInterval = 5;
+
+            } else if (TimeLeft > halfTime) {
+                en.maxEnemyCount = 7;
+                en.spawnInterval = 3;
+                sen.maxEnemyCount = 2;
+                sen.spawnInterval = 5;
+
+            } else if (TimeLeft > threeFourthTime) {
+                en.maxEnemyCount = 10;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 3;
+                sen.spawnInterval = 5;
+
+            } else {
+                en.maxEnemyCount = 13;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 4;
+                sen.spawnInterval = 5;
+                
+            }
+
+        } else if (wave == 3) { 
+            if (TimeLeft > quarterTime) {
+                en.maxEnemyCount = 10;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 2;
+                sen.spawnInterval = 5;
+
+            } else if (TimeLeft > halfTime) {
+                en.maxEnemyCount = 13;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 3;
+                sen.spawnInterval = 5;
+
+            } else if (TimeLeft > threeFourthTime) {
+                en.maxEnemyCount = 15;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 4;
+                sen.spawnInterval = 5;
+
+            } else {
+                en.maxEnemyCount = 17;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 6;
+                sen.spawnInterval = 5;
+                
+            }
+        } else if (wave == 4) { 
+            if (TimeLeft > quarterTime) {
+                en.maxEnemyCount = 15;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 3;
+                sen.spawnInterval = 5;
+                serpen.maxEnemyCount = 3;
+                serpen.spawnInterval = 1;
+
+            } else if (TimeLeft > halfTime) {
+                en.maxEnemyCount = 17;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 5;
+                sen.spawnInterval = 5;
+                serpen.maxEnemyCount = 5;
+                serpen.spawnInterval = 1;
+
+            } else if (TimeLeft > threeFourthTime) {
+                en.maxEnemyCount = 20;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 7;
+                sen.spawnInterval = 5;
+                serpen.maxEnemyCount = 7;
+                serpen.spawnInterval = 1;
+
+            } else {
+                en.maxEnemyCount = 25;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 10;
+                sen.spawnInterval = 5;
+                serpen.maxEnemyCount = 10;
+                serpen.spawnInterval = 3;
+                
+            }
+        } else if (wave == 5) { 
+            if (TimeLeft > quarterTime) {
+                en.maxEnemyCount = 20;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 6;
+                sen.spawnInterval = 5;
+                serpen.maxEnemyCount = 6;
+                serpen.spawnInterval = 1;
+
+            } else if (TimeLeft > halfTime) {
+                en.maxEnemyCount = 25;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 8;
+                sen.spawnInterval = 5;
+                serpen.maxEnemyCount = 10;
+                serpen.spawnInterval = 1;
+
+            } else if (TimeLeft > threeFourthTime) {
+                en.maxEnemyCount = 30;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 10;
+                sen.spawnInterval = 5;
+                serpen.maxEnemyCount = 12;
+                serpen.spawnInterval = 1;
+
+            } else {
+                en.maxEnemyCount = 35;
+                en.spawnInterval = 5;
+                sen.maxEnemyCount = 12;
+                sen.spawnInterval = 5;
+                serpen.maxEnemyCount = 15;
+                serpen.spawnInterval = 1;
+                
+            }
+        } else {
+
+        }
+
     }
 
     private void SetUp()
     {
+        
         if (PlayerPrefs.GetInt("Wave") == 1)
         {
             TimeLeft = 120;
             EnemiesLeft = 15;
+            quarterTime = 90;
+            halfTime = 60;
+            threeFourthTime = 30;
+            enemyControl.SetActive(true);
+            shootEnemyControl.SetActive(false);
+            serpentEnemyControl.SetActive(false);
+            
         } else if (PlayerPrefs.GetInt("Wave") == 2)
         {
             TimeLeft = 180;
             EnemiesLeft = 30;
+            quarterTime = 135;
+            halfTime = 90;
+            threeFourthTime = 45;
+            enemyControl.SetActive(true);
+            shootEnemyControl.SetActive(true);
+            serpentEnemyControl.SetActive(false);
+
         }else if (PlayerPrefs.GetInt("Wave") == 3)
         {
             TimeLeft = 240;
             EnemiesLeft = 50;
+            quarterTime = 180;
+            halfTime = 120;
+            threeFourthTime = 60;
+            enemyControl.SetActive(true);
+            shootEnemyControl.SetActive(true);
+            serpentEnemyControl.SetActive(false);
+
         }else if (PlayerPrefs.GetInt("Wave") == 4)
         {
             TimeLeft = 300;
             EnemiesLeft = 100;
+            quarterTime = 225;
+            halfTime = 150;
+            threeFourthTime = 75;
+            enemyControl.SetActive(true);
+            shootEnemyControl.SetActive(true);
+            serpentEnemyControl.SetActive(true);
+
         } else if (PlayerPrefs.GetInt("Wave") == 5)
         {
             TimeLeft = 360;
             EnemiesLeft = 200;
+            quarterTime = 270;
+            halfTime = 180;
+            threeFourthTime = 90;
+            enemyControl.SetActive(true);
+            shootEnemyControl.SetActive(true);
+            serpentEnemyControl.SetActive(true);
+
         } else {
             TimeLeft = 1000;
             EnemiesLeft = 1;
+            quarterTime = 750;
+            halfTime = 500;
+            threeFourthTime = 250;
+            //enemyControl.SetActive(false);
+            //shootEnemyControl.SetActive(false);
+            //serpentEnemyControl.SetActive(false);
+
         }
 
         

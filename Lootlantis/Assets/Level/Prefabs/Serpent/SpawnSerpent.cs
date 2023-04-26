@@ -13,8 +13,8 @@ public class SpawnSerpent : MonoBehaviour
     [SerializeField] private float minEnemyDistance = 3f; // The minimum distance between enemies
     [SerializeField] private Vector2 spawnPosition; // The position where the enemies will spawn
     [SerializeField] private bool random; // Whether to spawn enemies at random positions
-    [SerializeField] private float spawnInterval = 1f; // The time between enemy spawns
-    [SerializeField] private int maxEnemyCount = 5; // The maximum number of enemies that can be in the scene
+    [SerializeField] public float spawnInterval = 1f; // The time between enemy spawns
+    [SerializeField] public int maxEnemyCount = 5; // The maximum number of enemies that can be in the scene
     public List<GameObject> enemyList = new List<GameObject>();
     private GameObject serpent;
 
@@ -22,7 +22,7 @@ public class SpawnSerpent : MonoBehaviour
 
     private void Start()
     {
-        totalWeapons = PlayerPrefs.GetInt("SpearGun") + PlayerPrefs.GetInt("Fireball") + PlayerPrefs.GetInt("Barrier");
+        totalWeapons = PlayerPrefs.GetInt("SpearGun") + PlayerPrefs.GetInt("Fireball") + PlayerPrefs.GetInt("Barrier") + PlayerPrefs.GetInt("HarpoonGun") + PlayerPrefs.GetInt("EMP") + PlayerPrefs.GetInt("Mine") + PlayerPrefs.GetInt("Laser");
         StartCoroutine(SpawnEnemies());
     }
 

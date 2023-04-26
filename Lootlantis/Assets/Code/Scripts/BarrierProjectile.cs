@@ -135,21 +135,21 @@ public class BarrierProjectile : MonoBehaviour
 
     void DetermineStats()
     {
-        float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
+        float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.2f);
         if (level == 1)
         {
-            damage = 2f * dmgMod;
+            damage = 1f * dmgMod;
             maxTick = 30f;
             maxLife = 300f;
         } else if (level == 2)
         {
-            damage = 2f * dmgMod;
+            damage = 1f * dmgMod;
             maxTick = 30f;
             maxLife = 300f;
             //transform.localScale = new Vector3(1.5f, 1.5f, 0.4226816f);
         } else if (level == 3)
         {
-            damage = 2f * dmgMod;
+            damage = 1f * dmgMod;
             maxTick = 30f;
             maxLife = 300f;
             //transform.localScale += new Vector3(2f, 2f, 0.4226816f);

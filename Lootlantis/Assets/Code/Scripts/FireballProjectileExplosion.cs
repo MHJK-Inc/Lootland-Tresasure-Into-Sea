@@ -5,12 +5,14 @@ using UnityEngine;
 public class FireballProjectileExplosion : MonoBehaviour
 {
 
-    private float damage = 4f;
+    private float damage = 3f;
     private float life = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
+        float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.2f);
+        damage = damage * dmgMod;
 
 
     }

@@ -94,15 +94,15 @@ public class MineProjectile : MonoBehaviour
         float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
         if (level == 1)
         {
-            damage = 3f * dmgMod;
+            damage = 2f * dmgMod;
             maxLife = 250f;
         } else if (level == 2)
         {
-            damage = 6f * dmgMod;
+            damage = 4f * dmgMod;
             maxLife = 250f;
         } else if (level >= 3)
         {
-            damage = 6f * dmgMod;
+            damage = 4f * dmgMod;
             maxLife = 250f;
         }
     }

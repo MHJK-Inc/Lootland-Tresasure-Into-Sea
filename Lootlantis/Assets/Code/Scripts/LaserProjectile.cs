@@ -255,7 +255,7 @@ public class LaserProjectile : MonoBehaviour
 
     void DetermineStats()
     {
-        float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
+        float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.2f);
         if (level == 1)
         {
             damage = 2f * dmgMod;

@@ -30,7 +30,7 @@ public class ShootingEnemy : MonoBehaviour
     public HealthBarBehavior healthBar;
 
     public float hitPoints;
-    public float maxHitPoints = 5;
+    public float maxHitPoints = 10;
     public float laserTick;
     public float laserPower;
 
@@ -98,23 +98,23 @@ public class ShootingEnemy : MonoBehaviour
 
         if (PlayerPrefs.GetInt("Wave") == 1)
         {
-            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnShootingEnemy.totalWeapons * .85f;
+            //maxHitPoints = maxHitPoints * (1 + ((PlayerPrefs.GetInt("Wave") - 2) * 0.2) + ((spawnShootingEnemy.totalWeapons - 1) * 0.2f));
         }
         else if (PlayerPrefs.GetInt("Wave") == 2)
         {
-            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnShootingEnemy.totalWeapons * .85f;
+            maxHitPoints = maxHitPoints * (1f + ((PlayerPrefs.GetInt("Wave") - 2f) * 0.2f) + ((spawnShootingEnemy.totalWeapons - 1f) * 0.2f));
         }
         else if (PlayerPrefs.GetInt("Wave") == 3)
         {
-            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnShootingEnemy.totalWeapons * .85f;
+            maxHitPoints = maxHitPoints * (1f + ((PlayerPrefs.GetInt("Wave") - 2f) * 0.2f) + ((spawnShootingEnemy.totalWeapons - 1f) * 0.2f));
         }
         else if (PlayerPrefs.GetInt("Wave") == 4)
         {
-            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnShootingEnemy.totalWeapons * .85f;
+            maxHitPoints = maxHitPoints * (1f + ((PlayerPrefs.GetInt("Wave") - 2f) * 0.2f) + ((spawnShootingEnemy.totalWeapons - 1f) * 0.2f));
         }
         else
         {
-            maxHitPoints = maxHitPoints * PlayerPrefs.GetInt("Wave") + spawnShootingEnemy.totalWeapons * .85f;
+            maxHitPoints = maxHitPoints * (1f + ((PlayerPrefs.GetInt("Wave") - 2f) * 0.2f) + ((spawnShootingEnemy.totalWeapons - 1f) * 0.2f));
         }
     }
 

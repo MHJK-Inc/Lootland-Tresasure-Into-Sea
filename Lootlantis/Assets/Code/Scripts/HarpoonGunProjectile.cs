@@ -101,20 +101,20 @@ public class HarpoonGunProjectile : MonoBehaviour
 
     void DetermineStats()
     {
-        float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
+        float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.2f);
         if (level == 1)
         {
-            damage = 8f * dmgMod;
+            damage = 4f * dmgMod;
             speed = 12f;
             pierce = 3f;
         } else if (level == 2)
         {
-            damage = 8f * dmgMod;
+            damage = 4f * dmgMod;
             speed = 12f;
             pierce = 5f;
         } else if (level >= 3)
         {
-            damage = 10f * dmgMod;
+            damage = 6f * dmgMod;
             speed = 15f;
             pierce = 7f;
         }

@@ -87,18 +87,18 @@ public class MineProjectileMini : MonoBehaviour
         float dmgMod = 1f + (PlayerPrefs.GetInt("Strength") * 0.1f);
         if (level == 1)
         {
-            damage = 2f * dmgMod;
+            damage = 1f * dmgMod;
             maxTick = 10f;
             maxLife = 250f;
         } else if (level == 2)
         {
-            damage = 4f * dmgMod;
+            damage = 2f * dmgMod;
             maxTick = 10f;
             maxLife = 300f;
             transform.localScale = new Vector3(0.25f, 0.25f, 0.4226816f);
         } else if (level == 3)
         {
-            damage = 4f * dmgMod;
+            damage = 2f * dmgMod;
             maxTick = 6f;
             maxLife = 300f;
             transform.localScale += new Vector3(0.25f, 0.25f, 0.4226816f);
