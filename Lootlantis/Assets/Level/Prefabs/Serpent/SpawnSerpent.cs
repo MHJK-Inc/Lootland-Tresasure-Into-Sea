@@ -26,8 +26,15 @@ public class SpawnSerpent : MonoBehaviour
         StartCoroutine(SpawnEnemies());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        for (int i = enemyList.Count - 1; i >= 0; i--)
+        {
+            if (enemyList[i] == null)
+            {
+                enemyList.RemoveAt(i);
+            }
+        }
     }
 
     private IEnumerator SpawnEnemies()

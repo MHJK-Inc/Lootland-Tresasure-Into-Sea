@@ -87,6 +87,10 @@ public class Serpent : MonoBehaviour
 
     void SerpentMovement()
     {
+        if (serpentBody == null || serpentBody.Count == 0 || serpentBody[0] == null)
+        {
+            return;
+        }
 
         float distance = Vector3.Distance(serpentBody[0].transform.position, player.transform.position);
         if (distance >= distanceFromPlayer)
@@ -126,7 +130,7 @@ public class Serpent : MonoBehaviour
 
 
 
-        if (serpentBody.Count > 1)
+        if (serpentBody.Count > 1 && serpentBody[0] != null)
         {
             for (int i = 1; i < serpentBody.Count; i++)
             {
@@ -140,6 +144,10 @@ public class Serpent : MonoBehaviour
 
     void MoveCloserToPlayer()
     {
+        if (serpentBody == null || serpentBody.Count == 0 || serpentBody[0] == null)
+        {
+            return;
+        }
         // Move the serpent to a new position near the player
         float distanceToMove = Random.Range(minD, maxD);
         float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
@@ -161,13 +169,6 @@ public class Serpent : MonoBehaviour
         // newPosition = ClampPosition(newPosition);
         headPosition = newPosition;
 
-        // Create a new list of waypoints
-        List<Transform> newWayPoints = new List<Transform>();
-        // Add the current position as the first waypoint
-        //newWayPoints.Add(new GameObject("Waypoint 0", typeof(Transform)).transform);
-        //newWayPoints[0].position = newPosition;
-
-
         // Define the rectangular area
         float rectangleWidth = 2 * waypointRadius;
         float rectangleHeight = 4 * waypointRadius;
@@ -176,24 +177,30 @@ public class Serpent : MonoBehaviour
         Vector3 bottomLeft = new Vector3(newPosition.x - rectangleWidth / 2, newPosition.y - rectangleHeight / 2, 0f);
         Vector3 bottomRight = new Vector3(newPosition.x + rectangleWidth / 2, newPosition.y - rectangleHeight / 2, 0f);
 
-        // Create new waypoints in a rectangular pattern
-        newWayPoints.Add(new GameObject("Waypoint 0", typeof(Transform)).transform);
-        newWayPoints[0].position = topRight;
+        // Remove old waypoints from the list
+        for (int i = wayPoints.Count - 1; i >= 0; i--)
+        {
+            Destroy(wayPoints[i].gameObject);
+            wayPoints.RemoveAt(i);
+        }
 
-        newWayPoints.Add(new GameObject("Waypoint 1", typeof(Transform)).transform);
-        newWayPoints[1].position = topLeft;
+        // Add new waypoints to the list
+        wayPoints.Add(new GameObject("Waypoint 0", typeof(Transform)).transform);
+        wayPoints[0].position = topRight;
 
-        newWayPoints.Add(new GameObject("Waypoint 2", typeof(Transform)).transform);
-        newWayPoints[2].position = bottomLeft;
+        wayPoints.Add(new GameObject("Waypoint 1", typeof(Transform)).transform);
+        wayPoints[1].position = topLeft;
 
-        newWayPoints.Add(new GameObject("Waypoint 3", typeof(Transform)).transform);
-        newWayPoints[3].position = bottomRight;
+        wayPoints.Add(new GameObject("Waypoint 2", typeof(Transform)).transform);
+        wayPoints[2].position = bottomLeft;
 
+        wayPoints.Add(new GameObject("Waypoint 3", typeof(Transform)).transform);
+        wayPoints[3].position = bottomRight;
 
-        // Set the new waypoints and reset the waypoint index
-        wayPoints = newWayPoints;
+        // Reset the waypoint index
         wayPointIndex = 0;
     }
+
 
 
     void CreateBodyParts()
@@ -244,6 +251,12 @@ public class Serpent : MonoBehaviour
             GameObject.Find("Main Camera").GetComponent<WaveControl>().EnemiesLeft--;
             spawnSerpent.EnemyDestroyed();
             DropItem();
+
+            // Destroy the serpentBody game objects
+            foreach (GameObject bodyPart in serpentBody)
+            {
+                Destroy(bodyPart);
+            }
             foreach (Transform wp in wayPoints)
             {
                 Destroy(wp.gameObject);

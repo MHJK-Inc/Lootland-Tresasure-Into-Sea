@@ -18753,7 +18753,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029f990741c0013469f0a6d032265085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextWaveTxt: {fileID: 0}
   text: {fileID: 1416726662}
+  but: {fileID: 0}
+  buttonClick: {fileID: 0}
 --- !u!1001 &1437492298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18928,11 +18931,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4566226453936051446, guid: fbc3edd096a284adbadf89f21e853b22, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4566226453936051446, guid: fbc3edd096a284adbadf89f21e853b22, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.5
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4566226453936051446, guid: fbc3edd096a284adbadf89f21e853b22, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18989,6 +18992,10 @@ PrefabInstance:
     - target: {fileID: 4566226453936051448, guid: fbc3edd096a284adbadf89f21e853b22, type: 3}
       propertyPath: poisonAttackRange
       value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566226453936051448, guid: fbc3edd096a284adbadf89f21e853b22, type: 3}
+      propertyPath: numberOfShootingAttack
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4566226453936051449, guid: fbc3edd096a284adbadf89f21e853b22, type: 3}
       propertyPath: m_Name

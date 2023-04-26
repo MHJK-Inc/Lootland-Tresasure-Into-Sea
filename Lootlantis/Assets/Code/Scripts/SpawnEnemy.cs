@@ -30,6 +30,7 @@ public class SpawnEnemy : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         while (true)
         {
+
             yield return new WaitForSeconds(spawnInterval); // Wait for the spawn interval
 
             if (enemyCount < maxEnemyCount) // Check if we haven't reached the maximum enemy count

@@ -29,6 +29,11 @@ public class Boss : MonoBehaviour
     public AudioClip enemyHit;
     public float laserTick;
     public float laserPower;
+    public Vector2 targetPosition;
+    public float targetRotation;
+
+
+    public int numberOfShootingAttack = 5;
   
 
     // Start is called before the first frame update
@@ -46,33 +51,56 @@ public class Boss : MonoBehaviour
     {
         if (!attacking && !returning)
         {
-            // Check if the player is within range of the boss
-            if (IsPlayerInBiteRange())
+            if (numberOfShootingAttack > 0) // Only attack if there are remaining shooting attacks
             {
-                // Save the player's current position as the last known player position
-                lastKnownPlayerPosition = player.transform.position;
-
-                // Set the attack timer and start the attack behavior
-                attackTimer = Time.time + attackDelay;
-                attacking = true;
-                StartCoroutine(BiteAttack());
-            }
-            // Check if the player is within range of the boss
-            if (IsPlayerInShootingRange())
-            {
-                // Save the player's current position as the last known player position
-                lastKnownPlayerPosition = player.transform.position;
-
-                // Set the attack timer and start the attack behavior
-                attackTimer = Time.time + attackDelay;
-                attacking = true;
-                if (Random.Range(0, 2) == 0)
+                // Check if the player is within range of the boss
+                if (IsPlayerInBiteRange())
                 {
-                    StartCoroutine(ShootAttack());
+                    // Save the player's current position as the last known player position
+                    lastKnownPlayerPosition = player.transform.position;
+
+                    // Set the attack timer and start the attack behavior
+                    attackTimer = Time.time + attackDelay;
+                    attacking = true;
+                    StartCoroutine(BiteAttack());
                 }
-                else
+                // Check if the player is within range of the boss
+                else if (IsPlayerInShootingRange())
                 {
-                    StartCoroutine(MortarAttack());
+                    // Save the player's current position as the last known player position
+                    lastKnownPlayerPosition = player.transform.position;
+
+                    // Set the attack timer and start the attack behavior
+                    attackTimer = Time.time + attackDelay;
+                    attacking = true;
+                    if (Random.Range(0, 2) == 0)
+                    {
+                        StartCoroutine(ShootAttack());
+                    }
+                    else
+                    {
+                        StartCoroutine(MortarAttack());
+                    }
+                }
+            }
+            else // Move the boss's head diagonally if no shooting attacks are remaining
+            {
+        
+                 
+                // Move towards the target position
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition, (moveSpeed * 5f) * Time.deltaTime);
+
+                // Rotate towards the target rotation
+                Quaternion targetQuaternion = Quaternion.Euler(0f, 0f, targetRotation);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetQuaternion, 100f * Time.deltaTime);
+                Vector2 position2D = new Vector2(transform.position.x, transform.position.y);
+                // Check if the boss has reached the target position
+                if (position2D == targetPosition)
+                {
+                  transform.position = new Vector3(0f, 23f, 0f);
+                  transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                  numberOfShootingAttack = 5; // Reset the shooting attacks counter
+                        
                 }
             }
         }
@@ -85,7 +113,6 @@ public class Boss : MonoBehaviour
             if (Vector2.Distance(transform.position, originalPosition) < 0.1f)
             {
                 // Reset the timers and flags
-                attacking = false;
                 returning = false;
             }
         }
@@ -115,6 +142,12 @@ public class Boss : MonoBehaviour
             numShots++;
             yield return new WaitForSeconds(1f); // Add a delay between each shot
         }
+        numberOfShootingAttack--;
+
+        if (numberOfShootingAttack == 0)
+        {
+            chooseSide();
+        }
 
         // Set the return timer and start returning to the original position
         returnTimer = Time.time + returnDelay;
@@ -138,13 +171,31 @@ public class Boss : MonoBehaviour
             Instantiate(mortarProjectile, mortarSpawnPosition, Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
         }
+        numberOfShootingAttack--;
 
+        if (numberOfShootingAttack == 0)
+        {
+            chooseSide();
+        }
         // Set the return timer and start returning to the original position
         returnTimer = Time.time + returnDelay;
         attacking = false;
         returning = true;
     }
 
+    private void chooseSide()
+    {
+        if (Random.Range(0, 2) == 0)
+        {
+            targetPosition = new Vector2(-35f, -23f);
+            targetRotation = -37.509f;
+        }
+        else
+        {
+            targetPosition = new Vector2(36f, -19f);
+            targetRotation = 41f;
+        }
+    }
 
     private bool IsPlayerInBiteRange()
     {
