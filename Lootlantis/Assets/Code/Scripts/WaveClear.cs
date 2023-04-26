@@ -34,6 +34,7 @@ public class WaveClear : MonoBehaviour
     
 
     public void NewWave(){
+        Debug.Log(PlayerPrefs.GetInt("Wave"));
         but.PlayOneShot(buttonClick);
         Time.timeScale = 1;
         if (PlayerPrefs.GetInt("Wave") == 1)
