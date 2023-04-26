@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     public AudioSource but;
     public AudioClip buttonClick;
 
+    public bool isBossWave = false;
+
     //Animator
     Animator animator;
 
@@ -60,6 +62,12 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
 
         inventory = GetInventory();
+
+        if(PlayerPrefs.GetInt("Wave") == 6) {
+            isBossWave = true;
+        } else {
+            isBossWave = false;
+        }
     }
 
     // Update is called once per frame
@@ -69,11 +77,6 @@ public class Player : MonoBehaviour
         if (Time.timeScale != 0f)
         {
             ProcessInputs();
-
-            if(Input.GetKeyDown(KeyCode.N))
-            {
-                TakeDamage(20);
-            }
 
             if(Input.GetKeyDown(KeyCode.E))
             {
@@ -115,9 +118,11 @@ public class Player : MonoBehaviour
             if(damageTimer >= 1f){
                 damageTimer--;
             } else {
-                currentHealth = currentHealth - 2; 
+                if (!isBossWave) {
+                    currentHealth = currentHealth - 2; 
 
-                healthBar.SetHealth(currentHealth);
+                    healthBar.SetHealth(currentHealth);
+                }
 
                 if (currentHealth <= 0)
                 {

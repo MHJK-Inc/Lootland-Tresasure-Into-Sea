@@ -30,7 +30,7 @@ public class BarrierProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level = GameObject.Find("Barrier").GetComponent<Barrier>().level;
+        level = PlayerPrefs.GetInt("Barrier");
         DetermineStats();
 
         player = GameObject.Find("Player");

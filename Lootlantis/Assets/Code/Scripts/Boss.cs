@@ -14,7 +14,7 @@ public class Boss : MonoBehaviour
     public GameObject projectile;
     public GameObject mortarProjectile;
     public float hitPoints;
-    public float maxHitPoints = 5;
+    public float maxHitPoints = 1000;
     public HealthBarBehavior healthBar;
     private float attackTimer;
     private float returnTimer;
@@ -27,6 +27,7 @@ public class Boss : MonoBehaviour
     public AudioSource aud;
     public AudioClip audPlayerHit;
     public AudioClip enemyHit;
+    public AudioClip spray;
     public float laserTick;
     public float laserPower;
     public Vector2 targetPosition;
@@ -138,6 +139,7 @@ public class Boss : MonoBehaviour
         int numShots = 0;
         while (numShots < 3)
         {
+            aud.PlayOneShot(spray);
             Instantiate(projectile, originalPosition, Quaternion.identity);
             numShots++;
             yield return new WaitForSeconds(1f); // Add a delay between each shot

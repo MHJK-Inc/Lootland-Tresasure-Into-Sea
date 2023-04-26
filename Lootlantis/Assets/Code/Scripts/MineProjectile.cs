@@ -31,7 +31,7 @@ public class MineProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level = GameObject.Find("Mine").GetComponent<Mine>().level;
+        level = PlayerPrefs.GetInt("Mine");
         DetermineStats();
 
         player = GameObject.Find("Player");

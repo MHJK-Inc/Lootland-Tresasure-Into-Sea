@@ -37,7 +37,7 @@ public class EMP : Weapon
             {
                 aud.PlayOneShot(fireAud);
                 Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
-                if (level == 1) {
+                if (PlayerPrefs.GetInt("EMP") == 1) {
                     fireRate = 400f;
                 } else {
                     fireRate = 300f;

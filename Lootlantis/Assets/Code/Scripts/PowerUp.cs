@@ -65,21 +65,21 @@ public class PowerUp : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.M))
         {
-            PlayerPrefs.SetInt("Currency", (int) (PlayerPrefs.GetInt("Currency") + 10000));
+            //PlayerPrefs.SetInt("Currency", (int) (PlayerPrefs.GetInt("Currency") + 10000));
         }
 
         if(Input.GetKeyDown(KeyCode.N))
         {
-            PlayerPrefs.SetInt("Currency", 0);
+            //PlayerPrefs.SetInt("Currency", 0);
         }
 
         if(Input.GetKeyDown(KeyCode.R))
         {
-            PlayerPrefs.SetInt("Movement", 0);
-            PlayerPrefs.SetInt("AttackSpeed", 0);
-            PlayerPrefs.SetInt("Health", 0);
-            PlayerPrefs.SetInt("Gold", 0);
-            PlayerPrefs.SetInt("Strength", 0);
+            //PlayerPrefs.SetInt("Movement", 0);
+            //PlayerPrefs.SetInt("AttackSpeed", 0);
+            //PlayerPrefs.SetInt("Health", 0);
+            //PlayerPrefs.SetInt("Gold", 0);
+            //PlayerPrefs.SetInt("Strength", 0);
         }
             
 

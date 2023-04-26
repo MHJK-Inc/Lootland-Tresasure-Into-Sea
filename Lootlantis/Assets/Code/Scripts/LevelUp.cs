@@ -395,7 +395,7 @@ public class LevelUp : MonoBehaviour
         } else if(var == 2) {
             string str = choiceTwoText.text;
             weapon = GameObject.Find(str);
-            Debug.Log(weapon);
+            //Debug.Log(weapon);
             if (weapon == null)
             {
                 if(PlayerPrefs.GetInt("Inventory1") == 0) {
@@ -415,10 +415,10 @@ public class LevelUp : MonoBehaviour
                 PlayerPrefs.SetInt(str, (PlayerPrefs.GetInt(str) + 1));
                 weapon.GetComponent<Weapon>().level++;
             }
-        }  else if(var == 3) {
+        } else if(var == 3) {
             string str = choiceThreeText.text;
             weapon = GameObject.Find(str);
-            Debug.Log(weapon);
+            //Debug.Log(weapon);
             if (weapon == null)
             {
                 if(PlayerPrefs.GetInt("Inventory1") == 0) {

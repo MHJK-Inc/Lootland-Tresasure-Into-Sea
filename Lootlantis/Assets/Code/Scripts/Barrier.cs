@@ -37,9 +37,9 @@ public class Barrier : Weapon
             {
                 aud.PlayOneShot(fireAud);
                 GameObject p1 = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
-                if (level == 2) {
+                if (PlayerPrefs.GetInt("Barrier") == 2) {
                     p1.transform.localScale = new Vector3(1.5f, 1.5f, 0.4226816f);
-                } else if (level == 3) {
+                } else if (PlayerPrefs.GetInt("Barrier") == 3) {
                     p1.transform.localScale = new Vector3(1.5f, 1.5f, 0.4226816f);
                     GameObject p2 = Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                     //p2.GetComponent<BarrierProjectile>().secondProj = true;
@@ -48,7 +48,7 @@ public class Barrier : Weapon
                 }
 
 
-                if (level >= 2) {
+                if (PlayerPrefs.GetInt("Barrier") >= 2) {
                     fireRate = 300f;
                 } else {
                     fireRate = 400f;

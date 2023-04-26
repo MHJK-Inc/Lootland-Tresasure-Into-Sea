@@ -35,14 +35,6 @@ public class HarpoonGun : Weapon
     {
         if (Time.timeScale != 0f)
         {
-            if(Input.GetKeyDown(KeyCode.Comma) && level > 1)
-            {
-                level--;
-            }
-
-            if(Input.GetKeyDown(KeyCode.Period) && level < 3) {
-                level++;
-            }
 
             // Tracks location of target (Set to player game object) and follows it on update
             Vector3 newPos = new Vector3(target.position.x, target.position.y + yOffset, 0f);
@@ -58,7 +50,7 @@ public class HarpoonGun : Weapon
 
     IEnumerator ResetCooldown()
     {
-        if(level == 3) {
+        if(PlayerPrefs.GetInt("HarpoonGun") == 3) {
             yield return new WaitForSeconds(1.5f);
         } else {
             yield return new WaitForSeconds(3f);

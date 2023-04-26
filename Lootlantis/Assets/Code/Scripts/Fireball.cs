@@ -39,9 +39,9 @@ public class Fireball : Weapon
             {
                 aud.PlayOneShot(fireAud);
                 Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
-                if (level == 1) {
+                if (PlayerPrefs.GetInt("Fireball") == 1) {
                     fireRate = 50f;
-                } else if (level >= 2) {
+                } else if (PlayerPrefs.GetInt("Fireball") >= 2) {
                     fireRate = 35f;
                 }
             }

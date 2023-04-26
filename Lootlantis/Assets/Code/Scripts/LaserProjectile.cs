@@ -45,7 +45,7 @@ public class LaserProjectile : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = one;
 
-        level = GameObject.Find("Laser").GetComponent<Laser>().level;
+        level = PlayerPrefs.GetInt("Laser");
         DetermineStats();
         life = maxLife;
 

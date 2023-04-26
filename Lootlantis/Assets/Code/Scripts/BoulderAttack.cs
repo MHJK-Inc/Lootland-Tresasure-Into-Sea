@@ -43,7 +43,8 @@ public class BoulderAttack : MonoBehaviour
     }
 
     public void BoulderDestroy() {
-        aud.PlayOneShot(boulderBreak);
+        AudioSource bo = GameObject.Find("Boss Head").GetComponent<AudioSource>();
+        bo.PlayOneShot(boulderBreak);
         animator.SetTrigger("BoulderDestroy");
     }
 

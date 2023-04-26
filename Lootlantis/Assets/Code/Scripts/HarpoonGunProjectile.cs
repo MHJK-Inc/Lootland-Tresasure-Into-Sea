@@ -19,7 +19,7 @@ public class HarpoonGunProjectile : MonoBehaviour
         life = 200f;
 
 
-        level = GameObject.Find("HarpoonGun").GetComponent<HarpoonGun>().level;
+        level = PlayerPrefs.GetInt("HarpoonGun");
         DetermineStats();
 
         // Finds player's direction they're facing (See player script)

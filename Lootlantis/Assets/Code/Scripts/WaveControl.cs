@@ -87,7 +87,9 @@ public class WaveControl : MonoBehaviour
         slider.maxValue = player.GetComponent<Player>().maxHealth;
         slider.value = player.GetComponent<Player>().maxHealth;
         SpawnWeapons();
+        LevelWeapons();
         setImage();
+        spawnControl();
         
         
 
@@ -485,9 +487,9 @@ public class WaveControl : MonoBehaviour
             quarterTime = 750;
             halfTime = 500;
             threeFourthTime = 250;
-            //enemyControl.SetActive(false);
-            //shootEnemyControl.SetActive(false);
-            //serpentEnemyControl.SetActive(false);
+            enemyControl.SetActive(false);
+            shootEnemyControl.SetActive(false);
+            serpentEnemyControl.SetActive(false);
 
         }
 
@@ -568,18 +570,58 @@ public class WaveControl : MonoBehaviour
         int harpoonGun = PlayerPrefs.GetInt("HarpoonGun");
         int mine = PlayerPrefs.GetInt("Mine");
         int laser = PlayerPrefs.GetInt("Laser");
+
+        if(fireBall > 0)
+        {
+            levelUp.GetComponent<LevelUp>().AddWeapon("Fireball");
+        }
+
+        if(emp > 0)
+        {
+            levelUp.GetComponent<LevelUp>().AddWeapon("EMP");
+        }
+
+        if(barrier > 0)
+        {
+            levelUp.GetComponent<LevelUp>().AddWeapon("Barrier");
+        }
+
+        if(harpoonGun > 0)
+        {
+            levelUp.GetComponent<LevelUp>().AddWeapon("HarpoonGun");
+        }
+
+        if(mine > 0)
+        {
+            levelUp.GetComponent<LevelUp>().AddWeapon("Mine");
+        }
+
+        if(laser > 0)
+        {
+            levelUp.GetComponent<LevelUp>().AddWeapon("Laser");
+        }
+
+        
+    }
+
+    void LevelWeapons() {
+        int spearGun = PlayerPrefs.GetInt("SpearGun");
+        int fireBall = PlayerPrefs.GetInt("Fireball");
+        int emp = PlayerPrefs.GetInt("EMP");
+        int barrier = PlayerPrefs.GetInt("Barrier");
+        int harpoonGun = PlayerPrefs.GetInt("HarpoonGun");
+        int mine = PlayerPrefs.GetInt("Mine");
+        int laser = PlayerPrefs.GetInt("Laser");
         if(spearGun > 0)
         {
             for(int i = 0; i < spearGun - 1; i++)
             {
                 GameObject.Find("SpearGun").GetComponent<SpearGun>().level = spearGun;
             }
-
         }
 
         if(fireBall > 0)
         {
-            levelUp.GetComponent<LevelUp>().AddWeapon("Fireball");
             for(int i = 0; i < fireBall- 1; i++)
             {
                 GameObject.Find("Fireball").GetComponent<Fireball>().level++;
@@ -588,7 +630,6 @@ public class WaveControl : MonoBehaviour
 
         if(emp > 0)
         {
-            levelUp.GetComponent<LevelUp>().AddWeapon("EMP");
             for(int i = 0; i < emp - 1; i++)
             {
                 GameObject.Find("EMP").GetComponent<EMP>().level++;
@@ -597,7 +638,6 @@ public class WaveControl : MonoBehaviour
 
         if(barrier > 0)
         {
-            levelUp.GetComponent<LevelUp>().AddWeapon("Barrier");
             for(int i = 0; i < barrier - 1; i++)
             {
                 GameObject.Find("Barrier").GetComponent<Barrier>().level++;
@@ -606,7 +646,6 @@ public class WaveControl : MonoBehaviour
 
         if(harpoonGun > 0)
         {
-            levelUp.GetComponent<LevelUp>().AddWeapon("HarpoonGun");
             for(int i = 0; i < harpoonGun - 1; i++)
             {
                 GameObject.Find("HarpoonGun").GetComponent<HarpoonGun>().level++;
@@ -615,7 +654,6 @@ public class WaveControl : MonoBehaviour
 
         if(mine > 0)
         {
-            levelUp.GetComponent<LevelUp>().AddWeapon("Mine");
             for(int i = 0; i < mine - 1; i++)
             {
                 GameObject.Find("Mine").GetComponent<Mine>().level++;
@@ -624,14 +662,11 @@ public class WaveControl : MonoBehaviour
 
         if(laser > 0)
         {
-            levelUp.GetComponent<LevelUp>().AddWeapon("Laser");
             for(int i = 0; i < laser - 1; i++)
             {
                 GameObject.Find("Laser").GetComponent<Laser>().level++;
             }
         }
-
-        
     }
 
     void DecideObjectives()

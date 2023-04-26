@@ -17,7 +17,7 @@ public class GameOver : MonoBehaviour
     public void restart(){
         but.PlayOneShot(buttonClick);
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(2);
 
         
     }

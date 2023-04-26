@@ -18,21 +18,24 @@ EditorBuildSettings:
     path: Assets/Scenes/WaveOneV2.unity
     guid: 62b559816e066437fa3575fc42f100d9
   - enabled: 1
-    path: Assets/Scenes/WaveTwo.unity
-    guid: 86a9028af997eb34c9d085a226249ba5
+    path: Assets/Scenes/WaveTwoV2.unity
+    guid: b4ef04128c3c18b42b78b4febfbd2ce4
   - enabled: 1
-    path: Assets/Scenes/WaveThree.unity
-    guid: 8f21f4dfa1167e84d8d057cf7e4a72a2
+    path: Assets/Scenes/WaveThreeV2.unity
+    guid: 404c630120a5aa24785ed1e06f190cd9
   - enabled: 1
-    path: Assets/Scenes/WaveFour.unity
-    guid: b1e1d81d8935971438eb064ca5431483
+    path: Assets/Scenes/WaveFourV2.unity
+    guid: 1ef01567b019a2e4a93034b83df3c5f0
   - enabled: 1
-    path: Assets/Scenes/WaveFive.unity
-    guid: 0ae9a9b85bd41fb4984c7fe920f0c0b5
+    path: Assets/Scenes/WaveFiveV2.unity
+    guid: 2f63816e6fa807446a10b7745a1515f4
   - enabled: 1
-    path: Assets/Scenes/DemoComplete.unity
-    guid: bc7fad82b53c4a64ea19937acd5835fd
+    path: Assets/Scenes/BossMap.unity
+    guid: 21e3c2994f0374d63a35964c8e1de352
   - enabled: 1
     path: Assets/Scenes/PowerUpScreen.unity
     guid: af1a8f78a3bc5434da010adb9642277d
+  - enabled: 1
+    path: Assets/Scenes/DemoComplete.unity
+    guid: bc7fad82b53c4a64ea19937acd5835fd
   m_configObjects: {}

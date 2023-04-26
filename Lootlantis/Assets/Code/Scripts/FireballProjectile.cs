@@ -30,7 +30,7 @@ public class FireballProjectile : MonoBehaviour
     {
         life = 200f;
         rotationSpeed = 30f;
-        level = GameObject.Find("Fireball").GetComponent<Fireball>().level;
+        level = PlayerPrefs.GetInt("Fireball");
         DetermineStats();
         enemy = FindClosestEnemy();
     }

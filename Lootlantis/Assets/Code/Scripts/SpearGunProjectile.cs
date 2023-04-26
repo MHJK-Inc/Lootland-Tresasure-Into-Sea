@@ -19,7 +19,7 @@ public class SpearGunProjectile : MonoBehaviour
         life = 200f;
 
 
-        level = GameObject.Find("SpearGun").GetComponent<SpearGun>().level;
+        level = PlayerPrefs.GetInt("SpearGun");
         DetermineStats();
 
         //Direction of Bullet (numbers refer to player script)

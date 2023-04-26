@@ -17,10 +17,12 @@ public class WaveClear : MonoBehaviour
     public void Clear() {
         if(PlayerPrefs.GetInt("Wave") < 6)
         {
+            PlayerPrefs.SetInt("Currency", PlayerPrefs.GetInt("Currency") + 100);
             Time.timeScale = 0;
             text.text = "Wave Clear\nCurrent Gold: " + PlayerPrefs.GetInt("Currency") + "\n\nYou will keep all earned gold\nif you go to main menu";
             gameObject.SetActive(true);
         } else {
+            PlayerPrefs.SetInt("Currency", PlayerPrefs.GetInt("Currency") + 2000);
             Time.timeScale = 0;
             text.text = "Game Clear\nCurrent Gold: " + PlayerPrefs.GetInt("Currency") + "\n\nYou survived!";
             gameObject.SetActive(true);

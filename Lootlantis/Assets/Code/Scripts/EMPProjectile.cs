@@ -28,7 +28,7 @@ public class EMPProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level = GameObject.Find("EMP").GetComponent<EMP>().level;
+        level = PlayerPrefs.GetInt("EMP");
         DetermineStats();
 
         player = GameObject.Find("Player");

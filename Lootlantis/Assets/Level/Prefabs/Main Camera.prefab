@@ -1,5 +1,182 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &609733044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 609733045}
+  - component: {fileID: 609733048}
+  - component: {fileID: 609733047}
+  - component: {fileID: 609733046}
+  m_Layer: 5
+  m_Name: waterfilter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &609733045
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609733044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1988283464}
+  m_Father: {fileID: 8367885833395994119}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!223 &609733048
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609733044}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: -1
+  m_TargetDisplay: 0
+--- !u!114 &609733047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609733044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!114 &609733046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609733044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!1 &1988283463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988283464}
+  - component: {fileID: 1988283466}
+  - component: {fileID: 1988283465}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1988283464
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988283463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 609733045}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 280.9549, y: 96.82669}
+  m_SizeDelta: {x: 3325.317, y: 1720.252}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1988283466
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988283463}
+  m_CullTransparentMesh: 1
+--- !u!114 &1988283465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988283463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.7647071, b: 1, a: 0.22745098}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8367885833395994363
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +211,7 @@ Transform:
   m_Children:
   - {fileID: 8367885834798282962}
   - {fileID: 8367885834001154744}
+  - {fileID: 609733045}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -181,7 +359,7 @@ GameObject:
   - component: {fileID: 8856843777735244917}
   - component: {fileID: 8856843777735244938}
   m_Layer: 5
-  m_Name: Fireball
+  m_Name: FireballImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,7 +618,7 @@ GameObject:
   - component: {fileID: 8856843777827295065}
   - component: {fileID: 8856843777827295070}
   m_Layer: 5
-  m_Name: Laser
+  m_Name: LaserImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -516,7 +694,7 @@ GameObject:
   - component: {fileID: 8856843777831630548}
   - component: {fileID: 8856843777831630549}
   m_Layer: 5
-  m_Name: Harpoon
+  m_Name: HarpoonImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -592,7 +770,7 @@ GameObject:
   - component: {fileID: 8856843777914615749}
   - component: {fileID: 8856843777914615770}
   m_Layer: 5
-  m_Name: Barrier
+  m_Name: BarrierImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -668,7 +846,7 @@ GameObject:
   - component: {fileID: 8856843777922451619}
   - component: {fileID: 8856843777922451616}
   m_Layer: 5
-  m_Name: Barrier
+  m_Name: BarrierImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,7 +922,7 @@ GameObject:
   - component: {fileID: 8856843778058689204}
   - component: {fileID: 8856843778058689205}
   m_Layer: 5
-  m_Name: EMP
+  m_Name: EMPImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,7 +998,7 @@ GameObject:
   - component: {fileID: 8856843778082981983}
   - component: {fileID: 8856843778082981980}
   m_Layer: 5
-  m_Name: Fireball
+  m_Name: FireballImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -896,7 +1074,7 @@ GameObject:
   - component: {fileID: 8856843778208241158}
   - component: {fileID: 8856843778208241159}
   m_Layer: 5
-  m_Name: EMP
+  m_Name: EMPImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -972,7 +1150,7 @@ GameObject:
   - component: {fileID: 8856843778268095678}
   - component: {fileID: 8856843778268095679}
   m_Layer: 5
-  m_Name: Laser
+  m_Name: LaserImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1155,7 +1333,7 @@ GameObject:
   - component: {fileID: 8856843778303336031}
   - component: {fileID: 8856843778303336028}
   m_Layer: 5
-  m_Name: Mine
+  m_Name: MineImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1231,7 +1409,7 @@ GameObject:
   - component: {fileID: 8856843778309227983}
   - component: {fileID: 8856843778309227980}
   m_Layer: 5
-  m_Name: Barrier
+  m_Name: BarrierImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1307,7 +1485,7 @@ GameObject:
   - component: {fileID: 8856843778349056284}
   - component: {fileID: 8856843778349056285}
   m_Layer: 5
-  m_Name: Mine
+  m_Name: MineImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1459,7 +1637,7 @@ GameObject:
   - component: {fileID: 8856843778718612725}
   - component: {fileID: 8856843778718612234}
   m_Layer: 5
-  m_Name: Fireball
+  m_Name: FireballImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1746,7 +1924,7 @@ GameObject:
   - component: {fileID: 8856843778985123586}
   - component: {fileID: 8856843778985123587}
   m_Layer: 5
-  m_Name: Harpoon
+  m_Name: HarpoonImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1845,8 +2023,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -249.9, y: 205.6}
-  m_SizeDelta: {x: 409.9375, y: 29.6755}
+  m_AnchoredPosition: {x: -394.48788, y: 210}
+  m_SizeDelta: {x: 219.5897, y: 29.1715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8856843779100043906
 CanvasRenderer:
@@ -1876,7 +2054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Power Ups
+  m_text: Weapons
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e06068afc347d4845b55ae061c4d185c, type: 2}
   m_sharedMaterial: {fileID: 1221757416413001840, guid: e06068afc347d4845b55ae061c4d185c, type: 2}
@@ -1903,15 +2081,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1939,7 +2117,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.0005187988, y: 0, z: 1.2125244, w: 0}
+  m_margin: {x: 0.0005187988, y: 0, z: -0.024780273, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1957,7 +2135,7 @@ GameObject:
   - component: {fileID: 8856843779238931143}
   - component: {fileID: 8856843779238931140}
   m_Layer: 5
-  m_Name: Laser
+  m_Name: LaserImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2033,7 +2211,7 @@ GameObject:
   - component: {fileID: 8856843779252037162}
   - component: {fileID: 8856843779252037163}
   m_Layer: 5
-  m_Name: EMP
+  m_Name: EMPImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2292,7 +2470,7 @@ GameObject:
   - component: {fileID: 8856843779537398384}
   - component: {fileID: 8856843779537398385}
   m_Layer: 5
-  m_Name: Harpoon
+  m_Name: HarpoonImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2368,7 +2546,7 @@ GameObject:
   - component: {fileID: 8856843779651940657}
   - component: {fileID: 8856843779651940662}
   m_Layer: 5
-  m_Name: Mine
+  m_Name: MineImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

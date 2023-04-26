@@ -37,7 +37,7 @@ public class Laser : Weapon
             {
                 aud.PlayOneShot(fireAud);
                 Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
-                if (level >= 2) {
+                if (PlayerPrefs.GetInt("Laser") >= 2) {
                     fireRate = 300f;
                 } else {
                     fireRate = 400f;
