@@ -318,7 +318,7 @@ MonoBehaviour:
   maxHitPoints: 5
   aud: {fileID: 8945167245218469730}
   audPlayerHit: {fileID: 8300000, guid: 8eb76c0615318524e89d1c912d6f32a2, type: 3}
-  enemyHit: {fileID: 8300000, guid: 24e9c8479814fa948b7b980218827b4e, type: 3}
+  enemyHit: {fileID: 8300000, guid: dc09fb2f5c23db54e80f317f1cffb62f, type: 3}
   laserTick: 0
   laserPower: 0
 --- !u!95 &178941788630264518
@@ -353,7 +353,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

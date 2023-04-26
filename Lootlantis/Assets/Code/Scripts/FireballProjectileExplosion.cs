@@ -6,7 +6,7 @@ public class FireballProjectileExplosion : MonoBehaviour
 {
 
     private float damage = 3f;
-    private float life = 10f;
+    private float life = 50f;
 
     // Start is called before the first frame update
     void Start()

@@ -35,7 +35,7 @@ public class Mine : Weapon
                 fireRate = fireRate - (1f + (PlayerPrefs.GetInt("AttackSpeed") * 0.1f));
             } else 
             {
-                aud.PlayOneShot(fireAud);
+                //aud.PlayOneShot(fireAud);
                 Instantiate(ProjectilePrefab, gameObject.transform.position, transform.rotation);
                 fireRate = 300f;
             }

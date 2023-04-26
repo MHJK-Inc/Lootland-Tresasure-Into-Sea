@@ -18,11 +18,14 @@ public class MoneyChest : Interactable
     public bool countMoney;
 
     private byte count;
+    public AudioSource aud;
+    public AudioClip chest;
 
     public override void Interact()
     {
         if (isActive)
         {
+            aud.PlayOneShot(chest);
             isActive = false;
             sr.sprite = open;
             PlayerPrefs.SetInt("Currency", (PlayerPrefs.GetInt("Currency") + 100));

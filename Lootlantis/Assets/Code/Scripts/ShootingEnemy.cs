@@ -34,9 +34,11 @@ public class ShootingEnemy : MonoBehaviour
     public float laserTick;
     public float laserPower;
 
-    public AudioSource aud;
+    public AudioSource pl;
+    public AudioSource en;
     public AudioClip audPlayerHit;
     public AudioClip enemyHit;
+    public AudioClip fire;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +88,7 @@ public class ShootingEnemy : MonoBehaviour
             }
             else if (distance <= shootingRange && nextFireTime < Time.time)
             {
+                en.PlayOneShot(fire);
                 Instantiate(projectile, projectileParent.transform.position, Quaternion.identity);
                 nextFireTime = Time.time + fireRate;
             }
@@ -136,7 +139,7 @@ public class ShootingEnemy : MonoBehaviour
 
     public void TakeHit(float damage)
     {
-        aud.PlayOneShot(enemyHit);
+        pl.PlayOneShot(enemyHit);
         hitPoints -= damage;
         healthBar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
@@ -152,7 +155,7 @@ public class ShootingEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            aud.PlayOneShot(audPlayerHit);
+            pl.PlayOneShot(audPlayerHit);
             collision.gameObject.GetComponent<Player>().TakeDamage(5);
             //StartCoroutine(FlashAfterDamage());
         }

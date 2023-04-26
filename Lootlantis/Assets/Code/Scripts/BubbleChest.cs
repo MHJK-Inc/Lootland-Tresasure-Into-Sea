@@ -23,11 +23,14 @@ public class BubbleChest : Interactable
     public GameObject healthBar;
 
     public GameObject player;
+    public AudioSource aud;
+    public AudioClip chest;
 
     public override void Interact()
     {
         if (isActive)
         {
+            aud.PlayOneShot(chest);
             isActive = false;
             sr.sprite = open;
             player.GetComponent<Player>().maxHealth += 20;

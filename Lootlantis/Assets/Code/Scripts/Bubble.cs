@@ -24,7 +24,8 @@ public class Bubble : MonoBehaviour
     {
         if (collide.gameObject.CompareTag("Player"))
         {
-            aud.PlayOneShot(bubbleAud);
+            AudioSource pl = GameObject.Find("Player").GetComponent<AudioSource>();
+            pl.PlayOneShot(bubbleAud);
             collide.gameObject.GetComponent<Player>().HealDamage(10);
             Destroy(gameObject);
         }

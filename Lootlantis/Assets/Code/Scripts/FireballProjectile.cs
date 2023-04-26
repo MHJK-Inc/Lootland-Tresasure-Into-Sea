@@ -21,6 +21,9 @@ public class FireballProjectile : MonoBehaviour
     private float damage = 0f;
 
     public GameObject explosion;
+    public AudioSource aud;
+    public AudioClip fireAud;
+
 
     // Start is called before the first frame update
     void Start()
@@ -117,6 +120,7 @@ public class FireballProjectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.tag == "Enemy")
         {
+            AudioSource ball = GameObject.Find("Fireball").GetComponent<AudioSource>();
             if(collider.gameObject.GetComponent<Enemy>() != null)
             {
                 if(PlayerPrefs.GetInt("Fireball") != 3)
@@ -125,6 +129,8 @@ public class FireballProjectile : MonoBehaviour
                     Destroy(gameObject);
                 } else
                 {
+                    
+                    ball.PlayOneShot(fireAud);
                     Instantiate(explosion, gameObject.transform.position, transform.rotation);
                     Destroy(gameObject);
                 }
@@ -136,6 +142,7 @@ public class FireballProjectile : MonoBehaviour
                     Destroy(gameObject);
                 } else
                 {
+                    ball.PlayOneShot(fireAud);
                     Instantiate(explosion, gameObject.transform.position, transform.rotation);
                     Destroy(gameObject);
                 }
@@ -147,6 +154,7 @@ public class FireballProjectile : MonoBehaviour
                     Destroy(gameObject);
                 } else
                 {
+                    ball.PlayOneShot(fireAud);
                     Instantiate(explosion, gameObject.transform.position, transform.rotation);
                     Destroy(gameObject);
                 }
@@ -158,6 +166,7 @@ public class FireballProjectile : MonoBehaviour
                     Destroy(gameObject);
                 } else
                 {
+                    ball.PlayOneShot(fireAud);
                     Instantiate(explosion, gameObject.transform.position, transform.rotation);
                     Destroy(gameObject);
                 }

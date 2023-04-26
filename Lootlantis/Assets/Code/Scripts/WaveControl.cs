@@ -46,6 +46,27 @@ public class WaveControl : MonoBehaviour
     public GameObject enemyControl;
     public GameObject shootEnemyControl;
     public GameObject serpentEnemyControl;
+    public GameObject fire1;
+    public GameObject fire2;
+    public GameObject fire3;
+    public GameObject emp1;
+    public GameObject emp2;
+    public GameObject emp3;
+    public GameObject barrier1;
+    public GameObject barrier2;
+    public GameObject barrier3;
+    public GameObject harpoon1;
+    public GameObject harpoon2;
+    public GameObject harpoon3;
+    public GameObject mine1;
+    public GameObject mine2;
+    public GameObject mine3;
+    public GameObject laser1;
+    public GameObject laser2;
+    public GameObject laser3;
+    public GameObject empty1;
+    public GameObject empty2;
+    public GameObject empty3;
 
 
     
@@ -66,6 +87,7 @@ public class WaveControl : MonoBehaviour
         slider.maxValue = player.GetComponent<Player>().maxHealth;
         slider.value = player.GetComponent<Player>().maxHealth;
         SpawnWeapons();
+        setImage();
         
         
 
@@ -92,6 +114,162 @@ public class WaveControl : MonoBehaviour
         }
     }
 
+    public void setImage() {
+        int slot1 = PlayerPrefs.GetInt("Inventory1");
+        int slot2 = PlayerPrefs.GetInt("Inventory2");
+        int slot3 = PlayerPrefs.GetInt("Inventory3");
+        if(slot1 == 1) {
+            fire1.SetActive(true);
+            emp1.SetActive(false);
+            barrier1.SetActive(false);
+            harpoon1.SetActive(false);
+            mine1.SetActive(false);
+            laser1.SetActive(false);
+            empty1.SetActive(false);
+        } else if(slot1 == 2) {
+            fire1.SetActive(false);
+            emp1.SetActive(true);
+            barrier1.SetActive(false);
+            harpoon1.SetActive(false);
+            mine1.SetActive(false);
+            laser1.SetActive(false);
+            empty1.SetActive(false);
+        } else if(slot1 == 3) {
+            fire1.SetActive(false);
+            emp1.SetActive(false);
+            barrier1.SetActive(true);
+            harpoon1.SetActive(false);
+            mine1.SetActive(false);
+            laser1.SetActive(false);
+            empty1.SetActive(false);
+        } else if(slot1 == 4) {
+            fire1.SetActive(false);
+            emp1.SetActive(false);
+            barrier1.SetActive(false);
+            harpoon1.SetActive(true);
+            mine1.SetActive(false);
+            laser1.SetActive(false);
+            empty1.SetActive(false);
+        } else if(slot1 == 5) {
+            fire1.SetActive(false);
+            emp1.SetActive(false);
+            barrier1.SetActive(false);
+            harpoon1.SetActive(false);
+            mine1.SetActive(true);
+            laser1.SetActive(false);
+            empty1.SetActive(false);
+        }
+            else if(slot1 == 6) {
+            fire1.SetActive(false);
+            emp1.SetActive(false);
+            barrier1.SetActive(false);
+            harpoon1.SetActive(false);
+            mine1.SetActive(false);
+            laser1.SetActive(true);
+            empty1.SetActive(false);
+        }
+        if(slot2 == 1) {
+            fire2.SetActive(true);
+            emp2.SetActive(false);
+            barrier2.SetActive(false);
+            harpoon2.SetActive(false);
+            mine2.SetActive(false);
+            laser2.SetActive(false);
+            empty2.SetActive(false);
+        } else if(slot2 == 2) {
+            fire2.SetActive(false);
+            emp2.SetActive(true);
+            barrier2.SetActive(false);
+            harpoon2.SetActive(false);
+            mine2.SetActive(false);
+            laser2.SetActive(false);
+            empty2.SetActive(false);
+        } else if(slot2 == 3) {
+            fire2.SetActive(false);
+            emp2.SetActive(false);
+            barrier2.SetActive(true);
+            harpoon2.SetActive(false);
+            mine2.SetActive(false);
+            laser2.SetActive(false);
+            empty2.SetActive(false);
+        } else if(slot2 == 4) {
+            fire2.SetActive(false);
+            emp2.SetActive(false);
+            barrier2.SetActive(false);
+            harpoon2.SetActive(true);
+            mine2.SetActive(false);
+            laser2.SetActive(false);
+            empty2.SetActive(false);
+        } else if(slot2 == 5) {
+            fire2.SetActive(false);
+            emp2.SetActive(false);
+            barrier2.SetActive(false);
+            harpoon2.SetActive(false);
+            mine2.SetActive(true);
+            laser2.SetActive(false);
+            empty2.SetActive(false);
+        }
+            else if(slot2 == 6) {
+            fire2.SetActive(false);
+            emp2.SetActive(false);
+            barrier2.SetActive(false);
+            harpoon2.SetActive(false);
+            mine2.SetActive(false);
+            laser2.SetActive(true);
+            empty2.SetActive(false);
+        }
+        if(slot3 == 1) {
+            fire3.SetActive(true);
+            emp3.SetActive(false);
+            barrier3.SetActive(false);
+            harpoon3.SetActive(false);
+            mine3.SetActive(false);
+            laser3.SetActive(false);
+            empty3.SetActive(false);
+        } else if(slot3 == 2) {
+            fire3.SetActive(false);
+            emp3.SetActive(true);
+            barrier3.SetActive(false);
+            harpoon3.SetActive(false);
+            mine3.SetActive(false);
+            laser3.SetActive(false);
+            empty3.SetActive(false);
+        } else if(slot3 == 3) {
+            fire3.SetActive(false);
+            emp3.SetActive(false);
+            barrier3.SetActive(true);
+            harpoon3.SetActive(false);
+            mine3.SetActive(false);
+            laser3.SetActive(false);
+            empty3.SetActive(false);
+        } else if(slot3 == 4) {
+            fire3.SetActive(false);
+            emp3.SetActive(false);
+            barrier3.SetActive(false);
+            harpoon3.SetActive(true);
+            mine3.SetActive(false);
+            laser3.SetActive(false);
+            empty3.SetActive(false);
+        } else if(slot3 == 5) {
+            fire3.SetActive(false);
+            emp3.SetActive(false);
+            barrier3.SetActive(false);
+            harpoon3.SetActive(false);
+            mine3.SetActive(true);
+            laser3.SetActive(false);
+            empty3.SetActive(false);
+        }
+            else if(slot3 == 6) {
+            fire3.SetActive(false);
+            emp3.SetActive(false);
+            barrier3.SetActive(false);
+            harpoon3.SetActive(false);
+            mine3.SetActive(false);
+            laser3.SetActive(true);
+            empty3.SetActive(false);
+        }
+    }
+
     private void spawnControl()
     {
         SpawnEnemy en = enemyControl.GetComponent<SpawnEnemy>();
@@ -101,138 +279,138 @@ public class WaveControl : MonoBehaviour
         if (wave == 1) {
             if (TimeLeft > quarterTime) {
                 en.maxEnemyCount = 3;
-                en.spawnInterval = 3;
+                en.spawnInterval = 1;
 
             } else if (TimeLeft > halfTime) {
                 en.maxEnemyCount = 5;
-                en.spawnInterval = 3;
+                en.spawnInterval = 1;
 
             } else if (TimeLeft > threeFourthTime) {
                 en.maxEnemyCount = 7;
-                en.spawnInterval = 3;
+                en.spawnInterval = 1;
 
             } else {
                 en.maxEnemyCount = 10;
-                en.spawnInterval = 3;
+                en.spawnInterval = 1;
 
             }
         } else if (wave == 2) {
             if (TimeLeft > quarterTime) {
                 en.maxEnemyCount = 5;
-                en.spawnInterval = 3;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 1;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
 
             } else if (TimeLeft > halfTime) {
                 en.maxEnemyCount = 7;
-                en.spawnInterval = 3;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 2;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
 
             } else if (TimeLeft > threeFourthTime) {
                 en.maxEnemyCount = 10;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 3;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
 
             } else {
                 en.maxEnemyCount = 13;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 4;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
                 
             }
 
         } else if (wave == 3) { 
             if (TimeLeft > quarterTime) {
                 en.maxEnemyCount = 10;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 2;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
 
             } else if (TimeLeft > halfTime) {
                 en.maxEnemyCount = 13;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 3;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
 
             } else if (TimeLeft > threeFourthTime) {
                 en.maxEnemyCount = 15;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 4;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
 
             } else {
                 en.maxEnemyCount = 17;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 6;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
                 
             }
         } else if (wave == 4) { 
             if (TimeLeft > quarterTime) {
                 en.maxEnemyCount = 15;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 3;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
                 serpen.maxEnemyCount = 3;
                 serpen.spawnInterval = 1;
 
             } else if (TimeLeft > halfTime) {
                 en.maxEnemyCount = 17;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 5;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
                 serpen.maxEnemyCount = 5;
                 serpen.spawnInterval = 1;
 
             } else if (TimeLeft > threeFourthTime) {
                 en.maxEnemyCount = 20;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 7;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
                 serpen.maxEnemyCount = 7;
                 serpen.spawnInterval = 1;
 
             } else {
                 en.maxEnemyCount = 25;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 10;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
                 serpen.maxEnemyCount = 10;
-                serpen.spawnInterval = 3;
+                serpen.spawnInterval = 1;
                 
             }
         } else if (wave == 5) { 
             if (TimeLeft > quarterTime) {
                 en.maxEnemyCount = 20;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 6;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
                 serpen.maxEnemyCount = 6;
                 serpen.spawnInterval = 1;
 
             } else if (TimeLeft > halfTime) {
                 en.maxEnemyCount = 25;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 8;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
                 serpen.maxEnemyCount = 10;
                 serpen.spawnInterval = 1;
 
             } else if (TimeLeft > threeFourthTime) {
                 en.maxEnemyCount = 30;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 10;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
                 serpen.maxEnemyCount = 12;
                 serpen.spawnInterval = 1;
 
             } else {
                 en.maxEnemyCount = 35;
-                en.spawnInterval = 5;
+                en.spawnInterval = 1;
                 sen.maxEnemyCount = 12;
-                sen.spawnInterval = 5;
+                sen.spawnInterval = 1;
                 serpen.maxEnemyCount = 15;
                 serpen.spawnInterval = 1;
                 

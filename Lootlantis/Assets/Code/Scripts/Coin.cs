@@ -23,7 +23,8 @@ public class Coin : MonoBehaviour
     {
         if (collide.gameObject.CompareTag("Player"))
         {
-            aud.PlayOneShot(coinAud);
+            AudioSource pl = GameObject.Find("Player").GetComponent<AudioSource>();
+            pl.PlayOneShot(coinAud);
             int add = 1 + PlayerPrefs.GetInt("Gold");
             PlayerPrefs.SetInt("Currency", (PlayerPrefs.GetInt("Currency") + add));
             Destroy(gameObject);

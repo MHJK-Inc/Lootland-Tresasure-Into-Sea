@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public float damageTimer = 0f;
     public float damageDecreaseRate = 1f;
 
-    public int inventory = 0;
+    public float inventory = 0;
 
     public bool paused;
 
@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
         PlayerSpriteRenderer = GetComponent<SpriteRenderer>();
 
         animator = GetComponent<Animator>();
+
+        inventory = GetInventory();
     }
 
     // Update is called once per frame
@@ -129,6 +131,18 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    public float GetInventory() {
+        if(PlayerPrefs.GetInt("Inventory1") == 0) {
+            return 0;
+        } else if (PlayerPrefs.GetInt("Inventory2") == 0) {
+            return 1;
+        } else if (PlayerPrefs.GetInt("Inventory3") == 0) {
+            return 2;
+        } else {
+            return 3;
+        }
     }
 
     public IEnumerator FlashAfterDamage()

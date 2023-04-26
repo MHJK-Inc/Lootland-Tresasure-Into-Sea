@@ -25,6 +25,8 @@ public class MineProjectile : MonoBehaviour
     private Vector2 center;
 
     private float rotZ;
+    public AudioSource aud;
+    public AudioClip fireAud;
 
     // Start is called before the first frame update
     void Start()
@@ -109,6 +111,8 @@ public class MineProjectile : MonoBehaviour
 
     void Explode()
     {
+        AudioSource exp = GameObject.Find("Mine").GetComponent<AudioSource>();
+        exp.PlayOneShot(fireAud);
         if (level != 3) {
             GameObject up = Instantiate(projectileMini, gameObject.transform.position, transform.rotation);
             GameObject down = Instantiate(projectileMini, gameObject.transform.position, transform.rotation);

@@ -100,6 +100,7 @@ public class SerpentManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            aud.PlayOneShot(audPlayerHit);
             collision.gameObject.GetComponent<Player>().TakeDamage(5);
         }
         

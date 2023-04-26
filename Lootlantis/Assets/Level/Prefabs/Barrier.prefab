@@ -45,7 +45,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -148,4 +148,4 @@ MonoBehaviour:
   level: 0
   target: {fileID: 0}
   aud: {fileID: 7849822253840546072}
-  fireAud: {fileID: 8300000, guid: 5057a2cb29564b64088aff02fb082434, type: 3}
+  fireAud: {fileID: 8300000, guid: 71c011774b28867428cd4d5d3bf3fc31, type: 3}

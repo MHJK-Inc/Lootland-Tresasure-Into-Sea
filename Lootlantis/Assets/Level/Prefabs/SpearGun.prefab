@@ -52,7 +52,7 @@ MonoBehaviour:
   level: 1
   target: {fileID: 0}
   aud: {fileID: 3787301410629833049}
-  fireAud: {fileID: 8300000, guid: 4e771620cc5de9941a3fba118d56b018, type: 3}
+  fireAud: {fileID: 8300000, guid: b2c7c4b72136ba4489a7375ee4b00cdf, type: 3}
 --- !u!82 &3787301410629833049
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

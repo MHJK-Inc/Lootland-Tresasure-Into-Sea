@@ -40,6 +40,28 @@ public class LevelUp : MonoBehaviour
     public AudioSource but;
     public AudioClip buttonClick;
 
+    public GameObject fire1;
+    public GameObject fire2;
+    public GameObject fire3;
+    public GameObject emp1;
+    public GameObject emp2;
+    public GameObject emp3;
+    public GameObject barrier1;
+    public GameObject barrier2;
+    public GameObject barrier3;
+    public GameObject harpoon1;
+    public GameObject harpoon2;
+    public GameObject harpoon3;
+    public GameObject mine1;
+    public GameObject mine2;
+    public GameObject mine3;
+    public GameObject laser1;
+    public GameObject laser2;
+    public GameObject laser3;
+    public GameObject empty1;
+    public GameObject empty2;
+    public GameObject empty3;
+
     
 
 
@@ -77,12 +99,12 @@ public class LevelUp : MonoBehaviour
         for(int i = 0; i < weapons.Length; i++) 
         {
             weapon = GameObject.Find(weapons[i]);
-            if (weapon == null && player.GetComponent<Player>().inventory < 3)
+            if (weapon == null && PlayerPrefs.GetInt("Inventory") < 3)
             {
                 weaponPool[index] = weapons[i];
                 index++;
             } else if (weapon) {
-                if (weapon.GetComponent<Weapon>().level < 3) {
+                if (PlayerPrefs.GetInt(weapons[i]) < 3) {
                     weaponPool[index] = weapons[i];
                     index++;
                 }
@@ -167,6 +189,183 @@ public class LevelUp : MonoBehaviour
 
     }
 
+    public int GetNum(string str) {
+        //"SpearGun", "Fireball", "EMP", "Barrier", "HarpoonGun", "Mine", "Laser"
+        if (str == "SpearGun") {
+            return 0;
+        } else if (str == "Fireball") {
+            return 1;
+        } else if (str == "EMP") {
+            return 2;
+        } else if (str == "Barrier") {
+            return 3;
+        } else if (str == "HarpoonGun") {
+            return 4;
+        } else if (str == "Mine") {
+            return 5;
+        } else if (str == "Laser") {
+            return 6;
+        }
+        return 0;
+    }
+
+    public void setImage(int slot, int weapon) {
+        if (slot == 1) {
+            if(weapon == 1) {
+                fire1.SetActive(true);
+                emp1.SetActive(false);
+                barrier1.SetActive(false);
+                harpoon1.SetActive(false);
+                mine1.SetActive(false);
+                laser1.SetActive(false);
+                empty1.SetActive(false);
+            } else if(weapon == 2) {
+                fire1.SetActive(false);
+                emp1.SetActive(true);
+                barrier1.SetActive(false);
+                harpoon1.SetActive(false);
+                mine1.SetActive(false);
+                laser1.SetActive(false);
+                empty1.SetActive(false);
+            } else if(weapon == 3) {
+                fire1.SetActive(false);
+                emp1.SetActive(false);
+                barrier1.SetActive(true);
+                harpoon1.SetActive(false);
+                mine1.SetActive(false);
+                laser1.SetActive(false);
+                empty1.SetActive(false);
+            } else if(weapon == 4) {
+                fire1.SetActive(false);
+                emp1.SetActive(false);
+                barrier1.SetActive(false);
+                harpoon1.SetActive(true);
+                mine1.SetActive(false);
+                laser1.SetActive(false);
+                empty1.SetActive(false);
+            } else if(weapon == 5) {
+                fire1.SetActive(false);
+                emp1.SetActive(false);
+                barrier1.SetActive(false);
+                harpoon1.SetActive(false);
+                mine1.SetActive(true);
+                laser1.SetActive(false);
+                empty1.SetActive(false);
+            }
+             else if(weapon == 6) {
+                fire1.SetActive(false);
+                emp1.SetActive(false);
+                barrier1.SetActive(false);
+                harpoon1.SetActive(false);
+                mine1.SetActive(false);
+                laser1.SetActive(true);
+                empty1.SetActive(false);
+            }
+        } else if (slot == 2) {
+            if(weapon == 1) {
+                fire2.SetActive(true);
+                emp2.SetActive(false);
+                barrier2.SetActive(false);
+                harpoon2.SetActive(false);
+                mine2.SetActive(false);
+                laser2.SetActive(false);
+                empty2.SetActive(false);
+            } else if(weapon == 2) {
+                fire2.SetActive(false);
+                emp2.SetActive(true);
+                barrier2.SetActive(false);
+                harpoon2.SetActive(false);
+                mine2.SetActive(false);
+                laser2.SetActive(false);
+                empty2.SetActive(false);
+            } else if(weapon == 3) {
+                fire2.SetActive(false);
+                emp2.SetActive(false);
+                barrier2.SetActive(true);
+                harpoon2.SetActive(false);
+                mine2.SetActive(false);
+                laser2.SetActive(false);
+                empty2.SetActive(false);
+            } else if(weapon == 4) {
+                fire2.SetActive(false);
+                emp2.SetActive(false);
+                barrier2.SetActive(false);
+                harpoon2.SetActive(true);
+                mine2.SetActive(false);
+                laser2.SetActive(false);
+                empty2.SetActive(false);
+            } else if(weapon == 5) {
+                fire2.SetActive(false);
+                emp2.SetActive(false);
+                barrier2.SetActive(false);
+                harpoon2.SetActive(false);
+                mine2.SetActive(true);
+                laser2.SetActive(false);
+                empty2.SetActive(false);
+            }
+             else if(weapon == 6) {
+                fire2.SetActive(false);
+                emp2.SetActive(false);
+                barrier2.SetActive(false);
+                harpoon2.SetActive(false);
+                mine2.SetActive(false);
+                laser2.SetActive(true);
+                empty2.SetActive(false);
+            }
+        } else if (slot == 3) {
+            if(weapon == 1) {
+                fire3.SetActive(true);
+                emp3.SetActive(false);
+                barrier3.SetActive(false);
+                harpoon3.SetActive(false);
+                mine3.SetActive(false);
+                laser3.SetActive(false);
+                empty3.SetActive(false);
+            } else if(weapon == 2) {
+                fire3.SetActive(false);
+                emp3.SetActive(true);
+                barrier3.SetActive(false);
+                harpoon3.SetActive(false);
+                mine3.SetActive(false);
+                laser3.SetActive(false);
+                empty3.SetActive(false);
+            } else if(weapon == 3) {
+                fire3.SetActive(false);
+                emp3.SetActive(false);
+                barrier3.SetActive(true);
+                harpoon3.SetActive(false);
+                mine3.SetActive(false);
+                laser3.SetActive(false);
+                empty3.SetActive(false);
+            } else if(weapon == 4) {
+                fire3.SetActive(false);
+                emp3.SetActive(false);
+                barrier3.SetActive(false);
+                harpoon3.SetActive(true);
+                mine3.SetActive(false);
+                laser3.SetActive(false);
+                empty3.SetActive(false);
+            } else if(weapon == 5) {
+                fire3.SetActive(false);
+                emp3.SetActive(false);
+                barrier3.SetActive(false);
+                harpoon3.SetActive(false);
+                mine3.SetActive(true);
+                laser3.SetActive(false);
+                empty3.SetActive(false);
+            }
+             else if(weapon == 6) {
+                fire3.SetActive(false);
+                emp3.SetActive(false);
+                barrier3.SetActive(false);
+                harpoon3.SetActive(false);
+                mine3.SetActive(false);
+                laser3.SetActive(true);
+                empty3.SetActive(false);
+            }
+        }
+    }
+
     public void SpawnUpgrade(int var)
     {
         but.PlayOneShot(buttonClick);
@@ -176,7 +375,17 @@ public class LevelUp : MonoBehaviour
             weapon = GameObject.Find(str);
             if (weapon == null)
             {
-                
+                if(PlayerPrefs.GetInt("Inventory1") == 0) {
+                    PlayerPrefs.SetInt("Inventory1", GetNum(str));
+                    setImage(1, GetNum(str));
+                } else if(PlayerPrefs.GetInt("Inventory2") == 0) {
+                    PlayerPrefs.SetInt("Inventory2", GetNum(str));
+                    setImage(2, GetNum(str));
+                } else {
+                    PlayerPrefs.SetInt("Inventory3", GetNum(str));
+                    setImage(3, GetNum(str));
+                }
+                PlayerPrefs.SetInt("Inventory", PlayerPrefs.GetInt("Inventory") + 1);
                 PlayerPrefs.SetInt(str, 1);
                 AddWeapon(str);
             } else {
@@ -186,8 +395,20 @@ public class LevelUp : MonoBehaviour
         } else if(var == 2) {
             string str = choiceTwoText.text;
             weapon = GameObject.Find(str);
+            Debug.Log(weapon);
             if (weapon == null)
             {
+                if(PlayerPrefs.GetInt("Inventory1") == 0) {
+                    PlayerPrefs.SetInt("Inventory1", GetNum(str));
+                    setImage(1, GetNum(str));
+                } else if(PlayerPrefs.GetInt("Inventory2") == 0) {
+                    PlayerPrefs.SetInt("Inventory2", GetNum(str));
+                    setImage(2, GetNum(str));
+                } else {
+                    PlayerPrefs.SetInt("Inventory3", GetNum(str));
+                    setImage(3, GetNum(str));
+                }
+                PlayerPrefs.SetInt("Inventory", PlayerPrefs.GetInt("Inventory") + 1);
                 PlayerPrefs.SetInt(str, 1);
                 AddWeapon(str);
             } else {
@@ -197,8 +418,20 @@ public class LevelUp : MonoBehaviour
         }  else if(var == 3) {
             string str = choiceThreeText.text;
             weapon = GameObject.Find(str);
+            Debug.Log(weapon);
             if (weapon == null)
             {
+                if(PlayerPrefs.GetInt("Inventory1") == 0) {
+                    PlayerPrefs.SetInt("Inventory1", GetNum(str));
+                    setImage(1, GetNum(str));
+                } else if(PlayerPrefs.GetInt("Inventory2") == 0) {
+                    PlayerPrefs.SetInt("Inventory2", GetNum(str));
+                    setImage(2, GetNum(str));
+                } else {
+                    PlayerPrefs.SetInt("Inventory3", GetNum(str));
+                    setImage(3, GetNum(str));
+                }
+                PlayerPrefs.SetInt("Inventory", PlayerPrefs.GetInt("Inventory") + 1);
                 PlayerPrefs.SetInt(str, 1);
                 AddWeapon(str);
             } else {
@@ -287,7 +520,7 @@ public class LevelUp : MonoBehaviour
             if (PlayerPrefs.GetInt("Fireball") == 0) {
                 choiceOneDesc.text = "Fires homing attacks at the enemy.";
             } else if(PlayerPrefs.GetInt("Fireball") == 1) {
-                choiceOneDesc.text = "Level 2: Doubles fire rate.";
+                choiceOneDesc.text = "Level 2: Increases fire rate.";
             } else {
                 choiceOneDesc.text = "Level 3: Fireballs explode on impact, dealing extra damage to enemies in the area.";
             }

@@ -10,7 +10,7 @@ public class SpawnSerpent : MonoBehaviour
     private float spawnY = 5f;
 
     [SerializeField] private GameObject enemyPrefab; // The prefab for the enemy
-    [SerializeField] private float minEnemyDistance = 3f; // The minimum distance between enemies
+    //[SerializeField] private float minEnemyDistance = 3f; // The minimum distance between enemies
     [SerializeField] private Vector2 spawnPosition; // The position where the enemies will spawn
     [SerializeField] private bool random; // Whether to spawn enemies at random positions
     [SerializeField] public float spawnInterval = 1f; // The time between enemy spawns

@@ -6,6 +6,8 @@ public class Fireball : Weapon
 {
     public AudioSource aud;
     public AudioClip fireAud;
+    
+    public AudioClip explode;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -40,7 +42,7 @@ public class Fireball : Weapon
                 if (level == 1) {
                     fireRate = 50f;
                 } else if (level >= 2) {
-                    fireRate = 25f;
+                    fireRate = 35f;
                 }
             }
         }

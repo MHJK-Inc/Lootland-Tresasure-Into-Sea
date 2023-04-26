@@ -33,6 +33,10 @@ public class Tutorial : MonoBehaviour
             PlayerPrefs.SetInt("HarpoonGun", 0);
             PlayerPrefs.SetInt("Mine", 0);
             PlayerPrefs.SetInt("Laser", 0);
+            PlayerPrefs.SetInt("Inventory", 0);
+            PlayerPrefs.SetInt("Inventory1", 0);
+            PlayerPrefs.SetInt("Inventory2", 0);
+            PlayerPrefs.SetInt("Inventory3", 0);
             SceneManager.LoadScene(3);
         }
 

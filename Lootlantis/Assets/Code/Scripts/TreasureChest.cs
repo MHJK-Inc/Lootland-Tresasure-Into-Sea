@@ -11,10 +11,14 @@ public class TreasureChest : Interactable
 
     private SpriteRenderer sr;
 
+    public AudioSource aud;
+    public AudioClip chest;
+
     public override void Interact()
     {
         if (isActive)
         {
+            aud.PlayOneShot(chest);
             isActive = false;
             sr.sprite = open;
             gameObject.transform.localScale = new Vector3(10, 10, 1);

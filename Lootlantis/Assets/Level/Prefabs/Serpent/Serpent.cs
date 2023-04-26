@@ -5,8 +5,8 @@ using UnityEngine;
 public class Serpent : MonoBehaviour
 {
     [SerializeField] float distanceBetween = .2f;
-    [SerializeField] float speed = 280;
-    [SerializeField] float turnSpeed = 18;
+    //[SerializeField] float speed = 280;
+    //[SerializeField] float turnSpeed = 18;
     [SerializeField] List<GameObject> bodyParts = new List<GameObject>();
     List<GameObject> serpentBody = new List<GameObject>();
     [SerializeField] private List<Transform> wayPoints = new List<Transform>();

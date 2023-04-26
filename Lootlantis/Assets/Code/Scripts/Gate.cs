@@ -20,11 +20,14 @@ public class Gate : Interactable
     private byte count;
 
     public GameObject waveControl;
+    public AudioSource aud;
+    public AudioClip chest;
 
     public override void Interact()
     {
         if (isActive)
         {
+            aud.PlayOneShot(chest);
             isActive = false;
             sr.sprite = open;
             showGate = true;
