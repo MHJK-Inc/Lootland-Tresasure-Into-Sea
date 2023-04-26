@@ -59,7 +59,7 @@ public class BoulderAttack : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             aud.PlayOneShot(audPlayerHit);
-            collider.gameObject.GetComponent<Player>().TakeDamage(5);
+            collider.gameObject.GetComponent<Player>().TakeDamage(10);
             aud.PlayOneShot(boulderBreak);
             BoulderDestroy();
         }

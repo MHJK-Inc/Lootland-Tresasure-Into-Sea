@@ -32,6 +32,7 @@ public class Boss : MonoBehaviour
     public float laserPower;
     public Vector2 targetPosition;
     public float targetRotation;
+    //public WaveClear waveClear;
 
 
     public int numberOfShootingAttack = 5;
@@ -240,7 +241,7 @@ public class Boss : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             aud.PlayOneShot(audPlayerHit);
-            collision.gameObject.GetComponent<Player>().TakeDamage(5);
+            collision.gameObject.GetComponent<Player>().TakeDamage(20);
             //StartCoroutine(FlashAfterDamage());
 
         }
@@ -257,7 +258,8 @@ public class Boss : MonoBehaviour
 
             // spawnEnemy.EnemyDestroyed();
             // DropItem();
-            // GameObject.Find("Main Camera").GetComponent<WaveControl>().EnemiesLeft--;
+            GameObject.Find("Main Camera").GetComponent<WaveControl>().EnemiesLeft--;
+            //waveClear.GetComponent
             // Destroy(gameObject);
         }
     }

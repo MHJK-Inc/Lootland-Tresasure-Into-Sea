@@ -52,10 +52,14 @@ public class WaveClear : MonoBehaviour
         {
             PlayerPrefs.SetInt("Wave", 5);
             SceneManager.LoadScene(7);
-        } else
+        } else if (PlayerPrefs.GetInt("Wave") == 5)
         {
             PlayerPrefs.SetInt("Wave", 6);
             SceneManager.LoadScene(8);
+        } else if (PlayerPrefs.GetInt("Wave") == 6)
+        {
+            PlayerPrefs.SetInt("Wave", 0);
+            SceneManager.LoadScene(10);
         }
 
         

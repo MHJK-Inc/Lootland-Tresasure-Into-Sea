@@ -550,7 +550,7 @@ public class WaveControl : MonoBehaviour
             }
         } else {
             if(EnemiesLeft > 0) {
-                KillTxt.text = string.Format("Enemies Remaining: " + EnemiesLeft);
+                KillTxt.text = string.Format("Survive against the Giant Serpent!");
             } else
             {
                 if(waveBeat == false){
